@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="clr_kindaGrey">#7B7B7B</color>
-    <color name="clr_quiteGrey">#C1C1C1</color>
+    <color name="clr_kindaGrey">#C1C1C1</color>
+    <color name="clr_quiteGrey">#9B9B9B</color>
     <color name="clr_veryGrey">#2D2D2D</color>
     <color name="clr_justWhite">#ffffff</color>
 </resources>
