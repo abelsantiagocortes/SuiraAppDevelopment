@@ -3,9 +3,19 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/clr_kindaGrey</item>
-        <item name="colorPrimaryDark">@color/clr_quiteGrey</item>
+        <item name="colorPrimary">@color/clr_veryGrey</item>
+        <item name="colorPrimaryDark">@color/clr_veryGrey</item>
         <item name="colorAccent">@color/clr_veryGrey</item>
+    </style>
+
+    <!-- ATOM STYLES -->
+
+    <!-- Form Elements -->
+        <!-- Normal Elements -->
+    <style name="frm_notification">
+        <item name="android:background">@drawable/frm_notification</item>
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">65dp</item>
     </style>
 
     <style name="frm_thin">
@@ -28,7 +38,37 @@
 
     <style name="frm_fatty">
         <item name="android:background">@drawable/frm_normal_fatty</item>
-        <item name= "android:layout_width">340dp</item>
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">150dp</item>
+        <item name= "android:singleLine">false</item>
+        <item name= "android:inputType">textMultiLine</item>
+        <item name= "android:scrollbars">vertical</item>
+        <item name= "android:scrollHorizontally">false</item>
+        <item name= "android:gravity">top|left</item>
+
+    </style>
+        <!-- Edit Elements -->
+    <style name="frm_editThin">
+        <item name="android:background">@drawable/frm_edit_thin</item>
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">50dp</item>
+    </style>
+
+    <style name="frm_editThick">
+        <item name="android:background">@drawable/frm_edit_thin</item>
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">65dp</item>
+    </style>
+
+    <style name="frm_editShort">
+        <item name="android:background">@drawable/frm_edit_thin</item>
+        <item name= "android:layout_width">160dp</item>
+        <item name= "android:layout_height">65dp</item>
+    </style>
+
+    <style name="frm_editFatty">
+        <item name="android:background">@drawable/frm_edit_fatty</item>
+        <item name= "android:layout_width">350dp</item>
         <item name= "android:layout_height">150dp</item>
         <item name= "android:singleLine">false</item>
         <item name= "android:inputType">textMultiLine</item>
