@@ -205,4 +205,12 @@
 
     </style>
 
+    <!-- Iconography -->
+    <style name= "icn_edit">
+        <item name = "android:layout_width">30dp</item>
+        <item name= "android:layout_height">30dp</item>
+        <item name= "android:background">@drawable/edit_option</item>
+        <item name= "android:colorBackground">@color/clr_quiteGrey</item>
+        </style>
+
 </resources>
