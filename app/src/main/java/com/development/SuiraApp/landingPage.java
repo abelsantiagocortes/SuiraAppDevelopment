@@ -24,7 +24,8 @@ public class landingPage extends AppCompatActivity {
         ConstraintLayout c2 = (ConstraintLayout)findViewById(R.id.con2);
 
         LayoutInflater inflater = LayoutInflater.from(this);
-        ConstraintLayout cl1= (ConstraintLayout) inflater.inflate(R.layout.landing_page1, null);
+        ConstraintLayout cl1
+                = (ConstraintLayout) inflater.inflate(R.layout.landing_page1, null);
         ConstraintLayout  cl2= (ConstraintLayout) inflater.inflate(R.layout.landing_page2, null);
 
         c1.addView(cl1);
