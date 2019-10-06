@@ -4,4 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="537dp"
+        tools:thumbTint="@color/clr_kindaGrey"
+        tools:backgroundTint="@color/clr_justWhite"
+        tools:trackTint="@color/clr_justWhite"
+        tools:scrollbarTrackHorizontal="@color/clr_justWhite"
+
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
