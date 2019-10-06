@@ -3,4 +3,7 @@
     <string name="suira">suira</string>
     <string name="sign_up_underlined"><u>SIGN UP</u></string>
     <string name="forgot_password_underlined"><u>FORGOT PASSWORD</u></string>
+    <string name="forgot_password_ask">¿Forgot Password?</string>
+    <string name="forgot_message">We will send reset \npassword instructions to your e-mail</string>
+
 </resources>
