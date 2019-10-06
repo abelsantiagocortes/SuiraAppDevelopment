@@ -205,4 +205,46 @@
 
     </style>
 
+    -- BUTTONS --
+
+    <style name="btn_highAction">
+        <item name="android:background">@drawable/btn_high_action</item>
+        <item name="android:textAppearance">@style/typ_Big</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_justWhite</item>
+
+    </style>
+
+    <style name="btn_lowAction">
+        <item name="android:background">@drawable/btn_low_action</item>
+        <item name="android:textAppearance">@style/typ_kindaBig</item>
+
+
+        <!-- Color Attributes-->
+        <item name="android:backgroundTint">@color/clr_justWhite</item>
+        <item name= "android:textColor">@color/clr_quiteGrey</item>
+
+    </style>
+
+    <style name="frm_toggle">
+        <!-- Color Attributes-->
+        <item name= "android:thumbTint">@color/clr_kindaGrey</item>
+        <item name= "android:backgroundTint">@color/clr_justWhite</item>
+        <item name= "android:scrollbarTrackHorizontal">@color/clr_justWhite</item>
+        <!--<item name= "android:trackTint">@color/clr_justWhite</item>-->
+
+    </style>
+
+    <style name="frm_checkbox">
+        <!-- Color Attributes-->
+        <item name= "android:buttonTint">@color/clr_kindaGrey</item>
+        <item name= "android:checked">false</item>
+        <item name="android:clickable">true</item>
+
+
+    </style>
+
+
+
 </resources>
