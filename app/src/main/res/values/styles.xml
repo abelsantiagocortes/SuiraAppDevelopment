@@ -276,5 +276,57 @@
         <item name= "android:colorBackground">@color/clr_quiteGrey</item>
     </style>
 
+    <style name= "icn_plus">
+        <item name= "android:layout_width">31.17dp</item>
+        <item name= "android:layout_height">30.57dp</item>
+        <item name= "android:background">@drawable/plus</item>
+        <item name= "android:colorBackground">@color/clr_kindaGrey</item>
+    </style>
+
+    <style name= "icn_location">
+        <item name= "android:layout_width">19.33dp</item>
+        <item name= "android:layout_height">26.94dp</item>
+        <item name= "android:background">@drawable/location</item>
+        <item name= "android:colorBackground">@color/clr_quiteGrey</item>
+    </style>
+
+    <style name= "icn_facebook">
+        <item name= "android:layout_width">27.53dp</item>
+        <item name= "android:layout_height">27.53dp</item>
+        <item name= "android:background">@drawable/facebook</item>
+        <item name= "android:colorBackground">@color/clr_quiteGrey</item>
+    </style>
+
+    <style name= "icn_instagram">
+        <item name= "android:layout_width">33.54dp</item>
+        <item name= "android:layout_height">33.54dp</item>
+        <item name= "android:background">@drawable/instagram</item>
+        <item name= "android:colorBackground">@color/clr_quiteGrey</item>
+
+    </style>
+
+    <style name= "icn_youtube">
+        <item name= "android:layout_width">43.38dp</item>
+        <item name= "android:layout_height">32.54dp</item>
+        <item name= "android:background">@drawable/youtube</item>
+        <item name= "android:colorBackground">@color/clr_quiteGrey</item>
+    </style>
+
+    <style name= "icn_spotify">
+        <item name= "android:layout_width">34.82dp</item>
+        <item name= "android:layout_height">34.82dp</item>
+        <item name= "android:background">@drawable/spotify</item>
+        <item name= "android:colorBackground">@color/clr_quiteGrey</item>
+    </style>
+
+    <style name= "icn_home">
+        <item name= "android:layout_width">16.88dp</item>
+        <item name= "android:layout_height">17.5dp</item>
+        <item name= "android:background">@drawable/home</item>
+        <item name= "android:colorBackground">@color/clr_quiteGrey</item>
+    </style>
+
+
+
 
 </resources>
