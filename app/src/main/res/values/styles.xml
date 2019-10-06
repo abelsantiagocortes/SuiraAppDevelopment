@@ -213,7 +213,7 @@
 
         <!-- Color Attributes-->
         <item name= "android:textColor">@color/clr_justWhite</item>
-        <item name="android:backgroundTint">@color/clr_quiteGrey</item>
+
 
     </style>
 
@@ -223,8 +223,17 @@
 
 
         <!-- Color Attributes-->
-        <item name="android:backgroundTint">@color/clr_justWhite</item>
         <item name= "android:textColor">@color/clr_quiteGrey</item>
+
+    </style>
+
+    <style name="btn_tag">
+        <item name="android:background">@drawable/btn_tag</item>
+        <item name="android:textAppearance">@style/typ_small</item>
+
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_justWhite</item>
 
     </style>
 
