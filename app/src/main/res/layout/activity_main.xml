@@ -9,22 +9,22 @@
 
     <Button
         android:id="@+id/button2"
-        style="@style/btn_highAction"
-        android:layout_width="193dp"
-        android:layout_height="40dp"
+        android:layout_width="344dp"
+        android:layout_height="60dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="130dp" />
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="72dp"
+        style="@style/btn_highAction"
+        />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button4"
         style="@style/btn_lowAction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/clr_justWhite"
+        android:layout_width="195dp"
+        android:layout_height="48dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="302dp"
-        tools:layout_editor_absoluteY="294dp" />
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="159dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
