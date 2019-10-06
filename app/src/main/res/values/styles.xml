@@ -1,11 +1,208 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Base application theme. -->
+    <!-- Base application Theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/clr_veryGrey</item>
+        <item name="colorPrimaryDark">@color/clr_veryGrey</item>
+        <item name="colorAccent">@color/clr_veryGrey</item>
+    </style>
+
+    <!-- ATOM STYLES -->
+
+    <!-- Typography -->
+
+    <style name="typ_reallyBig">
+        <item name= "android:textColor">@color/clr_quiteGrey</item>
+        <item name= "android:textSize">40dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+    </style>
+
+    <style name="typ_Big">
+        <item name= "android:textColor">@color/clr_quiteGrey</item>
+        <item name= "android:textSize">30dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+    </style>
+
+    <style name="typ_kindaBig">
+        <item name= "android:textColor">@color/clr_quiteGrey</item>
+        <item name= "android:textSize">25dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+    </style>
+
+    <style name="typ_small">
+        <item name= "android:textColor">@color/clr_quiteGrey</item>
+        <item name= "android:textSize">20dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+    </style>
+
+    <style name="typ_reallySmall">
+        <item name= "android:textColor">@color/clr_quiteGrey</item>
+        <item name= "android:textSize">16dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+    </style>
+
+
+    <!-- Form Elements -->
+
+        <!-- Normal Elements -->
+
+    <style name="frm_notification">
+        <item name="android:background">@drawable/frm_notification</item>
+
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">65dp</item>
+
+        <item name= "android:textSize">30dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+
+    </style>
+
+    <style name="frm_thin">
+        <item name="android:background">@drawable/frm_normal_thin</item>
+
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">50dp</item>
+
+        <item name= "android:textSize">25dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+    </style>
+
+    <style name="frm_thick">
+        <item name="android:background">@drawable/frm_normal_thin</item>
+
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">65dp</item>
+
+
+        <item name= "android:textSize">25dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+    </style>
+
+    <style name="frm_short">
+        <item name="android:background">@drawable/frm_normal_thin</item>
+        <item name= "android:layout_width">160dp</item>
+        <item name= "android:layout_height">65dp</item>
+
+        <item name= "android:textSize">25dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+    </style>
+
+    <style name="frm_fatty">
+        <item name="android:background">@drawable/frm_normal_fatty</item>
+
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">150dp</item>
+
+        <item name= "android:singleLine">false</item>
+        <item name= "android:inputType">textMultiLine</item>
+        <item name= "android:scrollbars">vertical</item>
+        <item name= "android:scrollHorizontally">false</item>
+        <item name= "android:gravity">top|left</item>
+
+
+        <item name= "android:textSize">20dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+
+    </style>
+
+        <!-- Edit Elements -->
+
+    <style name="frm_editThin">
+        <item name="android:background">@drawable/frm_edit_thin</item>
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">50dp</item>
+
+        <item name= "android:textSize">25dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+    </style>
+
+    <style name="frm_editThick">
+        <item name="android:background">@drawable/frm_edit_thin</item>
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">65dp</item>
+
+        <item name= "android:textSize">25dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+    </style>
+
+    <style name="frm_editShort">
+        <item name="android:background">@drawable/frm_edit_thin</item>
+        <item name= "android:layout_width">160dp</item>
+        <item name= "android:layout_height">65dp</item>
+
+        <item name= "android:textSize">25dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+    </style>
+
+    <style name="frm_editFatty">
+        <item name="android:background">@drawable/frm_edit_fatty</item>
+        <item name= "android:layout_width">350dp</item>
+        <item name= "android:layout_height">150dp</item>
+
+        <item name= "android:singleLine">false</item>
+        <item name= "android:inputType">textMultiLine</item>
+        <item name= "android:scrollbars">vertical</item>
+        <item name= "android:scrollHorizontally">false</item>
+        <item name= "android:gravity">top|left</item>
+
+        <item name= "android:textSize">20dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
+
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_veryGrey</item>
+        <item name= "android:textColorHint">@color/clr_quiteGrey</item>
+        <item name= "android:textCursorDrawable">@color/clr_kindaGrey</item>
+        <item name= "android:textColorLink">@color/clr_justWhite</item>
+
     </style>
 
 </resources>
