@@ -326,6 +326,19 @@
         <item name= "android:colorBackground">@color/clr_quiteGrey</item>
     </style>
 
+    <style name= "icn_black_star">
+        <item name= "android:layout_width">42.62dp</item>
+        <item name= "android:layout_height">38.63dp</item>
+        <item name= "android:background">@drawable/black_star</item>
+        <item name= "android:colorBackground">@color/clr_veryGrey</item>
+    </style>
+
+    <style name= "icn_blank_star">
+        <item name= "android:layout_width">42.62dp</item>
+        <item name= "android:layout_height">38.63dp</item>
+        <item name= "android:background">@drawable/blank_star</item>
+        <item name= "android:colorBackground">@color/clr_justWhite</item>
+    </style>
 
 
 
