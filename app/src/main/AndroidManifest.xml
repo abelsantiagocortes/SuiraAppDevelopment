@@ -16,7 +16,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".forgotPassword"></activity>
+        <activity android:name=".logIn"></activity>
+
+
 
         <meta-data
             android:name="preloaded_fonts"

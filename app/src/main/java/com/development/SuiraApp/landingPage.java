@@ -3,11 +3,10 @@ package com.development.SuiraApp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -19,6 +18,7 @@ public class landingPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
+
 
 
         ConstraintLayout c1 = (ConstraintLayout)findViewById(R.id.con1);
@@ -36,7 +36,14 @@ public class landingPage extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-
+        bt=(Button)findViewById(R.id.btn_1_3);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), logIn.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

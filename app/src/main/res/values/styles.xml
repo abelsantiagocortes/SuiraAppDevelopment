@@ -344,7 +344,7 @@
 
     <style name="btn_highAction">
         <item name="android:background">@drawable/btn_high_action</item>
-        <item name="android:textAppearance">@style/typ_Big</item>
+        <item name="android:textAppearance">@style/typ_Big</item >
 
         <!-- Color Attributes-->
         <item name= "android:textColor">@color/clr_justWhite</item>

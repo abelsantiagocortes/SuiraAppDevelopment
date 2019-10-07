@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Forgot_Password_Layout extends AppCompatActivity {
+public class forgotPassword extends AppCompatActivity {
     /* INFLATE OBJECTS */
 
     Button btn_send;
@@ -16,7 +16,7 @@ public class Forgot_Password_Layout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot__password__layout);
+        setContentView(R.layout.activity_forgot__password);
         /* INFLATE OBJECTS */
 
         btn_send=(Button) findViewById(R.id.btn_send);

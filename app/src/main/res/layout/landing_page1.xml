@@ -14,7 +14,7 @@
 
     <Button
 
-        android:id="@+id/button"
+        android:id="@+id/btn_1_3"
         style="@style/typ_Big"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         style="@style/typ_reallySmall"
 
 
-        android:layout_width="246dp"
+        android:layout_width="wrap_content"
         android:layout_height="144dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="5dp"
@@ -39,7 +39,7 @@
         android:gravity="start|top"
         android:text="suira"
         android:textColor="#FFFFFF"
-        android:textSize="120dp" />
+        android:textSize="130dp" />
 
     <TextView
         android:id="@+id/txtV_1_2"
@@ -79,8 +79,8 @@
     <Button
         android:id="@+id/bnt_1_2"
         style="@style/btn_highAction"
-        android:layout_width="187dp"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:alpha="0.8"
@@ -103,7 +103,8 @@
         android:layout_width="77dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
         android:rotation="270"
         app:srcCompat="@drawable/back" />
 
