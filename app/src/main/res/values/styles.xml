@@ -215,6 +215,7 @@
         <item name= "android:textColor">@color/clr_justWhite</item>
 
 
+
     </style>
 
     <style name="btn_lowAction">
@@ -224,6 +225,7 @@
 
         <!-- Color Attributes-->
         <item name= "android:textColor">@color/clr_quiteGrey</item>
+        <item name="android:strokeColor">@color/clr_quiteGrey</item>
 
     </style>
 
