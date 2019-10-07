@@ -6,10 +6,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class landingPage extends AppCompatActivity {
 
@@ -20,15 +18,22 @@ public class landingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
 
+
         ConstraintLayout c1 = (ConstraintLayout)findViewById(R.id.con1);
         ConstraintLayout c2 = (ConstraintLayout)findViewById(R.id.con2);
 
         LayoutInflater inflater = LayoutInflater.from(this);
-        ConstraintLayout cl1
-                = (ConstraintLayout) inflater.inflate(R.layout.landing_page1, null);
+        ConstraintLayout  cl1= (ConstraintLayout) inflater.inflate(R.layout.landing_page1, null);
         ConstraintLayout  cl2= (ConstraintLayout) inflater.inflate(R.layout.landing_page2, null);
 
         c1.addView(cl1);
         c2.addView(cl2);
+
+        View decorView = getWindow().getDecorView();
+
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
+
     }
 }

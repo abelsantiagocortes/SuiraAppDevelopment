@@ -3,4 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="900dp"
+    android:background="@drawable/landingpage_background">
+
+    <TextView
+        android:id="@+id/txtV_1_1"
+        style="@style/typ_reallySmall"
+
+
+        android:layout_width="246dp"
+        android:layout_height="164dp"
+        android:layout_marginStart="171dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="340dp"
+        android:foregroundGravity="top"
+        android:gravity="start|top"
+        android:text="suira"
+        android:textColor="#FFFFFF"
+        android:textSize="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/etxt_1_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etxt_1_1"
+        style="@style/frm_thick"
+
+
+        android:layout_marginBottom="216dp"
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="77dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="143dp"
+        android:rotation="270"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_1_1"
+        app:srcCompat="@drawable/back" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
