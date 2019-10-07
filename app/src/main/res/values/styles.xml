@@ -1,7 +1,9 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application Theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+    <item name="android:statusBarColor">@color/clr_veryGrey</item>
+    </style>
 
     <!-- ATOM STYLES -->
 
