@@ -17,4 +17,6 @@
         android:bottom="10dp"    >
     </padding>
 
+    <solid android:color="@android:color/white" />
+
 </shape>
