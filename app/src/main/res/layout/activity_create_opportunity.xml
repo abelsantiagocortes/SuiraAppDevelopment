@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toTopOf="@+id/edtxt_looking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/divider1" />
 
     <TextView
         android:id="@+id/textView7"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/divider1"
         android:layout_width="354dp"
         android:layout_height="1dp"
         android:layout_marginStart="23dp"
