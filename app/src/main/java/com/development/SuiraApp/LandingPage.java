@@ -12,7 +12,8 @@ import android.widget.LinearLayout;
 
 public class LandingPage extends AppCompatActivity {
 
-    Button bt;
+    Button btn_logIn;
+    Button btn_register;
     LinearLayout ln;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +37,20 @@ public class LandingPage extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-        bt=(Button)findViewById(R.id.btn_1_3);
-        bt.setOnClickListener(new View.OnClickListener() {
+        btn_logIn=(Button)findViewById(R.id.btn_1_3);
+        btn_logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(getApplicationContext(), LogIn.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_register=(Button)findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
             }
         });
