@@ -45,6 +45,5 @@ public class landingPage extends AppCompatActivity {
             }
         });
 
-
     }
 }
