@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class logIn extends AppCompatActivity {
+public class LogIn extends AppCompatActivity {
     /* INFLATE OBJECTS */
 
     Button btn_log_in;
@@ -45,7 +45,7 @@ public class logIn extends AppCompatActivity {
         txt_forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inte = new Intent(getApplicationContext(), forgotPassword.class);
+                Intent inte = new Intent(getApplicationContext(), ForgotPassword.class);
                 startActivity(inte);
             }
         });

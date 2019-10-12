@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class landingPage extends AppCompatActivity {
+public class LandingPage extends AppCompatActivity {
 
     Button bt;
     LinearLayout ln;
@@ -40,7 +40,7 @@ public class landingPage extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(getApplicationContext(), logIn.class);
+                Intent intent= new Intent(getApplicationContext(), LogIn.class);
                 startActivity(intent);
             }
         });

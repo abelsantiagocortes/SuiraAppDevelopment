@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class forgotPassword extends AppCompatActivity {
+public class ForgotPassword extends AppCompatActivity {
     /* INFLATE OBJECTS */
 
     Button btn_send;
