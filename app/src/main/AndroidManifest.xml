@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Pop_Up"/>
+        <activity android:name=".CreateOpportunity_2" />
         <activity android:name=".Register2"></activity>
         <activity android:name=".LandingPage" />
         <activity android:name=".Register" />
-        <activity android:name=".CreateOpportunity2" />
         <activity android:name=".CreateOpportunity" />
         <activity android:name=".Notifications" />
         <activity android:name=".MainActivity">
