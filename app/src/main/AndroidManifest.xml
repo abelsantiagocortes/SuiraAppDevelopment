@@ -14,6 +14,7 @@
         <activity android:name=".Register" />
         <activity android:name=".CreateOpportunity2" />
         <activity android:name=".CreateOpportunity" />
+        <activity android:name=".Notifications" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
