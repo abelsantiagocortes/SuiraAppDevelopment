@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.siyamed.shapeimageview.CircularImageView;
+
 import java.util.List;
 
 public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.PersonViewHolder> {
@@ -18,14 +20,14 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         CardView cv;
         TextView personName;
         TextView personAge;
-        ImageView personPhoto;
+        CircularImageView personPhoto;
 
         PersonViewHolder(View itemView) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cardi);
             personName = (TextView)itemView.findViewById(R.id.textView3);
             personAge = (TextView)itemView.findViewById(R.id.textView2);
-            personPhoto = (ImageView)itemView.findViewById(R.id.foto);
+            personPhoto = (CircularImageView) itemView.findViewById(R.id.foto);
         }
     }
 

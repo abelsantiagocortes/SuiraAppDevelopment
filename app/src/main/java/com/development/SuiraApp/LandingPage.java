@@ -15,6 +15,7 @@ public class LandingPage extends AppCompatActivity {
     Button btn_logIn;
     Button btn_register;
     Button btn_register2;
+    Button btn_buscar;
     LinearLayout ln;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,14 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
+        btn_buscar=(Button)findViewById(R.id.bnt_buscar);
+        btn_buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), Notifications.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

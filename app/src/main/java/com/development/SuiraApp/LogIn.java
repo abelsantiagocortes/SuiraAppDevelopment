@@ -33,7 +33,8 @@ public class LogIn extends AppCompatActivity {
         btn_log_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent inte = new Intent(getApplicationContext(), Notifications.class);
+                startActivity(inte);
             }
         });
         txt_sign_up.setOnClickListener(new View.OnClickListener() {
