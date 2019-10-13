@@ -17,65 +17,94 @@
             android:id="@+id/textView5"
             style="@style/typ_small"
 
-            android:layout_width="295dp"
-            android:layout_height="wrap_content"
+            android:layout_width="259dp"
+            android:layout_height="57dp"
 
             android:layout_marginStart="40dp"
             android:layout_marginTop="48dp"
             android:text="Algunas industrias creativas son..."
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="120dp"
             android:layout_marginTop="32dp"
             android:orientation="horizontal">
 
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:id="@+id/dfdg"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:clickable="true"
-                app:srcCompat="@drawable/back" />
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:cropToPadding="false"
+                android:padding="10dp"
+                android:src="@drawable/paint"
+                app:siBorderColor="@color/clr_quiteGrey"
+                app:siBorderWidth="2dp" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:id="@+id/ddf"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/profile" />
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:src="@drawable/camera"
+                app:siBorderColor="@color/clr_quiteGrey"
+                app:siBorderWidth="2dp" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:id="@+id/ddsdf"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/profile" />
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/profile" />
+                android:src="@drawable/singer"
+                app:siBorderColor="@color/clr_quiteGrey"
+                app:siBorderWidth="2dp" />
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/profile" />
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:id="@+id/dsfsd"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:clickable="true"
-                app:srcCompat="@drawable/front" />
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/record"
+                app:siBorderColor="@color/clr_quiteGrey"
+                app:siBorderWidth="2dp"
+                android:layout_margin="10dp"/>
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:id="@+id/phto"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/wtri"
+                app:siBorderColor="@color/clr_quiteGrey"
+                app:siBorderWidth="2dp"
+                android:layout_margin="10dp"/>
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:id="@+id/sing"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/fashion"
+                app:siBorderColor="@color/clr_quiteGrey"
+                app:siBorderWidth="2dp"
+                android:layout_margin="10dp"/>
+
 
         </LinearLayout>
 
@@ -83,30 +112,30 @@
             android:id="@+id/textView6"
             style="@style/typ_reallySmall"
             android:layout_width="202dp"
-            android:layout_height="89dp"
+            android:layout_height="33dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="44dp"
             android:layout_marginBottom="40dp"
             android:text="Quiero encontrar..."
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/btn_register"
             style="@style/btn_highAction"
-            android:layout_width="237dp"
-            android:layout_height="109dp"
-            android:layout_marginStart="80dp"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="50dp"
             android:layout_marginBottom="30dp"
             android:text="Creativo para Trabajo" />
 
         <Button
             android:id="@+id/btn_register2"
             style="@style/btn_highAction"
-            android:layout_width="237dp"
-            android:layout_height="109dp"
-            android:layout_marginStart="80dp"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="50dp"
             android:layout_marginEnd="88dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="40dp"
             android:text="Trabajo como Creativo" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
