@@ -3,6 +3,7 @@ package com.development.SuiraApp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -18,6 +19,7 @@ public class Register2 extends AppCompatActivity {
 
     GridLayout gridLayout;
     TextView txt_showselected;
+    Button btnNotif;
 
     int canttags=0;
 
@@ -34,6 +36,16 @@ public class Register2 extends AppCompatActivity {
         //Se infla el gridlayout y el textview de los tags
         gridLayout = (GridLayout) findViewById(R.id.grid_layout);
         txt_showselected = (TextView) findViewById(R.id.txt_showselected);
+        btnNotif= findViewById(R.id.button2);
+
+        btnNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), Notifications.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         //Se crea la cantidad de botones necesarios para representar los tags
@@ -55,6 +67,7 @@ public class Register2 extends AppCompatActivity {
             tags.setBackgroundResource(R.drawable.btn_tag);
             tags.setTextAppearance(getApplicationContext(), R.style.btn_tag);
             tags.setWidth(pixels);
+
 
 
 
