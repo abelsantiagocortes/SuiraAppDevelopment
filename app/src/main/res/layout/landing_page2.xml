@@ -50,7 +50,7 @@
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:src="@drawable/camera"
                 app:siBorderColor="@color/clr_quiteGrey"
                 app:siBorderWidth="2dp" />
@@ -86,15 +86,16 @@
                 app:siBorderColor="@color/clr_quiteGrey"
                 app:siBorderWidth="2dp"
                 android:layout_margin="10dp"/>
+
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:id="@+id/phto"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
                 android:src="@drawable/wtri"
                 app:siBorderColor="@color/clr_quiteGrey"
-                app:siBorderWidth="2dp"
-                android:layout_margin="10dp"/>
+                app:siBorderWidth="2dp" />
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:id="@+id/sing"
                 android:layout_width="120dp"
