@@ -39,6 +39,8 @@ public class LogIn extends AppCompatActivity {
         txt_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent inte = new Intent(getApplicationContext(), Register.class);
+                startActivity(inte);
 
             }
         });

@@ -8,10 +8,11 @@
 
     <TextView
         android:id="@+id/textView5"
-        style="@style/typ_kindaBig"
+        style="@style/typ_boldTitles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
         android:text="Create Opportunity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,8 +58,7 @@
     <EditText
         android:id="@+id/edtxt_looking"
         style="@style/frm_thick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
         android:layout_marginStart="87dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="88dp"
@@ -69,17 +69,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <TextView
+    <EditText
         android:id="@+id/textView8"
         style="@style/frm_fatty"
 
-        android:layout_width="334dp"
-        android:layout_height="151dp"
+
         android:layout_marginStart="21dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="22dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -89,22 +87,23 @@
         android:layout_height="1dp"
         android:layout_marginStart="23dp"
         android:layout_marginTop="13dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="23dp"
         android:background="@color/clr_kindaGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button3"
         style="@style/btn_highAction"
 
-        android:layout_width="264dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="48dp"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="32dp"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

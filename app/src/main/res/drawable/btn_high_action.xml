@@ -7,7 +7,7 @@
                 <!--corners allow us to make the rounded corners button-->
                 <corners android:radius="500dp" />
 
-                <solid android:color="@color/clr_quiteGrey"/>
+                <solid android:color="@color/clr_suiraPurple"/>
 
             </shape>
 

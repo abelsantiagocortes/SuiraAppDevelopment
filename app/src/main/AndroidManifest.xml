@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LandingPage"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".CreateOpportunity_2"></activity>
+        <activity android:name=".Register2"></activity>
+        <activity android:name=".LandingPage" />
+        <activity android:name=".Register" />
+        <activity android:name=".CreateOpportunity2" />
         <activity android:name=".CreateOpportunity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -19,12 +20,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".ForgotPassword"></activity>
-        <activity android:name=".LogIn"></activity>
-
-
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".LogIn" />
 
         <meta-data
             android:name="preloaded_fonts"

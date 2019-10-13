@@ -7,20 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class CreateOpportunity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
-    Button btnNext;
+    Button btn_nextR;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_opportunity);
+        setContentView(R.layout.activity_register);
 
-        btnNext=(Button)findViewById(R.id.button3);
-        btnNext.setOnClickListener(new View.OnClickListener() {
+        btn_nextR=(Button)findViewById(R.id.buttonR);
+        btn_nextR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(getApplicationContext(), CreateOpportunity2.class);
+                Intent intent= new Intent(getApplicationContext(), Register2.class);
                 startActivity(intent);
             }
         });
