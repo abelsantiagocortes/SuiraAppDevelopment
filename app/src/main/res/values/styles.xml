@@ -406,6 +406,12 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
+    <style name="menu_options">
+        <item name="android:textColor">@color/clr_justWhite</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/source_sans_pro_light</item>
+    </style>
+
 
 
 </resources>
