@@ -30,20 +30,76 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView16"
+        style="@style/typ_kindaBig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="167dp"
+        android:text="Tags Relacionados"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <TextView
+        android:id="@+id/txt_showselected"
+        style="@style/frm_fatty"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:layout_constraintVertical_bias="0.45" />
+
     <Button
         android:id="@+id/button2"
         style="@style/btn_highAction"
         android:layout_width="280dp"
         android:layout_height="60dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="57dp"
         android:layout_marginBottom="32dp"
         android:text="Registrarme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2"
-        app:layout_constraintVertical_bias="0.062"
         tools:layout_conversion_absoluteHeight="44dp"
         tools:layout_conversion_absoluteWidth="204dp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="342dp"
+        android:layout_height="296dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <GridLayout
+                android:id="@+id/grid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:useDefaultMargins="true" />
+        </ScrollView>
+    </HorizontalScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
