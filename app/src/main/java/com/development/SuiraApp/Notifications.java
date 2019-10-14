@@ -1,12 +1,18 @@
 package com.development.SuiraApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +29,9 @@ public class Notifications extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_notifications);
+
+        Toolbar toolbar = findViewById(R.id.toolbarMenu);
+        setSupportActionBar(toolbar);
 
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
@@ -67,13 +76,37 @@ public class Notifications extends AppCompatActivity {
 
     }
 
-
     private void initializeAdapter(){
         NotificationsAdapter adapter = new NotificationsAdapter(persons);
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu( Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate( R.menu.hamburger_menu, menu);
+        return true;
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch ( item.getItemId())
+        {
+            case R.id.first_item:
+                Intent intent = new Intent( getApplicationContext(), CreateOpportunity.class );
+                startActivity(intent);
+                return true;
+            case R.id.second_item:
+                Intent intent1 = new Intent( getApplicationContext(), Notifications.class );
+                startActivity(intent1);
+                return true;
+            case R.id.third_item:
+                Intent intent2 = new Intent( getApplicationContext(), LandingPage.class );
+                startActivity(intent2);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

@@ -344,8 +344,6 @@
         <item name= "android:colorBackground">@color/clr_justWhite</item>
     </style>
 
-
-
     -- BUTTONS --
 
     <style name="btn_highAction">
@@ -399,7 +397,19 @@
         <item name= "android:checked">false</item>
         <item name="android:clickable">true</item>
 
+    </style>
 
+    <style name="pop_up">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="menu_options">
+        <item name="android:textColor">@color/clr_justWhite</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/source_sans_pro_light</item>
     </style>
 
 
