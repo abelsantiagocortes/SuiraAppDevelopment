@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class Notifications extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<NotificationClass> persons;
+    private FirebaseAuth signOutAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class Notifications extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         recyclerView = (RecyclerView) findViewById(R.id.rv);
+        signOutAuth = FirebaseAuth.getInstance();
 
 
 
@@ -101,7 +105,8 @@ public class Notifications extends AppCompatActivity {
                 startActivity(intent1);
                 return true;
             case R.id.third_item:
-                Intent intent2 = new Intent( getApplicationContext(), LandingPage.class );
+                signOutAuth.signOut();
+                Intent intent2 = new Intent( getApplicationContext(), LogIn.class );
                 startActivity(intent2);
                 return true;
             default:

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pop_Up"/>
+        <activity android:name=".PopUp"/>
         <activity android:name=".CreateOpportunity2" />
         <activity android:name=".Register2"></activity>
         <activity android:name=".LandingPage" />

@@ -5,8 +5,9 @@
     <item
         android:id="@+id/hamburgerMenu"
         android:icon="@drawable/hamburger"
-        android:title="@string/main_label"
-        app:showAsAction="ifRoom">
+        android:title=" "
+        app:showAsAction="ifRoom"
+        style="@style/typ_boldTitles">
 
         <menu>
 

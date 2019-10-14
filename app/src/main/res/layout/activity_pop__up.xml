@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/round_pop"
     android:backgroundTint="#2B2B2B"
-    tools:context=".Pop_Up">
+    tools:context=".PopUp">
 
     <TextView
         android:id="@+id/popContent"

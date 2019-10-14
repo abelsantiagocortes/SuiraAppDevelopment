@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Pop_Up extends AppCompatActivity {
+public class PopUp extends AppCompatActivity {
 
     TextView contain;
     Button boton;
