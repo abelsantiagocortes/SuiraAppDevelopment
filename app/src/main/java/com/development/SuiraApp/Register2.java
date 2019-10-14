@@ -34,10 +34,7 @@ public class Register2 extends AppCompatActivity {
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
     List<String> tagsFire;
-
-    int canttags=0;
-
-    //Nombres de tags sacados del FireBase
+    int canttags =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +58,13 @@ public class Register2 extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 tagsFire.clear();
-                int i =0;
                 for(DataSnapshot tagSnapshot : dataSnapshot.getChildren())
                 {
-
                     String itemTag = tagSnapshot.getValue().toString();
-                    System.out.println(itemTag);
                     tagsFire.add(itemTag);
-                    System.out.println(tagsFire.get(i));
-                    i++;
+
                 }
+                //Reset the GridLayouts
                 gridLayout.removeAllViews();
                 tagComponents();
             }
@@ -80,8 +74,6 @@ public class Register2 extends AppCompatActivity {
 
             }
         });
-
-
 
 
         btnNotif.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +96,7 @@ public class Register2 extends AppCompatActivity {
 
     void tagComponents()
     {
+
         //Se crea la cantidad de botones necesarios para representar los tags
         for (int i = 0; i < tagsFire.size(); i++) {
             //Reset Grid Layout
@@ -131,6 +124,7 @@ public class Register2 extends AppCompatActivity {
                 //Mira si esta clickeado o no
                 Boolean click = false;
                 Boolean first = false;
+
                 @Override
                 public void onClick(View v) {
 
@@ -185,10 +179,6 @@ public class Register2 extends AppCompatActivity {
     private List<String> getSelectedTags()
     {
         List<String> items = Arrays.asList(txt_showselected.getText().toString().split("\\s*,\\s*,"));
-
-        for(int i = 0; i < items.size(); i++) {
-            System.out.println(items.get(i).toString());
-        }
         return items;
     }
 }

@@ -1,5 +1,6 @@
 package com.development.SuiraApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -11,20 +12,25 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateOpportunity extends AppCompatActivity {
 
     Button btnNext;
 
     GridLayout gridLayout2;
     TextView txt_showselected2;
+    DatabaseReference dbTags;
 
-    int canttags=0;
-
-    //Nombres de tags sacados del FireBase
-    private String[] tagsFire = {"Musica", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra", "Voz", "Bateria", "Pintura",
-            "Danza", "Fotografia", "Cine", "Guitarra", "Voz", "Bateria", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra",
-            "Voz", "Bateria", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra", "Voz", "Bateria", "Pintura", "Danza", "Fotografia",
-            "Cine", "Guitarra", "Voz", "Bateria", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra"};
+    List<String> tagsFire;
+    int canttags =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +42,54 @@ public class CreateOpportunity extends AppCompatActivity {
         txt_showselected2 = (TextView) findViewById(R.id.txt_showselected2);
 
 
+        FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
+        dbTags =  dbSuira.getReference("tag");
+
+        tagsFire = new ArrayList<String>();
+
+        // Read Tags Every Time is Updated
+        dbTags.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                tagsFire.clear();
+                for(DataSnapshot tagSnapshot : dataSnapshot.getChildren())
+                {
+                    String itemTag = tagSnapshot.getValue().toString();
+                    tagsFire.add(itemTag);
+
+                }
+                //Reset the GridLayouts
+                gridLayout2.removeAllViews();
+                tagComponents();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        btnNext=(Button)findViewById(R.id.button3);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), CreateOpportunity2.class);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+
+    void tagComponents()
+    {
+
         //Se crea la cantidad de botones necesarios para representar los tags
-        for (int i = 0; i < tagsFire.length; i++) {
+        for (int i = 0; i < tagsFire.size(); i++) {
+            //Reset Grid Layout
+
             // Cantidad de hijos del GridLayout.
             int childCount = gridLayout2.getChildCount();
 
@@ -49,22 +101,19 @@ public class CreateOpportunity extends AppCompatActivity {
             //Tamaño para los botones de tags
             final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
             int pixels = (int) (104 * scale + 0.5f);
-            int pixelsHeight = (int) (50 * scale + 0.5f);
 
             //Le pone el texto. background, el tipo de texto y el tamaño
-            tags.setText(tagsFire[i]);
+            tags.setText(tagsFire.get(i));
             tags.setBackgroundResource(R.drawable.btn_tag);
             tags.setTextAppearance(getApplicationContext(), R.style.btn_tag);
-            //tags.setHeight(pixelsHeight);
-            //tags.setWidth(pixels);
-
-
+            tags.setWidth(pixels);
 
             //Click listener de todos los botones tags
             tags.setOnClickListener(new View.OnClickListener() {
                 //Mira si esta clickeado o no
                 Boolean click = false;
                 Boolean first = false;
+
                 @Override
                 public void onClick(View v) {
 
@@ -114,16 +163,5 @@ public class CreateOpportunity extends AppCompatActivity {
             // Se añade el boton al gridLayout
             gridLayout2.addView(tags, childCount);
         }
-
-        btnNext=(Button)findViewById(R.id.button3);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(getApplicationContext(), CreateOpportunity2.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 }
