@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,11 +33,12 @@ public class Register2 extends AppCompatActivity {
     Button btnNotif;
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
+    List<String> tagsFire;
 
     int canttags=0;
 
     //Nombres de tags sacados del FireBase
-    String[] tagsFire = new String[6];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,20 +53,25 @@ public class Register2 extends AppCompatActivity {
         dbUsers = dbSuira.getReference("userClient");
         dbTags =  dbSuira.getReference("tag");
 
+        tagsFire = new ArrayList<String>();
+
         // Read Tags Every Time is Updated
         dbTags.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                int i=0;
+                tagsFire.clear();
+                int i =0;
                 for(DataSnapshot tagSnapshot : dataSnapshot.getChildren())
                 {
+
                     String itemTag = tagSnapshot.getValue().toString();
                     System.out.println(itemTag);
-                    tagsFire[i]= itemTag;
-                    System.out.println(tagsFire[i]);
+                    tagsFire.add(itemTag);
+                    System.out.println(tagsFire.get(i));
                     i++;
                 }
+                gridLayout.removeAllViews();
                 tagComponents();
             }
 
@@ -98,7 +105,9 @@ public class Register2 extends AppCompatActivity {
     void tagComponents()
     {
         //Se crea la cantidad de botones necesarios para representar los tags
-        for (int i = 0; i < tagsFire.length; i++) {
+        for (int i = 0; i < tagsFire.size(); i++) {
+            //Reset Grid Layout
+
             // Cantidad de hijos del GridLayout.
             int childCount = gridLayout.getChildCount();
 
@@ -112,7 +121,7 @@ public class Register2 extends AppCompatActivity {
             int pixels = (int) (104 * scale + 0.5f);
 
             //Le pone el texto. background, el tipo de texto y el tamaño
-            tags.setText(tagsFire[i]);
+            tags.setText(tagsFire.get(i));
             tags.setBackgroundResource(R.drawable.btn_tag);
             tags.setTextAppearance(getApplicationContext(), R.style.btn_tag);
             tags.setWidth(pixels);
