@@ -94,6 +94,15 @@ public class LogIn extends AppCompatActivity {
     private boolean validateForm() {
         boolean valid = true;
         String email = frm_email.getText().toString();
+        if(!isEmailValid(email)){
+            frm_email.setText("");
+            frm_email.setError("Required.");
+            valid = false;
+        }
+        else {
+            frm_email.setError(null);
+        }
+
         if (TextUtils.isEmpty(email)) {
             frm_email.setError("Required.");
             valid = false;
@@ -131,5 +140,13 @@ public class LogIn extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    private boolean isEmailValid(String email) {
+        if (!email.contains("@") ||
+                !email.contains(".") ||
+                email.length() < 5)
+            return false;
+        return true;
     }
 }
