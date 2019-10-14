@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/etxt_mail"
         style="@style/frm_thick"
 
         android:layout_marginTop="24dp"
@@ -43,12 +43,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_lastname"
         tools:layout_conversion_absoluteHeight="56dp"
         tools:layout_conversion_absoluteWidth="316dp" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/etxt_password"
         style="@style/frm_thick"
 
         android:layout_marginTop="24dp"
@@ -58,12 +58,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_mail"
         tools:layout_conversion_absoluteHeight="56dp"
         tools:layout_conversion_absoluteWidth="316dp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/etxt_name"
         style="@style/frm_thick"
 
         android:layout_marginTop="104dp"
@@ -78,7 +78,7 @@
         tools:layout_conversion_absoluteWidth="316dp" />
 
     <Button
-        android:id="@+id/buttonR"
+        android:id="@+id/nextR"
         style="@style/btn_highAction"
         android:layout_width="280dp"
         android:layout_height="60dp"
@@ -92,7 +92,7 @@
         tools:layout_conversion_absoluteWidth="204dp" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/etxt_lastname"
         style="@style/frm_thick"
 
         android:layout_marginTop="24dp"
@@ -102,12 +102,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_name"
         tools:layout_conversion_absoluteHeight="56dp"
         tools:layout_conversion_absoluteWidth="316dp" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/checkBox_policies"
         style="@style/typ_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -120,12 +120,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_terms"
         tools:layout_conversion_absoluteHeight="32dp"
         tools:layout_conversion_absoluteWidth="224dp" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox_terms"
         style="@style/typ_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_password"
         tools:layout_conversion_absoluteHeight="32dp"
         tools:layout_conversion_absoluteWidth="107dp" />
 

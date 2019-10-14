@@ -14,20 +14,25 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class Register2 extends AppCompatActivity {
 
 
     GridLayout gridLayout;
     TextView txt_showselected;
     Button btnNotif;
+    DatabaseReference dbUsers;
 
     int canttags=0;
 
     //Nombres de tags sacados del FireBase
     private String[] tagsFire = {"Musica", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra", "Voz", "Bateria", "Pintura",
-            "Danza", "Fotografia", "Cine", "Guitarra", "Voz", "Bateria", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra",
-            "Voz", "Bateria", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra", "Voz", "Bateria", "Pintura", "Danza", "Fotografia",
-            "Cine", "Guitarra", "Voz", "Bateria", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra"};
+            "Danza", "Fotografia", "Cine", "Guitarra"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +43,22 @@ public class Register2 extends AppCompatActivity {
         txt_showselected = (TextView) findViewById(R.id.txt_showselected);
         btnNotif= findViewById(R.id.button2);
 
+        FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
+        dbUsers = dbSuira.getReference("userClient");
+
+        tagComponents();
+
+
         btnNotif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String idUser = getIntent().getStringExtra("userId");
+                List<String> tagsUser = getSelectedTags();
+
+                dbUsers.child(idUser).child("tag").setValue(tagsUser);
+
+
                 Intent intent= new Intent(getApplicationContext(), Notifications.class);
                 startActivity(intent);
             }
@@ -48,6 +66,15 @@ public class Register2 extends AppCompatActivity {
 
 
 
+
+
+    }
+
+
+
+
+    void tagComponents()
+    {
         //Se crea la cantidad de botones necesarios para representar los tags
         for (int i = 0; i < tagsFire.length; i++) {
             // Cantidad de hijos del GridLayout.
@@ -58,7 +85,7 @@ public class Register2 extends AppCompatActivity {
             // Crea cada boton en el contexto de la Actividad
             final Button tags = new Button(context);
 
-           //Tamaño para los botones de tags
+            //Tamaño para los botones de tags
             final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
             int pixels = (int) (104 * scale + 0.5f);
 
@@ -67,9 +94,6 @@ public class Register2 extends AppCompatActivity {
             tags.setBackgroundResource(R.drawable.btn_tag);
             tags.setTextAppearance(getApplicationContext(), R.style.btn_tag);
             tags.setWidth(pixels);
-
-
-
 
             //Click listener de todos los botones tags
             tags.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +149,11 @@ public class Register2 extends AppCompatActivity {
             // Se añade el boton al gridLayout
             gridLayout.addView(tags, childCount);
         }
+    }
 
-
+    private List<String> getSelectedTags()
+    {
+        List<String> items = Arrays.asList(txt_showselected.getText().toString().split("\\s*,\\s*"));
+        return items;
     }
 }
