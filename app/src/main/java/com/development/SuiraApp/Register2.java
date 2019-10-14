@@ -1,5 +1,6 @@
 package com.development.SuiraApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -14,8 +15,11 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,12 +31,12 @@ public class Register2 extends AppCompatActivity {
     TextView txt_showselected;
     Button btnNotif;
     DatabaseReference dbUsers;
+    DatabaseReference dbTags;
 
     int canttags=0;
 
     //Nombres de tags sacados del FireBase
-    private String[] tagsFire = {"Musica", "Pintura", "Danza", "Fotografia", "Cine", "Guitarra", "Voz", "Bateria", "Pintura",
-            "Danza", "Fotografia", "Cine", "Guitarra"};
+    String[] tagsFire = new String[6];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +49,32 @@ public class Register2 extends AppCompatActivity {
 
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
         dbUsers = dbSuira.getReference("userClient");
+        dbTags =  dbSuira.getReference("tag");
 
-        tagComponents();
+        // Read Tags Every Time is Updated
+        dbTags.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                int i=0;
+                for(DataSnapshot tagSnapshot : dataSnapshot.getChildren())
+                {
+                    String itemTag = tagSnapshot.getValue().toString();
+                    System.out.println(itemTag);
+                    tagsFire[i]= itemTag;
+                    System.out.println(tagsFire[i]);
+                    i++;
+                }
+                tagComponents();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
 
 
         btnNotif.setOnClickListener(new View.OnClickListener() {
@@ -56,22 +84,16 @@ public class Register2 extends AppCompatActivity {
                 String idUser = getIntent().getStringExtra("userId");
                 List<String> tagsUser = getSelectedTags();
 
-                dbUsers.child(idUser).child("tag").setValue(tagsUser);
-
+                for(int i = 0; i < tagsUser.size(); i++) {
+                    dbUsers.child(idUser).child("tag").setValue(tagsUser.get(i).toString());
+                }
 
                 Intent intent= new Intent(getApplicationContext(), Notifications.class);
                 startActivity(intent);
             }
         });
 
-
-
-
-
     }
-
-
-
 
     void tagComponents()
     {
@@ -153,7 +175,11 @@ public class Register2 extends AppCompatActivity {
 
     private List<String> getSelectedTags()
     {
-        List<String> items = Arrays.asList(txt_showselected.getText().toString().split("\\s*,\\s*"));
+        List<String> items = Arrays.asList(txt_showselected.getText().toString().split("\\s*,\\s*,"));
+
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i).toString());
+        }
         return items;
     }
 }
