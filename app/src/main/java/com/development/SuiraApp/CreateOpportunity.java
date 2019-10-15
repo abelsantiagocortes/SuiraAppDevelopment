@@ -6,19 +6,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class CreateOpportunity extends AppCompatActivity {
@@ -28,6 +35,10 @@ public class CreateOpportunity extends AppCompatActivity {
     GridLayout gridLayout2;
     TextView txt_showselected2;
     DatabaseReference dbTags;
+    DatabaseReference dbOpps;
+    FirebaseAuth userAuth;
+    EditText name;
+    EditText description;
 
     List<String> tagsFire;
     int canttags =0;
@@ -40,10 +51,15 @@ public class CreateOpportunity extends AppCompatActivity {
         //Se infla el gridlayout y el textview de los tags
         gridLayout2 = (GridLayout) findViewById(R.id.grid_layout2);
         txt_showselected2 = (TextView) findViewById(R.id.txt_showselected2);
+        name=findViewById(R.id.edtxt_looking);
+        description=findViewById(R.id.etxt_description);
 
 
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
+        userAuth = FirebaseAuth.getInstance();
         dbTags =  dbSuira.getReference("tag");
+        dbOpps = dbSuira.getReference("opportunities");
+
 
         tagsFire = new ArrayList<String>();
 
@@ -74,8 +90,16 @@ public class CreateOpportunity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(getApplicationContext(), CreateOpportunity2.class);
-                startActivity(intent);
+                if(validateForm())
+                {
+                    FirebaseUser user =userAuth.getCurrentUser();
+                    //Registra en Base de Datos
+                    createOppoDB(user);
+
+                    Intent intent= new Intent(getApplicationContext(), CreateOpportunity2.class);
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -162,5 +186,53 @@ public class CreateOpportunity extends AppCompatActivity {
             // Se añade el boton al gridLayout
             gridLayout2.addView(tags, childCount);
         }
+    }
+
+    private boolean validateForm() {
+        boolean valid = true;
+        String name_value = name.getText().toString() ;
+        if (TextUtils.isEmpty(name_value)) {
+            name.setError("Required.");
+            valid = false;
+        } else {
+            name.setError(null);
+        }
+        String lastName_value = description.getText().toString() ;
+        if (TextUtils.isEmpty(lastName_value)) {
+            description.setError("Required.");
+            valid = false;
+        } else {
+            description.setError(null);
+        }
+        String password_value = txt_showselected2.getText().toString();
+        if (TextUtils.isEmpty(password_value)) {
+            txt_showselected2.setError("Required.");
+            valid = false;
+        } else {
+            txt_showselected2.setError(null);
+        }
+
+        return valid;
+    }
+
+    private String createOppoDB(FirebaseUser user){
+        String name_opp = name.getText().toString() ;
+        String description_opp= description.getText().toString();
+        List<String> tags = Arrays.asList(txt_showselected2.getText().toString().split("\\s*,\\s*,"));
+
+        Date date = new Date();
+        long time = date.getTime();
+        Timestamp ts = new Timestamp(time);
+
+        OpportunityClass opp= new OpportunityClass(name_opp,description_opp,ts);
+        String idOpp = dbOpps.push().getKey();
+        dbOpps.child(idOpp).setValue(opp);
+
+        for(int i = 0; i < tags.size(); i++) {
+            dbOpps.child(idOpp).child("tag").setValue(tags.get(i));
+        }
+
+        return(idOpp);
+
     }
 }

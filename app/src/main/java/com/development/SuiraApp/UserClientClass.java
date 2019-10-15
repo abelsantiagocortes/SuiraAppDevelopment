@@ -22,7 +22,7 @@ public class UserClientClass {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.tag = new ArrayList<String>();
+        this.tag = new ArrayList<>();
         this.signUpDate = signUpDate;
     }
 

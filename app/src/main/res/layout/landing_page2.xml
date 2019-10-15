@@ -158,7 +158,7 @@
                 android:textColor="@color/clr_justWhite"
                 app:layout_constraintEnd_toStartOf="@+id/textView10"
                 app:layout_constraintHorizontal_bias="0.681"
-                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintStart_toEndOf="@+id/etxt_description"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -176,7 +176,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/etxt_description"
                 style="@style/typ_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

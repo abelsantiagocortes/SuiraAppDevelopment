@@ -51,7 +51,7 @@
         android:text="Related Tags"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/etxt_description" />
 
     <EditText
         android:id="@+id/edtxt_looking"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/textView8"
+        android:id="@+id/etxt_description"
         style="@style/frm_fatty"
 
 

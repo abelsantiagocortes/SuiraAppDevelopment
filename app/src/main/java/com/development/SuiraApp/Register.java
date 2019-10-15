@@ -60,7 +60,7 @@ public class Register extends AppCompatActivity {
         // Intitialize Reference
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
         dbUsers = dbSuira.getReference("userClient");
-
+        // Intitialize Authentication
         registerAuth = FirebaseAuth.getInstance();
 
 
@@ -87,6 +87,7 @@ public class Register extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = registerAuth.getCurrentUser();
+                                //Registra en Base de Datos
                                 registerUser(user);
                             } else {
                                 // If sign in fails, display a message to the user.

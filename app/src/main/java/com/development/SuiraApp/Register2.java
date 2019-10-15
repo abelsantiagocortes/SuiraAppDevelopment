@@ -84,7 +84,7 @@ public class Register2 extends AppCompatActivity {
                 List<String> tagsUser = getSelectedTags();
 
                 for(int i = 0; i < tagsUser.size(); i++) {
-                    dbUsers.child(idUser).child("tag").setValue(tagsUser.get(i).toString());
+                    dbUsers.child(idUser).child("tag").setValue(tagsUser.get(i));
                 }
 
                 Intent intent= new Intent(getApplicationContext(), Notifications.class);
