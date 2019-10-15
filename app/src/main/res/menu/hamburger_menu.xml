@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
         android:id="@+id/hamburgerMenu"
         android:icon="@drawable/hamburger"
         android:title="@string/main_label"
+        android:textColor="@color/clr_suiraPurple"
         app:showAsAction="ifRoom">
-
         <menu>
 
-            <item android:id="@+id/first_item"
+            <item
+                android:id="@+id/first_item"
                 android:title="@string/menu_1"
-                app:showAsAction="ifRoom"/>
+                app:showAsAction="ifRoom"
+                />
 
             <item android:id="@+id/second_item"
                 android:title="@string/menu_2"
@@ -25,6 +26,11 @@
         </menu>
 
     </item>
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&#xA;        android:background=&quot;@color/clr_justWhite&quot;" />
 
 </menu>
 
