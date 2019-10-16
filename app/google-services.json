@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1017570883872-44khonteun69pm3g37l6oi14q8knqcb5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.development.SuiraApp",
+            "certificate_hash": "79ad8e528900afce7596758946d8dccb5077a770"
+          }
+        },
+        {
           "client_id": "1017570883872-4uuie5ki1i8r4hp9367kll6ija7mir3t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
