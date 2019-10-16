@@ -3,6 +3,7 @@
     <!-- Base application Theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" >
     <item name="android:statusBarColor">@color/clr_suiraPurple</item>
+    <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <!-- ATOM STYLES -->
@@ -404,6 +405,7 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
     <style name="menu_options">

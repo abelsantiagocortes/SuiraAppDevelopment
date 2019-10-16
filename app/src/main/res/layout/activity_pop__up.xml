@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/round_pop"
-    android:backgroundTint="#2B2B2B"
+    android:backgroundTint="@color/clr_justWhite"
+    android:elevation="4dp"
     tools:context=".PopUp">
 
     <TextView
@@ -13,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textColor="@color/clr_kindaGrey"
+        android:textColor="@color/clr_veryGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

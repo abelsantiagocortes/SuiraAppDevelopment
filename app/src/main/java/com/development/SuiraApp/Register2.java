@@ -87,7 +87,19 @@ public class Register2 extends AppCompatActivity {
                     dbUsers.child(idUser).child("tag").setValue(tagsUser.get(i));
                 }
 
-                Intent intent= new Intent(getApplicationContext(), Notifications.class);
+                Bundle bund = new Bundle();
+
+                String msn = new String("Thanks for Using Suira\n \n \n Suira is Working To Find What You Need");
+                String btnMsn = new String("Notifications");
+                String activityName = new String("Notifications");
+
+                Intent intent= new Intent(getApplicationContext(), PopUp.class);
+
+                bund.putString("mensaje", msn);
+                bund.putString("contenidoBoton", btnMsn);
+                bund.putString("sender", activityName );
+                intent.putExtras(bund);
+
                 startActivity(intent);
             }
         });

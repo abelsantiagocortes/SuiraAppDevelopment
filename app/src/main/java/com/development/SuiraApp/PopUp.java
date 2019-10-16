@@ -24,8 +24,6 @@ public class PopUp extends AppCompatActivity {
         setTheme( R.style.pop_up);
         setContentView(R.layout.activity_pop__up);
 
-        getWindow().setBackgroundDrawable( new ColorDrawable(android.R.color.transparent));
-
         contain = (TextView) findViewById( R.id.popContent );
         boton = ( Button ) findViewById( R.id.popButton );;
 
