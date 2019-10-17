@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">SuiraApp</string>
+    <string name="main_label"> </string>
+    <string name="suira">suira</string>
+    <string name="sign_up_underlined"><u>SIGN UP</u></string>
+    <string name="forgot_password_underlined"><u>FORGOT PASSWORD</u></string>
+    <string name="forgot_password_ask">¿Forgot Password?</string>
+    <string name="forgot_message">We will send reset \npassword instructions to your e-mail</string>
+    <string name="para_las_industrias_creativas"><u>Search examples</u></string>
+    <string name="menu_1">Create Opportunity</string>
+    <string name="menu_2">Notifications</string>
+    <string name="menu_3">Log Out</string>
+    <string name= "ACEPTO">I ACCEP T&amp;C</string>
+
+
 </resources>
