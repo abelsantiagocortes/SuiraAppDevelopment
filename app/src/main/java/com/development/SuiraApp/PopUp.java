@@ -59,10 +59,12 @@ public class PopUp extends AppCompatActivity {
 
     private void senderNew( String sendActivity )
     {
+        System.out.println(sendActivity);
         String activityToStart = "com.development.SuiraApp." + sendActivity;
         try {
             Class<?> aac = Class.forName(activityToStart);
             Intent intent = new Intent(this, aac);
+            intent.putExtra("landing","no");
             startActivity(intent);
         } catch (ClassNotFoundException ignored) {
         }

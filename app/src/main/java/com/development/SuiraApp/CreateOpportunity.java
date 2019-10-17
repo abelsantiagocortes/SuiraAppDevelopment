@@ -96,7 +96,19 @@ public class CreateOpportunity extends AppCompatActivity {
                     //Registra en Base de Datos
                     createOppoDB(user);
 
-                    Intent intent= new Intent(getApplicationContext(), CreateOpportunity2.class);
+                    Bundle bund = new Bundle();
+
+                    String msn = new String("Thanks for Creating Your Opportunity \n \n \n Suira is Working To Find What You Need");
+                    String btnMsn = new String("Create");
+                    String activityName = new String("Notifications");
+
+                    Intent intent= new Intent(getApplicationContext(), PopUp.class);
+
+                    bund.putString("mensaje", msn);
+                    bund.putString("contenidoBoton", btnMsn);
+                    bund.putString("sender", activityName );
+                    intent.putExtras(bund);
+
                     startActivity(intent);
                 }
 
@@ -215,7 +227,7 @@ public class CreateOpportunity extends AppCompatActivity {
         return valid;
     }
 
-    private String createOppoDB(FirebaseUser user){
+    private void createOppoDB(FirebaseUser user){
         String name_opp = name.getText().toString() ;
         String description_opp= description.getText().toString();
         List<String> tags = Arrays.asList(txt_showselected2.getText().toString().split("\\s*,\\s*,"));
@@ -224,12 +236,14 @@ public class CreateOpportunity extends AppCompatActivity {
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);
 
-        OpportunityClass opp= new OpportunityClass(name_opp,description_opp,ts,tags);
+        String userId= user.getUid();
+        System.out.println(userId);
+        OpportunityClass opp= new OpportunityClass(name_opp,description_opp,ts,tags,userId);
+        String key = dbOpps.push().getKey();
 
-        String idOpp = dbOpps.push().getKey();
-        dbOpps.child(idOpp).setValue(opp);
+        dbOpps.child(key).setValue(opp);
 
-        return(idOpp);
+
 
     }
 }

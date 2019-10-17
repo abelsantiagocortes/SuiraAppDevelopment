@@ -60,19 +60,19 @@ public class Notifications extends AppCompatActivity {
         persons.add(new NotificationClass("Abelardo C. ", "Diseñador de Horarios", R.drawable.designer));
         persons.add(new NotificationClass("Seposorio G.", "Toque en Santo de Angel", R.drawable.camera));
         persons.add(new NotificationClass("Kamilin S.", "Organizador de Escritorio", R.drawable.fashion));
-        persons.add(new NotificationClass("Dani M.", "Director de VideoP", R.drawable.paint));
+        persons.add(new NotificationClass("Dani M.", "Director de Video", R.drawable.paint));
         persons.add(new NotificationClass("Deivid S", "Profesor de Vocabulario", R.drawable.wtri));
         persons.add(new NotificationClass("Julieto M.", "Doctor 24/7", R.drawable.record));
         persons.add(new NotificationClass("Abelardo C. ", "Diseñador de Horarios", R.drawable.designer));
         persons.add(new NotificationClass("Seposorio G.", "Toque en Santo de Angel", R.drawable.camera));
         persons.add(new NotificationClass("Kamilin S.", "Organizador de Escritorio", R.drawable.fashion));
-        persons.add(new NotificationClass("Dani M.", "Director de VideoP", R.drawable.paint));
+        persons.add(new NotificationClass("Dani M.", "Director de Video", R.drawable.paint));
         persons.add(new NotificationClass("Deivid S", "Profesor de Vocabulario", R.drawable.wtri));
         persons.add(new NotificationClass("Julieto M.", "Doctor 24/7", R.drawable.record));
         persons.add(new NotificationClass("Abelardo C. ", "Diseñador de Horarios", R.drawable.designer));
         persons.add(new NotificationClass("Seposorio G.", "Toque en Santo de Angel", R.drawable.camera));
         persons.add(new NotificationClass("Kamilin S.", "Organizador de Escritorio", R.drawable.fashion));
-        persons.add(new NotificationClass("Dani M.", "Director de VideoP", R.drawable.paint));
+        persons.add(new NotificationClass("Dani M.", "Director de Video", R.drawable.paint));
         persons.add(new NotificationClass("Deivid S", "Profesor de Vocabulario", R.drawable.wtri));
         persons.add(new NotificationClass("Julieto M.", "Doctor 24/7", R.drawable.record));
 

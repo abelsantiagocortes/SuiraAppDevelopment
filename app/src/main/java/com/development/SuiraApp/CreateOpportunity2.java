@@ -20,20 +20,7 @@ public class CreateOpportunity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Bundle bund = new Bundle();
 
-                String msn = new String("Thanks for Creating Your Opportunity \n \n \n Suira is Working To Find What You Need");
-                String btnMsn = new String("Create");
-                String activityName = new String("Notifications");
-
-                Intent intent= new Intent(getApplicationContext(), PopUp.class);
-
-                bund.putString("mensaje", msn);
-                bund.putString("contenidoBoton", btnMsn);
-                bund.putString("sender", activityName );
-                intent.putExtras(bund);
-
-                startActivity(intent);
             }
         });
     }

@@ -95,8 +95,8 @@ public class Register2 extends AppCompatActivity {
                 Bundle bund = new Bundle();
 
                 String msn = new String("Thanks for Using Suira\n \n \n Suira is Working To Find What You Need");
-                String btnMsn = new String("Notifications");
-                String activityName = new String("Notifications");
+                String btnMsn = new String("Log In");
+                String activityName = "LogIn";
 
                 Intent intent= new Intent(getApplicationContext(), PopUp.class);
 
