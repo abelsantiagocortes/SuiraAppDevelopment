@@ -18,11 +18,12 @@ public class OpportunityClass {
     List<String> tags;
     String userId;
 
-    public OpportunityClass(String name, String description, Timestamp date ) {
+    public OpportunityClass(String name, String description, Timestamp date, List<String> listTags ) {
         this.name = name;
         this.description = description;
         this.date = date;
-        this.tags =  new ArrayList<>();
+        this.tags =  listTags;
+
     }
 
     public List<String> getTags() {

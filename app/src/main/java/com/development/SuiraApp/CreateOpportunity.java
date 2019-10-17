@@ -224,13 +224,10 @@ public class CreateOpportunity extends AppCompatActivity {
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);
 
-        OpportunityClass opp= new OpportunityClass(name_opp,description_opp,ts);
+        OpportunityClass opp= new OpportunityClass(name_opp,description_opp,ts,tags);
+
         String idOpp = dbOpps.push().getKey();
         dbOpps.child(idOpp).setValue(opp);
-
-        for(int i = 0; i < tags.size(); i++) {
-            dbOpps.child(idOpp).child("tag").setValue(tags.get(i));
-        }
 
         return(idOpp);
 
