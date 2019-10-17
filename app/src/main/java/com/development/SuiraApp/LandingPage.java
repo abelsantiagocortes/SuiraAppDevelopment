@@ -40,6 +40,8 @@ public class LandingPage extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
+
+
         btn_logIn=(Button)findViewById(R.id.btn_1_3);
         btn_logIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,4 +81,8 @@ public class LandingPage extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+    }
+
 }

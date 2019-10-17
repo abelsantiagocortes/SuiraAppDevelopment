@@ -79,6 +79,10 @@ public class LogIn extends AppCompatActivity {
         logInUser(currentUser);
     }
 
+    public void onBackPressed() {
+    }
+
+
     private void logInUser(FirebaseUser currentUser){
         Intent intent;
         if(currentUser!=null){
