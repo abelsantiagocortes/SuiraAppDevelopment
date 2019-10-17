@@ -170,18 +170,12 @@ public class Register extends AppCompatActivity {
     private UserClientClass registerUserDB(){
         String name_value = name.getText().toString() ;
         String lastname_value= lastName.getText().toString();
-        String email_value=email.getText().toString();
-        String password_value=password.getText().toString();
 
         Date date = new Date();
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);
 
-        UserClientClass user= new UserClientClass(name_value,lastname_value,email_value,password_value,ts);
-
-
-
-        //dbUsers.child(userId).setValue(user);
+        UserClientClass user= new UserClientClass(name_value,lastname_value,ts);
         return user;
 
     }
