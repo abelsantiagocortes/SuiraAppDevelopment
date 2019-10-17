@@ -87,14 +87,8 @@ public class LogIn extends AppCompatActivity {
         Intent intent;
         if(currentUser!=null){
             String x= getIntent().getStringExtra("landing");
-            if(x.equals("yes"))
-            {
-                intent = new Intent(getBaseContext(), CreateOpportunity.class);
-            }
-            else
-            {
+
                 intent = new Intent(getBaseContext(), Notifications.class);
-            }
 
             startActivity(intent);
         } else {

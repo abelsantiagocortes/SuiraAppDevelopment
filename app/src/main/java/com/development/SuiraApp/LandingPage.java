@@ -47,7 +47,6 @@ public class LandingPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(getApplicationContext(), LogIn.class);
-                intent.putExtra("landing","no");
                 startActivity(intent);
             }
         });
@@ -57,7 +56,6 @@ public class LandingPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(getApplicationContext(), LogIn.class);
-                intent.putExtra("landing","yes");
                 startActivity(intent);
             }
         });
