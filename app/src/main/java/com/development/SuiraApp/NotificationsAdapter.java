@@ -1,11 +1,14 @@
 package com.development.SuiraApp;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
@@ -31,10 +34,12 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     }
 
     List<NotificationClass> notifs;
-
+    String suiraPurple = "#4B2C70";
     NotificationsAdapter(List<NotificationClass> notifs){
         this.notifs = notifs;
     }
+
+
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -44,14 +49,22 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     @Override
     public NotifViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_notifications, viewGroup, false);
+
+
         NotifViewHolder pvh = new NotifViewHolder(v);
         return pvh;
     }
 
     @Override
     public void onBindViewHolder(NotifViewHolder notifViewHolder, int i) {
+
         notifViewHolder.oppoName.setText(notifs.get(i).name);
         notifViewHolder.oppoDescription.setText(notifs.get(i).description);
+        if(notifs.get(i).getSeen()){
+            //System.out.println(notifs.get(i).getName() +" es true");
+            notifViewHolder.oppoDescription.setTextColor(Color.parseColor(suiraPurple));
+
+        }
     }
 
     @Override
