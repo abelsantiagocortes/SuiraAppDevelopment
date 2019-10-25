@@ -78,7 +78,7 @@ class NotificationClass implements Comparable<NotificationClass> {
 
 
     public int compareTo(NotificationClass noti) {
-        if(this.seen == noti.getSeen()){
+        if(this.seen ==noti.getSeen()){
             return 0;
         }
         if(this.seen){
