@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SCHome">
+
+    <include
+        android:id="@+id/toolbarMenu"
+        layout="@layout/toolbar_menu" />
+
+    <TextView
+        android:id="@+id/txt_clientService"
+        style="@style/typ_boldTitles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="Servicio al cliente"
+        android:layout_marginStart="100dp"
+        android:layout_marginVertical="50dp"/>
+
+    <View
+        android:id="@+id/dividerSC"
+        android:layout_width="354dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="23dp"
+        android:background="@color/clr_kindaGrey"
+        />
+
+    <TextView
+        android:id="@+id/textView17"
+        style="@style/typ_boldTitles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/suira"
+        android:textColor="@color/clr_veryGrey"
+        android:textSize="36sp" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="90dp"
+        app:tabBackground="@color/clr_justWhite"
+        app:tabIndicatorColor="@color/clr_kindaGrey"
+        app:tabSelectedTextColor="@color/clr_quiteGrey"
+        app:tabTextColor="@color/clr_kindaGrey" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="659dp"
+        android:layout_marginTop="130dp" />
+
+</FrameLayout>
