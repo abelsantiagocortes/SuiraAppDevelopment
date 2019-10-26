@@ -13,7 +13,7 @@ public class Faq_tab extends Fragment {
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tab_terms, container, false);
+        View view = inflater.inflate(R.layout.tab_faq, container, false);
         return  view;
     }
 }

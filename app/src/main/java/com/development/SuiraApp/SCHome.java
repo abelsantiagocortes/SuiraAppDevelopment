@@ -31,7 +31,7 @@ public class SCHome extends AppCompatActivity {
 
         TabViewPagerAdapter tabViewPagerAdapter= new TabViewPagerAdapter(getSupportFragmentManager());
         tabViewPagerAdapter.addFragment(new Faq_tab(),"FAQ");
-        tabViewPagerAdapter.addFragment(new Suggestions_Tab(),"Suggestions");
+        tabViewPagerAdapter.addFragment(new Suggestions_tab(),"Suggestions");
         tabViewPagerAdapter.addFragment(new Terms_tab(),"Terms & Conditions");
         viewPager.setAdapter(tabViewPagerAdapter);
 

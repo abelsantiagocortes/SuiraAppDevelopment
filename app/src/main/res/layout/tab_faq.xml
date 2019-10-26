@@ -5,17 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txt_faq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="416dp"
-        android:layout_marginEnd="189dp"
-        android:layout_marginBottom="372dp"
-        android:text="FAAAQ"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/typ_boldTitles"
+                android:id="@+id/txt_aq1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/FQuestion"
+                 />
+
+            <TextView
+                style="@style/typ_small"
+
+                android:id="@+id/txt_aq2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/FAnswer" />
+
+            <TextView
+                style="@style/typ_boldTitles"
+
+                android:id="@+id/txt_aq3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/FQuestion" />
+
+            <TextView
+                style="@style/typ_small"
+
+                android:id="@+id/txt_aq4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/FAnswer" />
+
+            <TextView
+                style="@style/typ_boldTitles"
+
+                android:id="@+id/txt_aq5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/FQuestion" />
+
+            <TextView
+                style="@style/typ_small"
+
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/FAnswer" />
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
