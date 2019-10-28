@@ -12,5 +12,43 @@
     <string name="menu_3">Log Out</string>
     <string name= "ACEPTO">I ACCEP T&amp;C</string>
 
+    <string name= "Terms">1. Consideraciones generales
+Este acuerdo fue redactado originalmente en idioma castellano.
+Toda discrepancia entre este texto y las traducciones de estos
+términos y condiciones (en adelante “T&amp;C”) a cualesquiera otros
+idiomas se resolverá definitivamente por la versión en castellano.
+Última fecha de revisión, [abril 6] de 2018.
+Bienvenido a muvsic.com (en adelante, “Muvsic”, “Nosotros” y “la
+Plataforma”)[1]. Por Servicio o servicios se entiende, para efectos
+exclusivos de estos T&amp;C, todas las herramientas, utilidades y
+facilidades que Muvsic pone a disposición de sus usuarios al
+momento de acceder a la Plataforma en los términos en los que
+Muvsic los preste técnica, jurídica y gráficamente. Muvsic se reserva
+el derecho a prestar los Servicios en la forma en la que a su sola
+discreción defina y no se compromete a mantener una prestación
+continua e ininterrumpida de ellos.
+Al firmar este acuerdo estás reconociendo incondicionalmente que
+has leído, comprendido y aceptas los T&amp;C de conformidad con los
+cuales Muvsic presta sus servicios. Por lo mismo, te atienes a las
+consecuencias de dicho acto, incluida nuestra política de
+recolección de datos y términos de privacidad.
+Muvsic se reserva el derecho de modificar y cambiar estos términos
+en cualquier momento, haciendo uso de modificar la fecha de
+actualización de estos T&amp;C. Al aceptar esta versión de los T&amp;C
+aceptas que es carga tuya conocer y revisar las versiones
+actualizadas.
+La versión vigente que sea cargada a la Plataforma reemplaza todas
+las versiones anteriores. El continuar utilizando nuestros servicios
+al momento de cargarse una versión actualizada en la plataforma
+constituye en sí misma una confirmación de que dichos T&amp;C
+actualizados son aceptados por ti.</string>
+
+    <string name= "FQuestion"> <b>¿ Sed ut perspiciatis unde omnis iste
+        natus?</b> </string>
+    <string name= "FAnswer">
+Sed ut perspiciatis unde omnis iste natus error sit oluptatem tium
+doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+illo inventore veritatis et quasi architecto beatae vitae</string>
+
 
 </resources>
