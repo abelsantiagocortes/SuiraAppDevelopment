@@ -1,10 +1,24 @@
 package com.development.SuiraApp;
 
 
-class NotificationClass {
+class NotificationClass implements Comparable<NotificationClass> {
     public String name;
     public String description;
     public String opportunityId;
+    public String userId;
+    public String type;
+    public boolean seen;
+
+
+
+    public NotificationClass(String name, String description, String opportunityId, String userId, String type, boolean seen) {
+        this.name = name;
+        this.description = description;
+        this.opportunityId = opportunityId;
+        this.userId = userId;
+        this.type = type;
+        this.seen = seen;
+    }
 
     public String getName() {
         return name;
@@ -14,12 +28,13 @@ class NotificationClass {
         this.name = name;
     }
 
-    public NotificationClass(String name, String description, String opportunityId, String userId, String type) {
-        this.name = name;
-        this.description = description;
-        this.opportunityId = opportunityId;
-        this.userId = userId;
-        this.type = type;
+
+    public boolean getSeen() {
+        return seen;
+    }
+
+    public void setSeen(boolean seen) {
+        this.seen = seen;
     }
 
     public String getDescription() {
@@ -54,14 +69,23 @@ class NotificationClass {
         this.type = type;
     }
 
-    public String userId;
-    public String type;
+
 
 
     public NotificationClass() {
     }
 
 
+
+    public int compareTo(NotificationClass noti) {
+        if(this.seen ==noti.getSeen()){
+            return 0;
+        }
+        if(this.seen){
+            return -1;
+        }
+        return 1;
+    }
 }
 
 

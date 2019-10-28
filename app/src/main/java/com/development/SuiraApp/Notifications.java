@@ -13,24 +13,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static java.security.AccessController.getContext;
 
-public class Notifications extends AppCompatActivity {
+public class Notifications extends AppCompatActivity implements NotificationsAdapter.OnSeeListener {
 
     private RecyclerView recyclerView;
     public List<NotificationClass> notifications;
+    public ArrayList<WrapperNotification> wrapperList;
     private FirebaseAuth signOutAuth;
     private NotificationsAdapter adapter;
 
@@ -59,14 +63,14 @@ public class Notifications extends AppCompatActivity {
         recyclerView.addItemDecoration(itemDecorator);
 
 
-        notifications = new ArrayList<>();
+        wrapperList = new ArrayList<>();
         FirebaseUser currentUser = signOutAuth.getCurrentUser();
         String userId = currentUser.getUid();
         Query query = FirebaseDatabase.getInstance().getReference("notification").orderByChild("userId").equalTo(userId);
 
         query.addListenerForSingleValueEvent(valueEventListener);
 
-;
+        ;
     }
 
 
@@ -78,14 +82,17 @@ public class Notifications extends AppCompatActivity {
             {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     NotificationClass noti = snapshot.getValue(NotificationClass.class);
-                    notifications.add(noti);
+                    String k = snapshot.getKey();
+                    WrapperNotification wn = new WrapperNotification(noti , k);
+
+                    System.out.println(snapshot.getKey() + " tiene " + noti.getOpportunityId());
+                    wrapperList.add(wn);
                 }
             }
 
-            for(int i =0;i<notifications.size();i++)
-            {
-                System.out.println(notifications.get(i).getName());
-            }
+            Collections.sort(wrapperList);
+
+            notifications = generateNotificationsList(wrapperList);
             initializeAdapter(notifications);
 
         }
@@ -97,7 +104,7 @@ public class Notifications extends AppCompatActivity {
     };
 
     private void initializeAdapter(List<NotificationClass> listi){
-        NotificationsAdapter adapter = new NotificationsAdapter(listi);
+        NotificationsAdapter adapter = new NotificationsAdapter(listi ,  this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -134,4 +141,36 @@ public class Notifications extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void OnSeeClick(int position) {
+        /*
+        aqui va el codigo
+         */
+        System.out.println("position: " + Integer.toString(position));
+        updateSeen(wrapperList.get(position).getKey());
+
+        Toast toast=Toast.makeText(getApplicationContext(), wrapperList.get(position).getKey() + "updated",Toast.LENGTH_SHORT);
+        toast.setMargin(50,50);
+        toast.show();
+    }
+
+    private void updateSeen( String notifID ){
+
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase.child("notification").child(notifID).child("seen").setValue(true);
+
+
+    }
+
+    //genera un arraylist de notificationClass basado en el arreglo del wrapper
+    private ArrayList<NotificationClass> generateNotificationsList(ArrayList<WrapperNotification> wnl){
+        ArrayList<NotificationClass> notifs = new ArrayList<NotificationClass>();
+        for(int i = 0 ; i < wnl.size() ; ++i){
+            notifs.add(wnl.get(i).getNot());
+        }
+        return notifs;
+    }
 }
+
+
