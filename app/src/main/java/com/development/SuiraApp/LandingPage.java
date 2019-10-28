@@ -3,12 +3,16 @@ package com.development.SuiraApp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LandingPage extends AppCompatActivity {
@@ -17,6 +21,10 @@ public class LandingPage extends AppCompatActivity {
     Button btn_register;
     Button btn_register2;
     Button btn_buscar;
+    TextView faq;
+    TextView sugg;
+    TextView terms;
+    TextView email;
     LinearLayout ln;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +83,45 @@ public class LandingPage extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Upcoming Feature",
                         Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        faq= findViewById(R.id.textView9);
+        faq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), SCHome.class);
+                startActivity(intent);
+
+            }
+        });
+
+        sugg= findViewById(R.id.textView10);
+        sugg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), SCHome.class);
+                startActivity(intent);
+            }
+        });
+        terms = findViewById(R.id.etxt_description);
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), SCHome.class);
+                startActivity(intent);
+            }
+        });
+        email = findViewById(R.id.textView11);
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent (Intent.ACTION_VIEW , Uri.parse("mailto:" + "suira.org@gmail.com"));
+                    startActivity(intent);
+                }catch(ActivityNotFoundException e){
+                    //TODO smth
+                }
             }
         });
 

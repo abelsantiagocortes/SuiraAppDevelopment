@@ -195,6 +195,7 @@
                 android:layout_width="176dp"
                 android:layout_height="27dp"
                 android:layout_marginBottom="16dp"
+                android:clickable="true"
                 android:text="suira.org@gmail.com"
                 android:textColor="@color/clr_justWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
