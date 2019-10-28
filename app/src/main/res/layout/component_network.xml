@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/myNetworks"
+            style="@style/typ_kindaBig"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="My Professional Networks:" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonFacebook"
+                style="@style/icn_facebook"
+                android:layout_width="63dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="36dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonInstagram"
+                android:layout_width="63dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="52dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonFacebook"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/icn_instagram"/>
+
+            <Button
+                android:id="@+id/buttonYoutube"
+                android:layout_width="63dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="52dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonInstagram"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/icn_youtube"/>
+
+            <Button
+                android:id="@+id/buttonSpotify"
+                android:layout_width="63dp"
+                android:layout_height="53dp"
+                android:layout_marginEnd="36dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.495"
+                style="@style/icn_spotify"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
