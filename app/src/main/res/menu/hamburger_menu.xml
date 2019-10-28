@@ -17,11 +17,15 @@
 
             <item android:id="@+id/second_item"
                 android:title="@string/menu_2"
-                app:showAsAction="never"/>
+                app:showAsAction="never"
+                style="@style/typ_Big"
+                android:gravity="center"/>
 
             <item android:id="@+id/third_item"
                 android:title="@string/menu_3"
-                app:showAsAction="never"/>
+                app:showAsAction="never"
+                style="@style/typ_Big"
+                android:gravity="center"/>
 
         </menu>
 
