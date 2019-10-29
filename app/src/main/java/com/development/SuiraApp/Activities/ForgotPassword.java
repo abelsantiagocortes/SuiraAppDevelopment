@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.development.SuiraApp.R;
 
 public class ForgotPassword extends AppCompatActivity {
     /* INFLATE OBJECTS */

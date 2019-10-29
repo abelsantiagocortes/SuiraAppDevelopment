@@ -1,7 +1,6 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;

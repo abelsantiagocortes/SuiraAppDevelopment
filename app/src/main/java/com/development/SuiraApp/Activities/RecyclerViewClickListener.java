@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import android.view.View;
 

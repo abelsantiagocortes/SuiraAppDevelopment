@@ -1,6 +1,5 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Adapters;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.development.SuiraApp.Model.NotificationClass;
+import com.development.SuiraApp.R;
 import com.github.siyamed.shapeimageview.CircularImageView;
 
 import java.util.List;
@@ -54,7 +54,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     }
 
 
-    NotificationsAdapter(List<NotificationClass> notifs , OnSeeListener onSeeListener){
+    public NotificationsAdapter(List<NotificationClass> notifs, OnSeeListener onSeeListener){
         this.notifs = notifs;
         this.onSeeListener = onSeeListener;
     }

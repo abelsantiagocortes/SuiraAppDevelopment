@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.development.SuiraApp.R;
 
 public class LandingPage extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Model;
 
 //esta clase existe para poder contener una notificationClass con su key y poder ordenaras
 public class WrapperNotification implements Comparable<WrapperNotification>{

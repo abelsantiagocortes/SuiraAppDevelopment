@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.development.SuiraApp.R;
 
 public class PopUp extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Model;
 
 import java.io.Serializable;
 import java.sql.Time;
