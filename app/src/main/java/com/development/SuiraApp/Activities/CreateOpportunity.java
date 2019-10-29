@@ -75,7 +75,6 @@ public class CreateOpportunity extends AppCompatActivity {
                 {
                     String itemTag = tagSnapshot.getValue().toString();
                     tagsFire.add(itemTag);
-
                 }
                 //Reset the GridLayouts
                 gridLayout2.removeAllViews();

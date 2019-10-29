@@ -87,7 +87,7 @@ public class LogIn extends AppCompatActivity {
     private void logInUser(FirebaseUser currentUser){
         Intent intent;
         if(currentUser!=null){
-            String x= getIntent().getStringExtra("landing");
+            String x = getIntent().getStringExtra("landing");
 
                 intent = new Intent(getBaseContext(), Notifications.class);
 
