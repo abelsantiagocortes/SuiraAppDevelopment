@@ -6,6 +6,16 @@
     <item name="android:windowIsTranslucent">true</item>
     </style>
 
+
+    <style name="PopupTheme" parent="Theme.AppCompat.Light">
+        <item name="actionOverflowMenuStyle">@style/OverflowMenu</item>
+    </style>
+
+    <style name="OverflowMenu" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="android:overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">4dp</item>
+    </style>
+
     <!-- ATOM STYLES -->
 
     <!-- Typography -->
@@ -44,6 +54,12 @@
         <item name= "android:textColor">@color/clr_suiraPurple</item>
         <item name= "android:textSize">25dp</item>
         <item name= "android:fontFamily">@font/source_sans_pro_semibold</item>
+    </style>
+
+    <style name="typ_itemMenu">
+        <item name= "android:textColor">@color/clr_suiraPurple</item>
+        <item name= "android:textSize">20dp</item>
+        <item name= "android:fontFamily">@font/source_sans_pro_light</item>
     </style>
 
 
