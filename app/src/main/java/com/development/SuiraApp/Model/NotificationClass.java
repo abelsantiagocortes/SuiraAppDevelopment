@@ -1,7 +1,7 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Model;
 
 
-class NotificationClass implements Comparable<NotificationClass> {
+public class NotificationClass implements Comparable<NotificationClass> {
     public String name;
     public String description;
     public String opportunityId;

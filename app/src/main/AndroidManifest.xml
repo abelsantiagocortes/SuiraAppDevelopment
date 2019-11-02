@@ -9,26 +9,22 @@
         android:roundIcon="@mipmap/suira_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SCHome"></activity>
-        <activity android:name=".PopUp" />
-        <activity android:name=".CreateOpportunity2" />
-        <activity android:name=".Register2" />
-        <activity android:name=".LandingPage" />
-        <activity android:name=".Register" />
-        <activity android:name=".CreateOpportunity" />
-        <activity android:name=".Notifications" />
-
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.PopUp"/>
+        <activity android:name=".Activities.CreateOpportunity2" />
+        <activity android:name=".Activities.Register2"></activity>
+        <activity android:name=".Activities.LandingPage" />
+        <activity android:name=".Activities.Register" />
+        <activity android:name=".Activities.CreateOpportunity" />
+        <activity android:name=".Activities.Notifications" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".LogIn" />
+        <activity android:name=".Activities.ForgotPassword" />
+        <activity android:name=".Activities.LogIn" />
 
         <meta-data
             android:name="preloaded_fonts"

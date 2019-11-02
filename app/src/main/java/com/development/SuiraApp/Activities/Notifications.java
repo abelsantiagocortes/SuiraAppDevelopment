@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.development.SuiraApp.Model.NotificationClass;
+import com.development.SuiraApp.Adapters.NotificationsAdapter;
+import com.development.SuiraApp.R;
+import com.development.SuiraApp.Model.WrapperNotification;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,8 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static java.security.AccessController.getContext;
 
 public class Notifications extends AppCompatActivity implements NotificationsAdapter.OnSeeListener {
 

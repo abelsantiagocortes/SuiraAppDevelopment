@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.development.SuiraApp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -86,7 +87,7 @@ public class LogIn extends AppCompatActivity {
     private void logInUser(FirebaseUser currentUser){
         Intent intent;
         if(currentUser!=null){
-            String x= getIntent().getStringExtra("landing");
+            String x = getIntent().getStringExtra("landing");
 
                 intent = new Intent(getBaseContext(), Notifications.class);
 

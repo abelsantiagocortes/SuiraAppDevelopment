@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

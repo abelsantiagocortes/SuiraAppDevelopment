@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,8 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.development.SuiraApp.Model.OpportunityClass;
+import com.development.SuiraApp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -73,7 +75,6 @@ public class CreateOpportunity extends AppCompatActivity {
                 {
                     String itemTag = tagSnapshot.getValue().toString();
                     tagsFire.add(itemTag);
-
                 }
                 //Reset the GridLayouts
                 gridLayout2.removeAllViews();
