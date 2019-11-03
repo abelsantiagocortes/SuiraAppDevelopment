@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/suira_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.PopUp"/>
+        <activity android:name=".Activities.ProfileTest"></activity>
+        <activity android:name=".Activities.PopUp" />
         <activity android:name=".Activities.CreateOpportunity2" />
-        <activity android:name=".Activities.Register2"></activity>
+        <activity android:name=".Activities.Register2" />
         <activity android:name=".Activities.LandingPage" />
         <activity android:name=".Activities.Register" />
         <activity android:name=".Activities.CreateOpportunity" />

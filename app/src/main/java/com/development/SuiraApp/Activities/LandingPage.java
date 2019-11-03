@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.development.SuiraApp.R;
+import com.development.SuiraApp.SCHome;
 
 public class LandingPage extends AppCompatActivity {
 
@@ -85,6 +86,8 @@ public class LandingPage extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Upcoming Feature",
                         Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(getApplicationContext(), ProfileTest.class);
+                startActivity(intent);
             }
         });
 
