@@ -24,6 +24,7 @@ public class LandingPage extends AppCompatActivity {
     Button btn_register;
     Button btn_register2;
     Button btn_buscar;
+    Button ej_buscar;
     TextView faq;
     TextView sugg;
     TextView terms;
@@ -127,6 +128,16 @@ public class LandingPage extends AppCompatActivity {
                 }catch(ActivityNotFoundException e){
                     //TODO smth
                 }
+            }
+        });
+
+        ej_buscar = findViewById(R.id.btn_1_1);
+        ej_buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), InfoPopUp.class);
+                startActivity(intent);
             }
         });
 
