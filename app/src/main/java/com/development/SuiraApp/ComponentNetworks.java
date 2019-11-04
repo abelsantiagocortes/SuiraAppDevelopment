@@ -19,7 +19,7 @@ public class ComponentNetworks extends AppCompatActivity {
     private FirebaseAuth signOutAuth;
     private FirebaseUser currentUser;
     private String userId;
-    private UserClientClass usuario;
+    private UserClientClass user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +28,14 @@ public class ComponentNetworks extends AppCompatActivity {
         signOutAuth = FirebaseAuth.getInstance();
         currentUser = signOutAuth.getCurrentUser();
         userId = currentUser.getUid();
-        Query consulta = FirebaseDatabase.getInstance().getReference("userClient").orderByChild("userId").equalTo(userId);
+        Query consulta = FirebaseDatabase.getInstance().getReference("userClient").orderByKey().equalTo(userId);
         consulta.addListenerForSingleValueEvent(valueEventListener);
-
+        //System.out.println(userId);
         final Button facebookButton = findViewById(R.id.buttonFacebook);
         facebookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(usuario.getLinkFacebook());
+                //System.out.println(usuario.getLinkFacebook());
             }
         });
     }
@@ -43,8 +43,13 @@ public class ComponentNetworks extends AppCompatActivity {
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            usuario = dataSnapshot.getValue(UserClientClass.class);
+            if(dataSnapshot.exists()) {
+                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    user = snapshot.getValue(UserClientClass.class);
+                }
 
+
+            }
         }
 
         @Override
