@@ -23,6 +23,10 @@
                 android:title="@string/menu_3"
                 app:showAsAction="never"/>
 
+            <item android:id="@+id/fourth_item"
+                android:title="Profile"
+                app:showAsAction="never"/>
+
         </menu>
 
     </item>

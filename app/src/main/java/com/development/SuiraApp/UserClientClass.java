@@ -13,6 +13,7 @@ public class UserClientClass implements Serializable {
     private String lastName;
     private List<String> tag;
     private Timestamp signUpDate;
+    private String linkFacebook;
 
     public UserClientClass( String name, String lastName, Timestamp signUpDate) {
         this.name = name;
@@ -55,5 +56,9 @@ public class UserClientClass implements Serializable {
         this.signUpDate = signUpDate;
     }
 
+    public String getLinkFacebook(){return linkFacebook;}
 
+    public void setLinkFacebook(String linkFacebook) {
+        this.linkFacebook = linkFacebook;
+    }
 }
