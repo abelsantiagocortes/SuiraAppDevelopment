@@ -21,6 +21,9 @@ public class UserClientClass implements Serializable {
         this.tag = new ArrayList<>();
         this.signUpDate = signUpDate;
     }
+    public UserClientClass(){
+
+    }
 
 
     public String getName() {
@@ -48,9 +51,7 @@ public class UserClientClass implements Serializable {
         this.tag = tag;
     }
 
-    public Date getSignUpDate() {
-        return signUpDate;
-    }
+    public Date getSignUpDate() {return signUpDate;}
 
     public void setSignUpDate(Timestamp signUpDate) {
         this.signUpDate = signUpDate;
