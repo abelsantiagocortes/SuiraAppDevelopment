@@ -2,11 +2,15 @@ package com.development.SuiraApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +26,7 @@ public class TagsProfile extends AppCompatActivity {
     TextView txt_description;
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
-    List<String> tagsFire= Arrays.asList(new String[]{"holi", "como", "vas","holi","bb"});
+    List<String> tagsFire= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"});
     FirebaseAuth registerAuth;
 
     @Override
@@ -51,13 +55,17 @@ public class TagsProfile extends AppCompatActivity {
             final Button tags = new Button(context);
             //Tamaño para los botones de tags
             final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
-            int pixelsH = (int) (30* scale + 0.5f);
+            int pixelsH = (int) (35* scale + 0.5f);
+            int pixelsW = (int) (90* scale + 0.5f);
 
             //Le pone el texto. background, el tipo de texto y el tamaño
             tags.setText(tagsFire.get(i));
-            tags.setBackgroundResource(R.drawable.btn_tag);
-            tags.setTextAppearance(getApplicationContext(), R.style.btn_tag);
-            tags.setHeight(pixelsH);
+            tags.setBackgroundResource(R.drawable.btn_high_action);
+            tags.setTextAppearance(getApplicationContext(), R.style.btn_highAction);
+
+
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams( ActionBar.LayoutParams.WRAP_CONTENT,pixelsH);
+            tags.setLayoutParams(layoutParams);
 
             // Se añade el boton al gridLayout
             gridLayout.addView(tags, childCount);
