@@ -2,18 +2,28 @@ package com.development.SuiraApp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.development.SuiraApp.R;
 import com.development.SuiraApp.Model.UserClientClass;
+import com.development.SuiraApp.permissions.PermissionIds;
+import com.development.SuiraApp.permissions.PermissionsActions;
+import com.github.siyamed.shapeimageview.CircularImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +32,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +49,8 @@ public class Register2 extends AppCompatActivity {
     List<String> tagsFire;
     FirebaseAuth registerAuth;
     int canttags =0;
+    private static Uri imageUri = null;
+    CircularImageView uploadImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +66,7 @@ public class Register2 extends AppCompatActivity {
         dbUsers = dbSuira.getReference("userClient");
         dbTags =  dbSuira.getReference("tag");
         registerAuth = FirebaseAuth.getInstance();
+        uploadImage = findViewById(R.id.uploadImage);
 
         tagsFire = new ArrayList<String>();
 
@@ -108,6 +123,42 @@ public class Register2 extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void subirImagen() {
+        PermissionsActions.askPermission(this, PermissionIds.REQUEST_READ_EXTERNAL_STORAGE);
+        seleccionarImagen();
+    }
+
+    private void seleccionarImagen() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Intent pickImage = new Intent(Intent.ACTION_PICK);
+            pickImage.setType("image/*");
+            startActivityForResult(pickImage, PermissionIds.IMAGE_PICKER_REQUEST);
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case PermissionIds.IMAGE_PICKER_REQUEST:
+                if(resultCode == RESULT_OK){
+                    try {
+                        imageUri = data.getData();
+                        final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                        uploadImage.setImageBitmap(selectedImage);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case PermissionIds.REQUEST_CAMERA:
+                if (resultCode == RESULT_OK) {
+
+                }
+                break;
+        }
     }
 
     void tagComponents()

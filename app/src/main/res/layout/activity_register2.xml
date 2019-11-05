@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Register2">
 
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:id="@+id/uploadImage"
+        android:layout_width="130dp"
+        android:layout_height="129dp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="10dp"
+
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        app:layout_constraintVertical_bias="0.315"
+        app:siBorderColor="@color/clr_quiteGrey"
+        app:siBorderWidth="2dp" />
+
     <View
         android:id="@+id/divider3"
         android:layout_width="354dp"
@@ -37,12 +54,28 @@
         android:layout_height="wrap_content"
 
         android:layout_marginStart="167dp"
-        android:layout_marginTop="48dp"
         android:layout_marginEnd="167dp"
-        android:text="Tags Relacionados"
+        android:layout_marginBottom="20dp"
+        android:text="Related Tags"
+        app:layout_constraintBottom_toTopOf="@+id/txt_showselected"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        style="@style/typ_kindaBig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="167dp"
+        android:text="Upload Image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+        app:layout_constraintTop_toTopOf="@+id/divider3" />
 
     <TextView
         android:id="@+id/txt_showselected"
@@ -51,15 +84,12 @@
         android:layout_width="342dp"
         android:layout_height="89dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16"
-        app:layout_constraintVertical_bias="0.187" />
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
@@ -79,14 +109,13 @@
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
-        android:layout_width="337dp"
-        android:layout_height="377dp"
+        android:layout_width="341dp"
+        android:layout_height="130dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent">
 
         <ScrollView
