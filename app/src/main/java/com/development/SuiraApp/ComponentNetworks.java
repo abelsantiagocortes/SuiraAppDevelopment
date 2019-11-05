@@ -2,6 +2,8 @@ package com.development.SuiraApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,12 +32,17 @@ public class ComponentNetworks extends AppCompatActivity {
         userId = currentUser.getUid();
         Query consulta = FirebaseDatabase.getInstance().getReference("userClient").orderByKey().equalTo(userId);
         consulta.addListenerForSingleValueEvent(valueEventListener);
-        //System.out.println(userId);
         final Button facebookButton = findViewById(R.id.buttonFacebook);
         facebookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //System.out.println(usuario.getLinkFacebook());
+                Uri uri = Uri.parse(user.getLinkFacebook());
+                Intent facebookIntent = new Intent(Intent.ACTION_VIEW,uri);
+                if (facebookIntent.resolveActivity(getPackageManager()) != null) {
+
+                    startActivity(facebookIntent);
+                }
+
             }
         });
     }
@@ -46,6 +53,7 @@ public class ComponentNetworks extends AppCompatActivity {
             if(dataSnapshot.exists()) {
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                     user = snapshot.getValue(UserClientClass.class);
+
                 }
 
 
