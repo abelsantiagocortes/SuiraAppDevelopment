@@ -1,5 +1,6 @@
 package com.development.SuiraApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
@@ -15,8 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,7 +33,8 @@ public class TagsProfile extends AppCompatActivity {
     TextView txt_description;
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
-    List<String> tagsFire= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"});
+    List<String> tagsFire;
+//= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"});
     FirebaseAuth registerAuth;
 
     @Override
@@ -36,7 +44,40 @@ public class TagsProfile extends AppCompatActivity {
         //Se infla el gridlayout y el textview de los tags
         gridLayout = (GridLayout) findViewById(R.id.grid_layoutProf);
         txt_description = (TextView) findViewById(R.id.txt_description);
-        tagComponents();
+
+        FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
+        dbUsers = dbSuira.getReference("userClient");
+        registerAuth = FirebaseAuth.getInstance();
+        tagsFire = new ArrayList<String>();
+
+
+        // SACA EL ID
+        String id = registerAuth.getCurrentUser().getUid().toString();
+
+
+
+        // Read Tags Every Time is Updated
+        dbTags.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                tagsFire.clear();
+                for(DataSnapshot tagSnapshot : dataSnapshot.getChildren())
+                {
+                    String itemTag = tagSnapshot.getValue().toString();
+                    tagsFire.add(itemTag);
+
+                }
+                //Reset the GridLayouts
+                gridLayout.removeAllViews();
+                tagComponents();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
     void tagComponents()
