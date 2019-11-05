@@ -49,6 +49,9 @@ actualizados son aceptados por ti.</string>
 Sed ut perspiciatis unde omnis iste natus error sit oluptatem tium
 doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
 illo inventore veritatis et quasi architecto beatae vitae</string>
+    
+    <string name="titleInfoPopUp"><b>Algunos Usuarios Buscaron...</b></string>
+    <string name="contentInfoPopUp">Diseñador para desarrollo de marca\n\nCantante para matrimonio\n\nFotógrafo para evento\n\nProgramador para página web\n\n</string>
 
 
 </resources>
