@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -24,6 +25,7 @@ import com.development.SuiraApp.Model.UserClientClass;
 import com.development.SuiraApp.permissions.PermissionIds;
 import com.development.SuiraApp.permissions.PermissionsActions;
 import com.github.siyamed.shapeimageview.CircularImageView;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +33,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -46,11 +51,12 @@ public class Register2 extends AppCompatActivity {
     Button btnNotif;
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
+    StorageReference storageUserClients;
     List<String> tagsFire;
     FirebaseAuth registerAuth;
     int canttags =0;
     private static Uri imageUri = null;
-    CircularImageView uploadImage;
+    ImageView uploadImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +69,21 @@ public class Register2 extends AppCompatActivity {
         btnNotif= findViewById(R.id.button2);
 
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
+        FirebaseStorage dbSuiraStorage = FirebaseStorage.getInstance();
         dbUsers = dbSuira.getReference("userClient");
         dbTags =  dbSuira.getReference("tag");
         registerAuth = FirebaseAuth.getInstance();
-        uploadImage = findViewById(R.id.uploadImage);
+        uploadImages = findViewById(R.id.profilee);
+        storageUserClients = dbSuiraStorage.getReference("images/userClient");
 
         tagsFire = new ArrayList<String>();
+
+        uploadImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImageFireBase();
+            }
+        });
 
         // Read Tags Every Time is Updated
         dbTags.addValueEventListener(new ValueEventListener() {
@@ -100,11 +115,31 @@ public class Register2 extends AppCompatActivity {
 
                 UserClientClass user = (UserClientClass) getIntent().getSerializableExtra("userObject");
                 List<String> tagsUser = getSelectedTags();
+                System.out.println(user.getName());
                 user.setTag(tagsUser);
 
+
+
                 FirebaseUser currentUser = registerAuth.getCurrentUser();
-                String userId = currentUser.getUid();
+                final String userId = currentUser.getUid();
                 dbUsers.child(userId).setValue(user);
+
+                storageUserClients.child(userId).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        storageUserClients.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+
+                                final String downloadUrl =
+                                        uri.toString();
+                                Log.i("URL+1", downloadUrl);
+                                dbUsers.child(userId).child("photoDownloadURL").setValue(downloadUrl);
+
+                            }
+                        });
+                    }
+                });
 
                 Bundle bund = new Bundle();
 
@@ -125,12 +160,12 @@ public class Register2 extends AppCompatActivity {
 
     }
 
-    private void subirImagen() {
+    private void uploadImageFireBase() {
         PermissionsActions.askPermission(this, PermissionIds.REQUEST_READ_EXTERNAL_STORAGE);
-        seleccionarImagen();
+        selectImage();
     }
 
-    private void seleccionarImagen() {
+    private void selectImage() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             Intent pickImage = new Intent(Intent.ACTION_PICK);
             pickImage.setType("image/*");
@@ -147,7 +182,7 @@ public class Register2 extends AppCompatActivity {
                         imageUri = data.getData();
                         final InputStream imageStream = getContentResolver().openInputStream(imageUri);
                         final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                        uploadImage.setImageBitmap(selectedImage);
+                        uploadImages.setImageBitmap(selectedImage);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }

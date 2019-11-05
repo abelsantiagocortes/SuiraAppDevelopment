@@ -87,7 +87,7 @@ public class LandingPage extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Upcoming Feature",
                         Toast.LENGTH_SHORT).show();
-                Intent intent= new Intent(getApplicationContext(), ProfileTest.class);
+                Intent intent= new Intent(getApplicationContext(), Register2.class);
                 startActivity(intent);
             }
         });

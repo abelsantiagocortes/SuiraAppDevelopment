@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Register2">
 
-    <com.github.siyamed.shapeimageview.CircularImageView
-        android:id="@+id/uploadImage"
-        android:layout_width="130dp"
-        android:layout_height="129dp"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="10dp"
-
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18"
-        app:layout_constraintVertical_bias="0.315"
-        app:siBorderColor="@color/clr_quiteGrey"
-        app:siBorderWidth="2dp" />
-
     <View
         android:id="@+id/divider3"
         android:layout_width="354dp"
@@ -132,6 +115,17 @@
                 android:useDefaultMargins="true" />
         </ScrollView>
     </HorizontalScrollView>
+
+    <ImageView
+        android:id="@+id/profilee"
+        android:layout_width="145dp"
+        android:layout_height="141dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        app:srcCompat="@drawable/profile" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
