@@ -13,6 +13,7 @@ public class UserClientClass implements Serializable {
     private String lastName;
     private List<String> tag;
     private Timestamp signUpDate;
+    private List<String> id_RecomendedBy;
 
     public UserClientClass( String name, String lastName, Timestamp signUpDate) {
         this.name = name;

@@ -7,7 +7,9 @@ class NotificationClass implements Comparable<NotificationClass> {
     public String opportunityId;
     public String userId;
     public String type;
+    public String requestinguserId;
     public boolean seen;
+
 
 
 
@@ -18,6 +20,13 @@ class NotificationClass implements Comparable<NotificationClass> {
         this.userId = userId;
         this.type = type;
         this.seen = seen;
+    }
+    public NotificationClass(String pname, String requestinguserId, String userId, String type) {
+        this.name = pname;
+        this.userId = userId;
+        this.requestinguserId = requestinguserId;
+        this.type = type;
+        this.seen = false;
     }
 
     public String getName() {
