@@ -76,7 +76,12 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
     }
 
 
+
     ValueEventListener valueEventListener = new ValueEventListener() {
+        /**
+         * gets the notifications from the database
+         * @param dataSnapshot wich the DB information
+         */
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -99,17 +104,27 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
 
         }
 
+
         @Override
         public void onCancelled(DatabaseError databaseError) {
 
         }
     };
 
+    /**
+     * initializes the notification cards
+     * @param listi list of notifications
+     */
     private void initializeAdapter(List<NotificationClass> listi){
         NotificationsAdapter adapter = new NotificationsAdapter(listi ,  this);
         recyclerView.setAdapter(adapter);
     }
 
+    /**
+     * inflates the notification cards
+     * @param menu hamburger menu
+     * @return true if it can be created
+     */
     @Override
     public boolean onCreateOptionsMenu( Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -121,6 +136,11 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
     public void onBackPressed() {
     }
 
+    /**
+     * options for the hamburger menu
+     * @param item hamburger menu
+     * @return true if it can be creted
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch ( item.getItemId())
@@ -143,19 +163,42 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
         }
     }
 
+    /**
+     * listener for the "View" button has a different does different things depending on the type
+     * @param position of the notifications in the arraylist
+     */
     @Override
     public void OnSeeClick(int position) {
-        /*
-        aqui va el codigo
-         */
+
         System.out.println("position: " + Integer.toString(position));
         updateSeen(wrapperList.get(position).getKey());
 
-        Toast toast=Toast.makeText(getApplicationContext(), wrapperList.get(position).getKey() + "updated",Toast.LENGTH_SHORT);
-        toast.setMargin(50,50);
-        toast.show();
+        if(notifications.get(position).getType().equals("Match")){
+            Toast toast=Toast.makeText(getApplicationContext(), "Soy un match",Toast.LENGTH_SHORT);
+            toast.setMargin(50,50);
+            toast.show();
+            //TODO: intent to opportunity detatils activity (p21)
+        }
+        else if(notifications.get(position).getType().equals("Recommendation")){
+            //TODO: intent to profile public activity (p16)
+            Toast toast=Toast.makeText(getApplicationContext(), "soy una recomendacion",Toast.LENGTH_SHORT);
+            toast.setMargin(50,50);
+            toast.show();
+        }
+        else if(notifications.get(position).getType().equals("Accepted")) {
+            //TODO: intent to pop up with publisher contact info
+            Intent intent = new Intent(getApplicationContext(), PopUpContactInfo.class);
+            Toast toast = Toast.makeText(getApplicationContext(), "soy un accepted", Toast.LENGTH_SHORT);
+            toast.setMargin(50, 50);
+            toast.show();
+            startActivity(intent);
+        }
     }
 
+    /**
+     * sets the "seen" value in the database to true
+     * @param notifID
+     */
     private void updateSeen( String notifID ){
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -165,7 +208,12 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
 
     }
 
-    //genera un arraylist de notificationClass basado en el arreglo del wrapper
+
+    /**
+     * generates a notification arraylist based on the wrapper arraylist
+     * @param wnl wrapper notification arraylist
+     * @return NotificationClass arraylist
+     */
     private ArrayList<NotificationClass> generateNotificationsList(ArrayList<WrapperNotification> wnl){
         ArrayList<NotificationClass> notifs = new ArrayList<NotificationClass>();
         for(int i = 0 ; i < wnl.size() ; ++i){
