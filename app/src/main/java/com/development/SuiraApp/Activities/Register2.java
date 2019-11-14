@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.development.SuiraApp.Model.TagClass;
 import com.development.SuiraApp.R;
 import com.development.SuiraApp.Model.UserClientClass;
 import com.development.SuiraApp.permissions.PermissionIds;
@@ -41,7 +42,10 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 public class Register2 extends AppCompatActivity {
 
@@ -114,7 +118,9 @@ public class Register2 extends AppCompatActivity {
             public void onClick(View view) {
 
                 UserClientClass user = (UserClientClass) getIntent().getSerializableExtra("userObject");
-                List<String> tagsUser = getSelectedTags();
+                List<String> tagNames = getSelectedTags();
+                Map<String ,TagClass> tagsUser = generateTags(tagNames);
+
                 System.out.println(user.getName());
                 user.setTag(tagsUser);
 
@@ -280,7 +286,25 @@ public class Register2 extends AppCompatActivity {
 
     private List<String> getSelectedTags()
     {
-        List<String> items = Arrays.asList(txt_showselected.getText().toString().split("\\s*,\\s*,"));
+        List<String> items = new ArrayList<String>();
+        StringTokenizer st1 = new StringTokenizer(txt_showselected.getText().toString());
+
+        for (int i = 1; st1.hasMoreTokens(); i++)
+            items.add(st1.nextToken());
         return items;
+    }
+
+    //convierte la lista de tags en un hashmap para guardarlos en firebase
+    private Map<String ,TagClass> generateTags(List<String> tagNames){
+        Map<String ,TagClass> res = new HashMap<String , TagClass>();
+
+        for(int i =0 ; i<tagNames.size() ; ++i){
+            System.out.println("------------------------------------------");
+            System.out.println(i);
+            res.put(tagNames.get(i) , new TagClass(5.0 , 1));
+
+        }
+
+        return res;
     }
 }

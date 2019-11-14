@@ -241,7 +241,6 @@ public class CreateOpportunity extends AppCompatActivity {
         System.out.println(userId);
         OpportunityClass opp= new OpportunityClass(name_opp,description_opp,ts,tags,userId);
         String key = dbOpps.push().getKey();
-
         dbOpps.child(key).setValue(opp);
 
 
