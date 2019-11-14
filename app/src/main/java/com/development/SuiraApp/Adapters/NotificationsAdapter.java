@@ -1,5 +1,7 @@
 package com.development.SuiraApp.Adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -100,17 +102,22 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     @Override
     public void onBindViewHolder(final NotifViewHolder notifViewHolder, int i) {
 
-        //Bitmap  mBitmap = Media.getBitmap(this.getContentResolver(), uri);
-        //notifViewHolder.userPhoto.setImageBitmap() ;
-
-        //StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-
-
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        storageRef.child("images/userClient/" + notifs.get(i).getPublisherId()).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                notifViewHolder.userPhoto.setImageBitmap(bMap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                System.out.println("No se pudo");
+            }
+        });
         if(notifs.get(i).getType().equals("Match")) {
             notifViewHolder.oppoTitle.setText("Match: " + notifs.get(i).getName());
             notifViewHolder.oppoDescription.setText( "");
-
-
         }
         else if(notifs.get(i).getType().equals("Accepted")){
 

@@ -89,10 +89,9 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
             {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     NotificationClass noti = snapshot.getValue(NotificationClass.class);
+                    noti.print();
                     String k = snapshot.getKey();
                     WrapperNotification wn = new WrapperNotification(noti , k);
-
-                    System.out.println(snapshot.getKey() + " tiene " + noti.getOpportunityId());
                     wrapperList.add(wn);
                 }
             }

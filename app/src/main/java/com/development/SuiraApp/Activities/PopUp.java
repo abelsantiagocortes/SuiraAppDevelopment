@@ -55,6 +55,7 @@ public class PopUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 senderNew( contenidos.getString( "sender" ) );
+                finish();
             }
         });
     }

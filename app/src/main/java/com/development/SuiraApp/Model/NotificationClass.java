@@ -11,9 +11,7 @@ public class NotificationClass implements Comparable<NotificationClass> {
     private String publisherId;
     private boolean seen;
 
-
-
-    public NotificationClass(String name, String description, String opportunityId, String userId, String type, boolean seen, String publisherName , String publisherId) {
+    public NotificationClass(String name, String description, String opportunityId, String userId, String type, boolean seen, String publisherName , String publisherIdd) {
         this.name = name;
         this.description = description;
         this.opportunityId = opportunityId;
@@ -21,9 +19,20 @@ public class NotificationClass implements Comparable<NotificationClass> {
         this.type = type;
         this.seen = seen;
         this.publisherName = publisherName;
-        this.publisherId = publisherId;
+        this.publisherId = publisherIdd;
     }
 
+    public void print(){
+        System.out.println("Name: "+this.name);
+        System.out.println("Description: "+this.description);
+        System.out.println("Oportunity Id: "+this.opportunityId);
+        System.out.println("User Id: "+this.userId);
+        System.out.println("type: "+this.type);
+        System.out.println("Seen: "+this.seen);
+        System.out.println("publisherName: "+this.publisherName);
+        System.out.println("Publisher Id: "+this.publisherId);
+
+    }
     public String getName() {
         return name;
     }
@@ -87,7 +96,7 @@ public class NotificationClass implements Comparable<NotificationClass> {
     }
 
     public void setPublisherId(String pID) {
-        this.publisherName = pID;
+        this.publisherId = pID;
     }
 
     public NotificationClass() {
