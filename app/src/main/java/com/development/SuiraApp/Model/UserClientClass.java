@@ -5,19 +5,21 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserClientClass implements Serializable {
 
     private String name;
     private String lastName;
-    private List<String> tag;
+    private Map<String , TagClass> tag;
     private Timestamp signUpDate;
 
     public UserClientClass( String name, String lastName, Timestamp signUpDate) {
         this.name = name;
         this.lastName = lastName;
-        this.tag = new ArrayList<>();
+        this.tag = new HashMap<>();
         this.signUpDate = signUpDate;
     }
 
@@ -39,11 +41,11 @@ public class UserClientClass implements Serializable {
     }
 
 
-    public List<String> getTag() {
+    public Map<String ,TagClass> getTag() {
         return tag;
     }
 
-    public void setTag(List<String> tag) {
+    public void setTag(Map<String ,TagClass> tag) {
         this.tag = tag;
     }
 
