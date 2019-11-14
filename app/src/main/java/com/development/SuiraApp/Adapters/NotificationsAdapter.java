@@ -30,6 +30,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     List<NotificationClass> notifs;
     String suiraPurple = "#4B2C70";
     OnSeeListener onSeeListener;
+    OnDismissListener onDismissListener;
 
 
     public static class NotifViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -40,8 +41,10 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         TextView oppoTitle;
         CircularImageView userPhoto;
         Button viewButton;
+        Button dismissButton;
         int position;
         OnSeeListener myListener;
+        OnDismissListener onDismissListener;
 
 
         /**
@@ -49,7 +52,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
          * @param itemView the view that will contaion the notification card
          * @param onSeeListener listener that the button will implement
          */
-        NotifViewHolder(View itemView , OnSeeListener onSeeListener) {
+        NotifViewHolder(View itemView , OnSeeListener onSeeListener,  OnDismissListener onDismissListener) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cardi);
             oppoName = (TextView)itemView.findViewById(R.id.textView3);
@@ -57,9 +60,13 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             oppoDescription = (TextView)itemView.findViewById(R.id.textViewDescription);
             userPhoto = (CircularImageView) itemView.findViewById(R.id.foto);
             viewButton = (Button) itemView.findViewById(R.id.button3);
+
             viewButton.setOnClickListener(this);
             this.myListener = onSeeListener;
 
+            dismissButton = (Button) itemView.findViewById(R.id.button2);
+            dismissButton.setOnClickListener(this);
+            this.onDismissListener = onDismissListener;
         }
 
         /**
@@ -68,14 +75,20 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
          */
         @Override
         public void onClick(View view) {
-            myListener.OnSeeClick(getAdapterPosition());
+            if (view.getId() == R.id.button3) {
+                myListener.OnSeeClick(getAdapterPosition());
+            } else {
+                onDismissListener.OnDismiss(getAdapterPosition());
+
+            }
         }
     }
 
 
-    public NotificationsAdapter(List<NotificationClass> notifs, OnSeeListener onSeeListener){
+    public NotificationsAdapter(List<NotificationClass> notifs, OnSeeListener onSeeListener , OnDismissListener onDismissListener){
         this.notifs = notifs;
         this.onSeeListener = onSeeListener;
+        this.onDismissListener = onDismissListener;
     }
 
 
@@ -90,7 +103,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_notifications, viewGroup, false);
 
 
-        NotifViewHolder pvh = new NotifViewHolder(v , onSeeListener);
+        NotifViewHolder pvh = new NotifViewHolder(v , onSeeListener , onDismissListener);
         return pvh;
     }
 
@@ -137,8 +150,13 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     public interface  OnSeeListener{
         void OnSeeClick(int position);
+
     }
 
+    public interface  OnDismissListener{
+        void OnDismiss(int position);
+
+    }
     @Override
     public int getItemCount() {
         return notifs.size();

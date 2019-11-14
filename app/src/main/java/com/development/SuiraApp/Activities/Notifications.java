@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Notifications extends AppCompatActivity implements NotificationsAdapter.OnSeeListener {
+public class Notifications extends AppCompatActivity implements NotificationsAdapter.OnSeeListener , NotificationsAdapter.OnDismissListener {
 
     private RecyclerView recyclerView;
     public List<NotificationClass> notifications;
@@ -72,7 +72,7 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
 
         query.addListenerForSingleValueEvent(valueEventListener);
 
-        ;
+
     }
 
 
@@ -115,7 +115,7 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
      * @param listi list of notifications
      */
     private void initializeAdapter(List<NotificationClass> listi){
-        NotificationsAdapter adapter = new NotificationsAdapter(listi ,  this);
+        NotificationsAdapter adapter = new NotificationsAdapter(listi ,  this , this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -162,14 +162,35 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
         }
     }
 
+    @Override
+    public void OnDismiss(int position){
+
+        deleteNotification(wrapperList.get(position).getKey());
+        Toast toast=Toast.makeText(getApplicationContext(), "Me voy a eliminar",Toast.LENGTH_SHORT);
+        toast.setMargin(50,50);
+        toast.show();
+        notifications.remove(position);
+        wrapperList.remove(position);
+        initializeAdapter(notifications);
+
+
+    }
+
+    public void deleteNotification(String notifID){
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("notification").child(notifID).setValue(null);
+
+    }
+
+
+
     /**
      * listener for the "View" button has a different does different things depending on the type
      * @param position of the notifications in the arraylist
      */
     @Override
-    public void OnSeeClick(int position) {
+    public void OnSeeClick(int position){
 
-        System.out.println("position: " + Integer.toString(position));
         updateSeen(wrapperList.get(position).getKey());
 
         if(notifications.get(position).getType().equals("Match")){
