@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,25 +17,27 @@ import android.widget.Toast;
 
 import com.development.SuiraApp.R;
 
-public class PopUp extends AppCompatActivity {
+public class PopUpContactInfo extends AppCompatActivity {
 
-    TextView contain;
+    TextView address;
+    TextView mail;
+    TextView phone;
     Button boton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme( R.style.pop_up);
-        setContentView(R.layout.activity_pop__up);
+        setContentView(R.layout.activity_pop_up_contact_info);
 
-        contain = (TextView) findViewById( R.id.popContent );
-        boton = ( Button ) findViewById( R.id.popButton );;
+        address = (TextView) findViewById( R.id.popContentAddress );
+        mail = (TextView) findViewById( R.id.popContentEmail );
+        phone = (TextView) findViewById( R.id.popContentPhone );
+        boton = ( Button ) findViewById( R.id.popButton );
 
-        final Bundle contenidos = getIntent( ).getExtras( );
-
-        contain.setText( contenidos.getString( "mensaje" ) );
-
-        boton.setText( contenidos.getString( "contenidoBoton" ) );
-
+        //TODO: Info quedama, extraer del usuario que acepto
+        address.setText(  "Cr 58 #125b - 57"  );
+        mail.setText( "example@example.com" ) ;
+        phone.setText( "+571 3177963053" ) ;
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -42,7 +45,7 @@ public class PopUp extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout( (int)(width*.75), (int)(height*.3) );
+        getWindow().setLayout(  ActionMenuView.LayoutParams.WRAP_CONTENT, ActionMenuView.LayoutParams.WRAP_CONTENT );
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
@@ -54,7 +57,6 @@ public class PopUp extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                senderNew( contenidos.getString( "sender" ) );
                 finish();
             }
         });
