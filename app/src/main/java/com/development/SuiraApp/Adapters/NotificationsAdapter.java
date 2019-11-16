@@ -125,7 +125,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                System.out.println("No se pudo");
+                System.out.println("No se pudo sacar la foto");
             }
         });
         if(notifs.get(i).getType().equals("Match")) {
@@ -144,7 +144,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         notifViewHolder.oppoName.setText(notifs.get(i).getPublisherName());
         if (notifs.get(i).getSeen() == false) {
             //Hay que vambiar el borde a suiraPurple, pero no se como :)
-            notifViewHolder.oppoDescription.setTextColor(Color.parseColor(suiraPurple));
+            notifViewHolder.oppoTitle.setTextColor(Color.parseColor(suiraPurple));
         }
     }
 
