@@ -70,7 +70,7 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
         String userId = currentUser.getUid();
         Query query = FirebaseDatabase.getInstance().getReference("notification").orderByChild("userId").equalTo(userId);
 
-        query.addListenerForSingleValueEvent(valueEventListener);
+        query.addValueEventListener(valueEventListener);
 
 
     }
