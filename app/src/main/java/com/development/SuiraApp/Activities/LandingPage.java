@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.development.SuiraApp.HomeUserClient;
 import com.development.SuiraApp.R;
 import com.development.SuiraApp.SCHome;
 
@@ -30,11 +31,11 @@ public class LandingPage extends AppCompatActivity {
     TextView terms;
     TextView email;
     LinearLayout ln;
+    TextView suiraText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
-
 
 
         ConstraintLayout c1 = (ConstraintLayout)findViewById(R.id.con1);
@@ -52,7 +53,14 @@ public class LandingPage extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-
+        suiraText = findViewById(R.id.txtV_1_1);
+        suiraText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), HomeUserClient.class);
+                startActivity(intent);
+            }
+        });
 
         btn_logIn=(Button)findViewById(R.id.btn_1_3);
         btn_logIn.setOnClickListener(new View.OnClickListener() {
