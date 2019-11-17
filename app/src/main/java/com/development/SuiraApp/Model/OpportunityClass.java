@@ -10,7 +10,7 @@ public class OpportunityClass {
     String name;
     String publisherId;
     String description;
-    Timestamp date;
+
     Date startDate;
     Date endDate;
     String location;
@@ -22,13 +22,14 @@ public class OpportunityClass {
         this.publisherId = publisherId;
     }
 
-    public OpportunityClass(String name, String description, Timestamp date, List<String> listTags , String id ) {
+    public OpportunityClass() {
+    }
+
+    public OpportunityClass(String name, String description,  List<String> listTags , String id ) {
         this.publisherId = id;
         this.name = name;
         this.description = description;
-        this.date = date;
         this.tags =  listTags;
-
 
     }
 
@@ -58,14 +59,6 @@ public class OpportunityClass {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Timestamp getDate() {
-        return date;
-    }
-
-    public void setDate(Timestamp date) {
-        this.date = date;
     }
 
     public Date getStartDate() {
