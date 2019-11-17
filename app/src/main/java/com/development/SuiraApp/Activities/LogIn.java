@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.development.SuiraApp.HomeUserClient;
 import com.development.SuiraApp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -89,7 +90,7 @@ public class LogIn extends AppCompatActivity {
         if(currentUser!=null){
             String x = getIntent().getStringExtra("landing");
 
-                intent = new Intent(getBaseContext(), Notifications.class);
+                intent = new Intent(getBaseContext(), HomeUserClient.class);
 
             startActivity(intent);
         } else {
