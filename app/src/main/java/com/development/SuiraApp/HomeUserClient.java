@@ -11,15 +11,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.development.SuiraApp.Activities.CreateOpportunity;
 import com.development.SuiraApp.Activities.Home_Tab;
+import com.development.SuiraApp.Activities.LandingPage;
 import com.development.SuiraApp.Activities.LogIn;
 import com.development.SuiraApp.Activities.Notifications;
 import com.development.SuiraApp.Activities.Oppor_tab;
+import com.development.SuiraApp.Activities.PopUpContactInfo;
 import com.development.SuiraApp.Activities.Profile_tab;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +35,9 @@ public class HomeUserClient extends AppCompatActivity {
     //Se define el viewPager que es el que muestra lo que tiene cada actividad por aparte
     TabLayout tabLayouts;
     ViewPager viewPager;
+    TextView txt;
+    ImageView lg;
+
     private FirebaseAuth signOutAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +52,17 @@ public class HomeUserClient extends AppCompatActivity {
         viewPager=(ViewPager) findViewById(R.id.viewPagerHome);
 
         signOutAuth = FirebaseAuth.getInstance();
+        txt = findViewById(R.id.textView17);
+        lg = findViewById(R.id.logoOut);
+        lg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOutAuth.signOut();
+                Intent intent = new Intent(getApplicationContext(), LandingPage.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         //Le mete el viewpager al tablayout
