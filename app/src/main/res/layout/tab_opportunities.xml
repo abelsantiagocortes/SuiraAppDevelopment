@@ -3,26 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/clr_justWhite">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutOppor"
         android:layout_width="0dp"
-        android:layout_height="65dp"
+        android:layout_height="55dp"
         android:layout_marginTop="2dp"
+        app:tabBackground="@drawable/tab_color_selector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabBackground="@color/clr_justWhite"
         app:tabIndicatorColor="@color/clr_justWhite"
         app:tabSelectedTextColor="@color/clr_suiraPurple"
-        app:tabTextColor="@color/clr_kindaGrey" />
+        app:tabTextColor="@color/clr_justWhite"
+        />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerOppor"
         android:layout_width="0dp"
-        android:layout_height="573dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayoutOppor" />
