@@ -20,8 +20,10 @@
         <activity android:name=".Activities.LandingPage" />
         <activity android:name=".Activities.Register" />
         <activity android:name=".Activities.CreateOpportunity" />
+        <activity android:name=".Activities.Home_Tab"/>
         <activity android:name=".Activities.Notifications" />
         <activity android:name=".Activities.MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
