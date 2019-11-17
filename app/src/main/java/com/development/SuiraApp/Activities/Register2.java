@@ -40,6 +40,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -119,16 +120,17 @@ public class Register2 extends AppCompatActivity {
 
                 UserClientClass user = (UserClientClass) getIntent().getSerializableExtra("userObject");
                 List<String> tagNames = getSelectedTags();
-                Map<String ,TagClass> tagsUser = generateTags(tagNames);
+               // Map<String ,TagClass> tagsUser = generateTags(tagNames);
 
                 System.out.println(user.getName());
-                user.setTag(tagsUser);
+               // user.setTag(tagsUser);
 
 
-
+/******************************************************************/
                 FirebaseUser currentUser = registerAuth.getCurrentUser();
                 final String userId = currentUser.getUid();
-                dbUsers.child(userId).setValue(user);
+                //dbUsers.child(userId).setValue(user);
+
 
                 storageUserClients.child(userId).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -137,30 +139,21 @@ public class Register2 extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
 
-                                final String downloadUrl =
-                                        uri.toString();
-                                Log.i("URL+1", downloadUrl);
-                                dbUsers.child(userId).child("photoDownloadURL").setValue(downloadUrl);
-
+                                System.out.println("Tengo foto");
                             }
                         });
                     }
                 });
 
-                Bundle bund = new Bundle();
-
-                String msn = new String("Thanks for Using Suira\n \n \n Suira is Working To Find What You Need");
-                String btnMsn = new String("Log In");
-                String activityName = "LogIn";
-
-                Intent intent= new Intent(getApplicationContext(), PopUp.class);
-
-                bund.putString("mensaje", msn);
-                bund.putString("contenidoBoton", btnMsn);
-                bund.putString("sender", activityName );
-                intent.putExtras(bund);
-
+                Intent intent= new Intent(getApplicationContext(), RegisterTags.class);
+                intent.putExtra("userObject",  user );
+                intent.putExtra("userTags" , (Serializable) tagNames);
                 startActivity(intent);
+
+
+/****************************************************************************/
+
+                finish();
             }
         });
 
@@ -294,17 +287,5 @@ public class Register2 extends AppCompatActivity {
         return items;
     }
 
-    //convierte la lista de tags en un hashmap para guardarlos en firebase
-    private Map<String ,TagClass> generateTags(List<String> tagNames){
-        Map<String ,TagClass> res = new HashMap<String , TagClass>();
 
-        for(int i =0 ; i<tagNames.size() ; ++i){
-            System.out.println("------------------------------------------");
-            System.out.println(i);
-            res.put(tagNames.get(i) , new TagClass(5.0 , 1));
-
-        }
-
-        return res;
-    }
 }
