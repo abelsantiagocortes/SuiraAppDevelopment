@@ -36,9 +36,9 @@ public class Oppor_tab extends Fragment {
     //Este metodo ingresa el nombre de cada tab con su actividad
     public void setUpViewPager(ViewPager viewPager){
 
-        TabViewPagerAdapter tabViewPagerAdapter= new TabViewPagerAdapter(getFragmentManager());
-        tabViewPagerAdapter.addFragment(new Home_Tab(),"Aplicaciones");
-        tabViewPagerAdapter.addFragment(new Profile_tab(),"Oportunidades");
+        TabViewPagerAdapter tabViewPagerAdapter= new TabViewPagerAdapter(getChildFragmentManager());
+        tabViewPagerAdapter.addFragment(new OpporAppl_tab(),"Aplicaciones");
+        tabViewPagerAdapter.addFragment(new OppotCreated_tab(),"Oportunidades");
         viewPager.setAdapter(tabViewPagerAdapter);
     }
 }
