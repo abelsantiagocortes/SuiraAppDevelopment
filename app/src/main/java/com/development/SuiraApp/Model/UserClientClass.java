@@ -15,6 +15,8 @@ public class UserClientClass implements Serializable {
     private String lastName;
     private Map<String , TagClass> tag;
     private Timestamp signUpDate;
+    private String location;
+    private String phone;
 
     public UserClientClass( String name, String lastName, Timestamp signUpDate) {
         this.name = name;

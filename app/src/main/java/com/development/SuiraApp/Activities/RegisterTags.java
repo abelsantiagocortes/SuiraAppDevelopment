@@ -95,6 +95,7 @@ public class RegisterTags extends AppCompatActivity {
 
                 Intent intentAditional= new Intent(getApplicationContext(), AditionalInfo.class);
                 startActivity(intentAditional);
+                finish();
 
             }
 
