@@ -4,15 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.development.SuiraApp.Model.NotificationClass;
@@ -32,7 +36,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Notifications extends AppCompatActivity implements NotificationsAdapter.OnSeeListener , NotificationsAdapter.OnDismissListener {
+public class Notifications extends Fragment implements NotificationsAdapter.OnSeeListener , NotificationsAdapter.OnDismissListener {
 
     private RecyclerView recyclerView;
     public List<NotificationClass> notifications;
@@ -41,27 +45,26 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
     private NotificationsAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_notifications, container, false);
+
         super.onCreate(savedInstanceState);
 
+        Toolbar toolbar = view.findViewById(R.id.toolbarMenu);
+        //setSupportActionBar(toolbar);
 
-        setContentView(R.layout.activity_notifications);
-
-        Toolbar toolbar = findViewById(R.id.toolbarMenu);
-        setSupportActionBar(toolbar);
-
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv);
         signOutAuth = FirebaseAuth.getInstance();
 
 
 
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);
         recyclerView.setHasFixedSize(true);
 
 
-        DividerItemDecoration itemDecorator = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        itemDecorator.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
         recyclerView.addItemDecoration(itemDecorator);
 
 
@@ -71,6 +74,8 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
         Query query = FirebaseDatabase.getInstance().getReference("notification").orderByChild("userId").equalTo(userId);
 
         query.addValueEventListener(valueEventListener);
+
+        return  view;
 
 
     }
@@ -124,14 +129,13 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
      * @param menu hamburger menu
      * @return true if it can be created
      */
-    @Override
+
     public boolean onCreateOptionsMenu( Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate( R.menu.hamburger_menu, menu);
+        //MenuInflater inflater = getMenuInflater();
+        //inflater.inflate( R.menu.hamburger_menu, menu);
         return true;
     }
 
-    @Override
     public void onBackPressed() {
     }
 
@@ -145,16 +149,16 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
         switch ( item.getItemId())
         {
             case R.id.first_item:
-                Intent intent = new Intent( getApplicationContext(), CreateOpportunity.class );
+                Intent intent = new Intent( getContext(), CreateOpportunity.class );
                 startActivity(intent);
                 return true;
             case R.id.second_item:
-                Intent intent1 = new Intent( getApplicationContext(), Notifications.class );
+                Intent intent1 = new Intent( getContext(), Notifications.class );
                 startActivity(intent1);
                 return true;
             case R.id.third_item:
                 signOutAuth.signOut();
-                Intent intent2 = new Intent( getApplicationContext(), LogIn.class );
+                Intent intent2 = new Intent( getContext(), LogIn.class );
                 startActivity(intent2);
                 return true;
             default:
@@ -166,7 +170,7 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
     public void OnDismiss(int position){
 
         deleteNotification(wrapperList.get(position).getKey());
-        Toast toast=Toast.makeText(getApplicationContext(), "Me voy a eliminar",Toast.LENGTH_SHORT);
+        Toast toast=Toast.makeText(getContext(), "Me voy a eliminar",Toast.LENGTH_SHORT);
         toast.setMargin(50,50);
         toast.show();
         notifications.remove(position);
@@ -194,21 +198,21 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
         updateSeen(wrapperList.get(position).getKey());
 
         if(notifications.get(position).getType().equals("Match")){
-            Toast toast=Toast.makeText(getApplicationContext(), "Soy un match",Toast.LENGTH_SHORT);
+            Toast toast=Toast.makeText(getContext(), "Soy un match",Toast.LENGTH_SHORT);
             toast.setMargin(50,50);
             toast.show();
             //TODO: intent to opportunity detatils activity (p21)
         }
         else if(notifications.get(position).getType().equals("Recommendation")){
             //TODO: intent to profile public activity (p16)
-            Toast toast=Toast.makeText(getApplicationContext(), "soy una recomendacion",Toast.LENGTH_SHORT);
+            Toast toast=Toast.makeText(getContext(), "soy una recomendacion",Toast.LENGTH_SHORT);
             toast.setMargin(50,50);
             toast.show();
         }
         else if(notifications.get(position).getType().equals("Accepted")) {
             //TODO: intent to pop up with publisher contact info
-            Intent intent = new Intent(getApplicationContext(), PopUpContactInfo.class);
-            Toast toast = Toast.makeText(getApplicationContext(), "soy un accepted", Toast.LENGTH_SHORT);
+            Intent intent = new Intent(getContext(), PopUpContactInfo.class);
+            Toast toast = Toast.makeText(getContext(), "soy un accepted", Toast.LENGTH_SHORT);
             toast.setMargin(50, 50);
             toast.show();
             startActivity(intent);

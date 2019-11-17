@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.development.SuiraApp.Activities.Home_Tab;
+import com.development.SuiraApp.Activities.Notifications;
 import com.development.SuiraApp.Activities.Oppor_tab;
 import com.development.SuiraApp.Activities.Profile_tab;
 import com.google.android.material.tabs.TabLayout;
@@ -63,7 +64,7 @@ public class HomeUserClient extends AppCompatActivity {
 
         TabViewPagerAdapter tabViewPagerAdapter= new TabViewPagerAdapter(getSupportFragmentManager());
         tabViewPagerAdapter.addFragment(new Oppor_tab(),"Opportunities");
-        tabViewPagerAdapter.addFragment(new Home_Tab(),"Home");
+        tabViewPagerAdapter.addFragment(new Notifications(),"Home");
         tabViewPagerAdapter.addFragment(new Profile_tab(),"Profile");
         viewPager.setAdapter(tabViewPagerAdapter);
     }
