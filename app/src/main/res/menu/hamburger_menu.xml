@@ -28,6 +28,10 @@
                 style="@style/typ_Big"
                 android:gravity="center"/>
 
+            <item android:id="@+id/fourth_item"
+                android:title="Profile"
+                app:showAsAction="never"/>
+
         </menu>
 
     </item>

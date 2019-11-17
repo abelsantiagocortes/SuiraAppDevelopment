@@ -157,6 +157,10 @@ public class Notifications extends AppCompatActivity implements NotificationsAda
                 Intent intent2 = new Intent( getApplicationContext(), LogIn.class );
                 startActivity(intent2);
                 return true;
+            case R.id.fourth_item:
+                Intent intent3 = new Intent(getApplicationContext(),ComponentNetworks.class);
+                startActivity(intent3);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
