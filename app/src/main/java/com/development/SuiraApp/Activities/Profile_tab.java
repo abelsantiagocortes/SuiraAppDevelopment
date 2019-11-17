@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.development.SuiraApp.MyViewPagerAdapter;
+import com.development.SuiraApp.Adapters.MyViewPagerAdapter;
 import com.development.SuiraApp.R;
 
 public class Profile_tab extends Fragment {

@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Adapters;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/suira_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeUserClient"></activity>
+        <activity android:name=".Activities.HomeUserClient"></activity>
         <activity android:name=".Activities.RegisterTags" />
         <activity android:name=".Activities.PopUpContactInfo" />
         <activity android:name=".Activities.InfoPopUp" />

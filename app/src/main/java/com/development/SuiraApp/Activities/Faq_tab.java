@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import com.development.SuiraApp.Adapters.MyViewPagerAdapter;
+import com.development.SuiraApp.R;
 
 public class Faq_tab extends Fragment {
 

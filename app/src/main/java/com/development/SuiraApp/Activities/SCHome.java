@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -6,6 +6,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.development.SuiraApp.R;
+import com.development.SuiraApp.Adapters.TabViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class SCHome extends AppCompatActivity {

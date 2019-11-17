@@ -1,4 +1,4 @@
-package com.development.SuiraApp;
+package com.development.SuiraApp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.development.SuiraApp.Activities.Home_Tab;
-import com.development.SuiraApp.Activities.Oppor_tab;
-import com.development.SuiraApp.Activities.Profile_tab;
+import com.development.SuiraApp.R;
+import com.development.SuiraApp.Adapters.TabViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeUserClient extends AppCompatActivity {

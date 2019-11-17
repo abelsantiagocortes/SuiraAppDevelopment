@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.development.SuiraApp.MyViewPagerAdapter;
+import com.development.SuiraApp.Adapters.MyViewPagerAdapter;
 import com.development.SuiraApp.R;
-import com.development.SuiraApp.TabViewPagerAdapter;
+import com.development.SuiraApp.Adapters.TabViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class Oppor_tab extends Fragment {
