@@ -75,7 +75,7 @@ public class RegisterTags extends AppCompatActivity {
                 Bundle bund = new Bundle();
 
                 String msn = "Thanks for Using Suira\n \n \n Suira is Working To Find What You Need";
-                String btnMsn = "Log In";
+                String btnMsn = "Ok";
                 String activityName = "LogIn";
 
                 Intent intentP= new Intent(getApplicationContext(), PopUp.class);
@@ -93,10 +93,12 @@ public class RegisterTags extends AppCompatActivity {
 
                 dbUsers.child(userId).setValue(user);
 
-                Intent intentAditional= new Intent(getApplicationContext(), AditionalInfo.class);
-                startActivity(intentAditional);
-                finish();
 
+                Intent intentAdicional= new Intent(getApplicationContext(), AditionalInfo.class);
+                intentAdicional.putExtra("userObject",  user );
+                intentAdicional.putExtra("userTags" , (Serializable) tagNames);
+                startActivity(intentAdicional);
+                finish();
             }
 
 

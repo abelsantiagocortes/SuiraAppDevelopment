@@ -1,6 +1,8 @@
 package com.development.SuiraApp.Model;
 
-public class TagClass {
+import java.io.Serializable;
+
+public class TagClass implements Serializable {
     private double rating;
     private int count;
 

@@ -114,7 +114,7 @@
             />
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/registerA"
             style="@style/btn_highAction"
             android:layout_height="50dp"
             android:layout_gravity="center"

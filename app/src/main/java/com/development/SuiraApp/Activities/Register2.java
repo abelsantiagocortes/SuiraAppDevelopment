@@ -131,7 +131,7 @@ public class Register2 extends AppCompatActivity {
                 final String userId = currentUser.getUid();
 
 
-                if(!Uri.EMPTY.equals(imageUri)) {
+                if(imageUri!=null) {
                     storageUserClients.child(userId).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
