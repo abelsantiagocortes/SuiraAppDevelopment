@@ -51,7 +51,7 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
         super.onCreate(savedInstanceState);
 
         Toolbar toolbar = view.findViewById(R.id.toolbarMenu);
-        //setSupportActionBar(toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv);
         signOutAuth = FirebaseAuth.getInstance();
@@ -124,47 +124,7 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
         recyclerView.setAdapter(adapter);
     }
 
-    /**
-     * inflates the notification cards
-     * @param menu hamburger menu
-     * @return true if it can be created
-     */
 
-    public boolean onCreateOptionsMenu( Menu menu) {
-        //MenuInflater inflater = getMenuInflater();
-        //inflater.inflate( R.menu.hamburger_menu, menu);
-        return true;
-    }
-
-    public void onBackPressed() {
-    }
-
-    /**
-     * options for the hamburger menu
-     * @param item hamburger menu
-     * @return true if it can be creted
-     */
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch ( item.getItemId())
-        {
-            case R.id.first_item:
-                Intent intent = new Intent( getContext(), CreateOpportunity.class );
-                startActivity(intent);
-                return true;
-            case R.id.second_item:
-                Intent intent1 = new Intent( getContext(), Notifications.class );
-                startActivity(intent1);
-                return true;
-            case R.id.third_item:
-                signOutAuth.signOut();
-                Intent intent2 = new Intent( getContext(), LogIn.class );
-                startActivity(intent2);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     @Override
     public void OnDismiss(int position){

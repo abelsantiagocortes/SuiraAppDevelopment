@@ -1,20 +1,28 @@
 package com.development.SuiraApp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.development.SuiraApp.Activities.CreateOpportunity;
 import com.development.SuiraApp.Activities.Home_Tab;
+import com.development.SuiraApp.Activities.LogIn;
 import com.development.SuiraApp.Activities.Notifications;
 import com.development.SuiraApp.Activities.Oppor_tab;
 import com.development.SuiraApp.Activities.Profile_tab;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeUserClient extends AppCompatActivity {
 
@@ -23,17 +31,20 @@ public class HomeUserClient extends AppCompatActivity {
     //Se define el viewPager que es el que muestra lo que tiene cada actividad por aparte
     TabLayout tabLayouts;
     ViewPager viewPager;
+    private FirebaseAuth signOutAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_user_client);
         //Se infla tool bar para el hamburguesa
-        Toolbar toolbar = findViewById(R.id.toolbarMenus);
+        Toolbar toolbar = findViewById(R.id.toolbarMenu);
         setSupportActionBar(toolbar);
 
         //Se inflan tab y view a modificar
         tabLayouts=(TabLayout) findViewById(R.id.tabLayoutHome);
         viewPager=(ViewPager) findViewById(R.id.viewPagerHome);
+
+        signOutAuth = FirebaseAuth.getInstance();
 
 
         //Le mete el viewpager al tablayout
@@ -67,5 +78,46 @@ public class HomeUserClient extends AppCompatActivity {
         tabViewPagerAdapter.addFragment(new Notifications(),"Home");
         tabViewPagerAdapter.addFragment(new Profile_tab(),"Profile");
         viewPager.setAdapter(tabViewPagerAdapter);
+    }
+    /**
+     * inflates the notification cards
+     * @param menu hamburger menu
+     * @return true if it can be created
+     */
+
+    public boolean onCreateOptionsMenu( Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate( R.menu.hamburger_menu, menu);
+        return true;
+    }
+
+    public void onBackPressed() {
+    }
+
+    /**
+     * options for the hamburger menu
+     * @param item hamburger menu
+     * @return true if it can be creted
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch ( item.getItemId())
+        {
+            case R.id.first_item:
+                Intent intent = new Intent( getApplicationContext(), CreateOpportunity.class );
+                startActivity(intent);
+                return true;
+            case R.id.second_item:
+                Intent intent1 = new Intent( getApplicationContext(), Notifications.class );
+                startActivity(intent1);
+                return true;
+            case R.id.third_item:
+                signOutAuth.signOut();
+                Intent intent2 = new Intent( getApplicationContext(), LogIn.class );
+                startActivity(intent2);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
