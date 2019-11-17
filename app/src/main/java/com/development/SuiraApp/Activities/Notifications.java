@@ -134,7 +134,7 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
             Collections.sort(wrapperList);
 
             notifications = generateNotificationsList(wrapperList);
-            initializeAdapter(notifications);
+            initializeAdapter();
             System.out.println("Este es listener 2");
 
         }
@@ -158,6 +158,7 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
                     @Override
                     public void onSuccess(byte[] bytes) {
                         fotos.put(noti.getPublisherId() , bytes);
+                        initializeAdapter();
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -170,7 +171,7 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
                 WrapperNotification wn = new WrapperNotification(noti, dataSnapshot.getKey());
                 wrapperList.add(0,wn);
                 notifications.add(0 , dataSnapshot.getValue(NotificationClass.class));
-                initializeAdapter(notifications);
+                initializeAdapter();
             }
 
             @Override
@@ -184,7 +185,7 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
                         notifications.set(i, noti);
                     }
                 }
-                initializeAdapter(notifications);
+                initializeAdapter();
             }
 
             @Override
@@ -203,10 +204,9 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
 
     /**
      * initializes the notification cards
-     * @param listi list of notifications
      */
-    private void initializeAdapter(List<NotificationClass> listi){
-        NotificationsAdapter adapter = new NotificationsAdapter(listi ,  this , this , fotos);
+    private void initializeAdapter(){
+        NotificationsAdapter adapter = new NotificationsAdapter(notifications ,  this , this , fotos);
         recyclerView.setAdapter(adapter);
     }
 
@@ -221,7 +221,7 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
         toast.show();
         notifications.remove(position);
         wrapperList.remove(position);
-        initializeAdapter(notifications);
+        initializeAdapter();
 
 
     }
