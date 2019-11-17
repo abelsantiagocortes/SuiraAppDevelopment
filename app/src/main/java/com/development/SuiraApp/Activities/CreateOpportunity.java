@@ -235,11 +235,11 @@ public class CreateOpportunity extends AppCompatActivity {
 
         Date date = new Date();
         long time = date.getTime();
-        Timestamp ts = new Timestamp(time);
+
 
         String userId= user.getUid();
         System.out.println(userId);
-        OpportunityClass opp= new OpportunityClass(name_opp,description_opp,ts,tags,userId);
+        OpportunityClass opp= new OpportunityClass(name_opp,description_opp,tags,userId);
         String key = dbOpps.push().getKey();
         dbOpps.child(key).setValue(opp);
 
