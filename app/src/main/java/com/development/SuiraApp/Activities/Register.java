@@ -177,7 +177,7 @@ public class Register extends AppCompatActivity {
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);
 
-        UserClientClass user= new UserClientClass(name_value,lastname_value,ts);
+        UserClientClass user= new UserClientClass(name_value,lastname_value);
         return user;
 
     }
