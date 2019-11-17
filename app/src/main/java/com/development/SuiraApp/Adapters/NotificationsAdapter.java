@@ -3,7 +3,6 @@ package com.development.SuiraApp.Adapters;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +57,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             oppoName = (TextView)itemView.findViewById(R.id.textView3);
             oppoTitle = (TextView)itemView.findViewById(R.id.textView2);
             oppoDescription = (TextView)itemView.findViewById(R.id.textViewDescription);
-            userPhoto = (CircularImageView) itemView.findViewById(R.id.foto);
+            userPhoto = (CircularImageView) itemView.findViewById(R.id.img_profile);
             viewButton = (Button) itemView.findViewById(R.id.button3);
 
             viewButton.setOnClickListener(this);
