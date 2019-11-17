@@ -34,7 +34,7 @@
         </activity>
         <activity android:name=".Activities.ForgotPassword" />
         <activity android:name=".Activities.LogIn" />
-
+        <activity android:name=".Activities.ComponentNetworks"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

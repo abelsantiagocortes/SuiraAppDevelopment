@@ -14,14 +14,12 @@ public class UserClientClass implements Serializable {
     private String name;
     private String lastName;
     private Map<String , TagClass> tag;
-    private Timestamp signUpDate;
     private String linkFacebook;
 
-    public UserClientClass( String name, String lastName, Timestamp signUpDate) {
+    public UserClientClass( String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
         this.tag = new HashMap<>();
-        this.signUpDate = signUpDate;
     }
     public UserClientClass(){
 
@@ -52,12 +50,7 @@ public class UserClientClass implements Serializable {
     public void setTag(Map<String ,TagClass> tag) {
         this.tag = tag;
     }
-
-    public Date getSignUpDate() {return signUpDate;}
-
-    public void setSignUpDate(Timestamp signUpDate) {
-        this.signUpDate = signUpDate;
-    }
+    
 
     public String getLinkFacebook(){return linkFacebook;}
 
