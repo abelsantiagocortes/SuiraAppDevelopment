@@ -1,9 +1,11 @@
 package com.development.SuiraApp.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
@@ -43,6 +45,7 @@ public class OppotCreated_tab extends Fragment  {
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager layoutManager;
     FirebaseAuth signOutAuth;
+    Button btnCreates;
 
 
 
@@ -55,6 +58,7 @@ public class OppotCreated_tab extends Fragment  {
         LinearLayoutManager lm = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(lm);
         opos= new ArrayList<>();
+        btnCreates = view.findViewById(R.id.btnCreates);
 
         signOutAuth = FirebaseAuth.getInstance();
 
@@ -62,6 +66,14 @@ public class OppotCreated_tab extends Fragment  {
         String userId = currentUser.getUid();
         Query query = FirebaseDatabase.getInstance().getReference("opportunities").orderByChild("publisherId").equalTo(userId);
         query.addValueEventListener(valueEventListener);
+
+        btnCreates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CreateOpportunity.class);
+                startActivity(intent);
+            }
+        });
 
         return  view;
     }

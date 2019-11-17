@@ -174,8 +174,6 @@ public class Register extends AppCompatActivity {
         String lastname_value= lastName.getText().toString();
 
         Date date = new Date();
-        long time = date.getTime();
-        Timestamp ts = new Timestamp(time);
 
         UserClientClass user= new UserClientClass(name_value,lastname_value);
         return user;
