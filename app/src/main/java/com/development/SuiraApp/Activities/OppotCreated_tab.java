@@ -68,7 +68,7 @@ public class OppotCreated_tab extends Fragment  {
     ValueEventListener valueEventListener = new ValueEventListener() {
         /**
          * gets the notifications from the database
-         * @param dataSnapshot wich the DB information
+         * @param dataSnapshot with the DB information
          */
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
