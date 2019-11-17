@@ -93,10 +93,9 @@ public class RegisterTags extends AppCompatActivity {
 
                 dbUsers.child(userId).setValue(user);
 
-                //TODO: empezar la actividad de login despues del popUp
-                /*Intent intentLogin= new Intent(getApplicationContext(), LogIn.class);
-                startActivity(intentLogin);*/
-                finish();
+                Intent intentAditional= new Intent(getApplicationContext(), AditionalInfo.class);
+                startActivity(intentAditional);
+
             }
 
 
