@@ -144,7 +144,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         notifViewHolder.oppoName.setText(notifs.get(i).getPublisherName());
         if (notifs.get(i).getSeen() == false) {
             //Hay que vambiar el borde a suiraPurple, pero no se como :)
-            notifViewHolder.oppoName.setTextColor(Color.parseColor(suiraPurple));
+            notifViewHolder.oppoTitle.setTextColor(Color.parseColor(suiraPurple));
         }
     }
 
