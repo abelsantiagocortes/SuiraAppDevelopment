@@ -111,6 +111,7 @@ public class Register extends AppCompatActivity {
             Intent intent= new Intent(getApplicationContext(), Register2.class);
             intent.putExtra("userObject", (Serializable) registerUserDB());
             startActivity(intent);
+            //finish();
         } else {
             email.setText("");
             password.setText("");
