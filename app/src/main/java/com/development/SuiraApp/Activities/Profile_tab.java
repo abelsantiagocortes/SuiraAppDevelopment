@@ -2,6 +2,9 @@ package com.development.SuiraApp.Activities;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.sip.SipSession;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,27 +16,37 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.development.SuiraApp.Model.UserClientClass;
 import com.development.SuiraApp.MyViewPagerAdapter;
 import com.development.SuiraApp.R;
+import com.github.siyamed.shapeimageview.CircularImageView;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Profile_tab extends Fragment {
 
     private MyViewPagerAdapter adapter;
+    CircularImageView img_profile;
     GridLayout gridLayout;
     TextView txt_description;
+    TextView txt_nameProf;
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
-    List<String> tagsFire= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"});
+    List<String> tagsFire/*= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"})*/;
     FirebaseAuth registerAuth;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,40 +55,54 @@ public class Profile_tab extends Fragment {
         //Se infla el gridlayout y el textview de los tags
         gridLayout = (GridLayout) view.findViewById(R.id.grid_layoutProf);
         txt_description = (TextView) view.findViewById(R.id.txt_description);
-
+        txt_nameProf = view.findViewById(R.id.txt_nameProf);
+        img_profile = view.findViewById(R.id.img_profile);
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
         dbUsers = dbSuira.getReference("userClient");
         registerAuth = FirebaseAuth.getInstance();
-        //tagsFire = new ArrayList<String>();
+        tagsFire = new ArrayList<String>();
 
         // SACA EL ID
-        String id = registerAuth.getCurrentUser().getUid().toString();
+        String id = registerAuth.getCurrentUser().getUid();
 
-
-/*
-        // Read Tags Every Time is Updated
-        dbTags.addValueEventListener(new ValueEventListener() {
+        Query query = FirebaseDatabase.getInstance().getReference("userClient").child(id);
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Aca sacas el objeto
+                UserClientClass post = dataSnapshot.getValue(UserClientClass.class);
+                txt_nameProf.setText(post.getName()+" "+post.getLastName());
 
-                tagsFire.clear();
-                for(DataSnapshot tagSnapshot : dataSnapshot.getChildren())
-                {
-                    String itemTag = tagSnapshot.getValue().toString();
-                    tagsFire.add(itemTag);
-
+                // Imprimimos el Map con un Iterador
+                Iterator it = post.getTag().keySet().iterator();
+                while(it.hasNext()){
+                    String key = it.next().toString();
+                    System.out.println("Clave: " + key + " -> Valor: " + post.getTag().get(key));
+                    tagsFire.add(key);
                 }
-                //Reset the GridLayouts
-                gridLayout.removeAllViews();
-                tagComponents();
+                tagComponents();;
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
-        tagComponents();
+        });
+
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        storageRef.child("images/userClient/" + id).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                img_profile.setImageBitmap(bMap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                System.out.println("No se pudo sacar la foto");
+            }
+        });
+
 
         return  view;
     }
