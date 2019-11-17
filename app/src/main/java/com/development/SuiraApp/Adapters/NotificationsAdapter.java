@@ -54,9 +54,8 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         NotifViewHolder(View itemView , OnSeeListener onSeeListener,  OnDismissListener onDismissListener) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cardi);
-            oppoName = (TextView)itemView.findViewById(R.id.textView3);
+            oppoDescription = (TextView)itemView.findViewById(R.id.textView3);
             oppoTitle = (TextView)itemView.findViewById(R.id.textView2);
-            oppoDescription = (TextView)itemView.findViewById(R.id.textViewDescription);
             userPhoto = (CircularImageView) itemView.findViewById(R.id.img_profile);
             viewButton = (Button) itemView.findViewById(R.id.button3);
 
@@ -128,8 +127,8 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             }
         });
         if(notifs.get(i).getType().equals("Match")) {
-            notifViewHolder.oppoTitle.setText("Match: " + notifs.get(i).getName());
-            notifViewHolder.oppoDescription.setText( "");
+            notifViewHolder.oppoTitle.setText( notifs.get(i).getName());
+            notifViewHolder.oppoDescription.setText( notifs.get(i).getPublisherName());
         }
         else if(notifs.get(i).getType().equals("Accepted")){
 
@@ -140,7 +139,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             notifViewHolder.oppoTitle.setText("New Recommendation");
             notifViewHolder.oppoDescription.setText( notifs.get(i).getPublisherName() +" has recommended you, visit their profile");
         }
-        notifViewHolder.oppoName.setText(notifs.get(i).getPublisherName());
+
         if (notifs.get(i).getSeen() == false) {
             //Hay que vambiar el borde a suiraPurple, pero no se como :)
             notifViewHolder.oppoTitle.setTextColor(Color.parseColor(suiraPurple));

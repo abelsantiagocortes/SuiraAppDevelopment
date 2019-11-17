@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.development.SuiraApp.HomeUserClient;
 import com.development.SuiraApp.R;
 import com.development.SuiraApp.SCHome;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LandingPage extends AppCompatActivity {
 
@@ -26,6 +28,7 @@ public class LandingPage extends AppCompatActivity {
     Button btn_register2;
     Button btn_buscar;
     Button ej_buscar;
+    private FirebaseAuth loginAuth;
     TextView faq;
     TextView sugg;
     TextView terms;
@@ -52,6 +55,8 @@ public class LandingPage extends AppCompatActivity {
 
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
+
+        loginAuth = FirebaseAuth.getInstance();
 
         suiraText = findViewById(R.id.txtV_1_1);
         suiraText.setOnClickListener(new View.OnClickListener() {
@@ -153,5 +158,26 @@ public class LandingPage extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
+
+    /* Authentication */
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Revisa si el usuario existe
+        FirebaseUser currentUser = loginAuth.getCurrentUser();
+        logInUser(currentUser);
+    }
+
+    private void logInUser(FirebaseUser currentUser){
+        Intent intent;
+        if(currentUser!=null){
+            intent = new Intent(getBaseContext(), HomeUserClient.class);
+            startActivity(intent);
+        } else {
+          ;
+        }
+    }
+
+
 
 }
