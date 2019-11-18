@@ -80,7 +80,7 @@ public class Profile_tab extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //Aca sacas el objeto
                 UserClientClass post = dataSnapshot.getValue(UserClientClass.class);
-                txt_nameProf.setText(post.getName()+" "+post.getLastName());
+                txt_nameProf.setText(post.getName()+" \n "+post.getLastName());
                 txt_description.setText(post.getDescription());
                 txt_locationProf.setText(post.getLocation());
 

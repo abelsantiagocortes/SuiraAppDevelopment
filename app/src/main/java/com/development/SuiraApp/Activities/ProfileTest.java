@@ -35,7 +35,7 @@ public class ProfileTest extends AppCompatActivity {
 
         int x = R.drawable.photographer;
         List<Integer> imgs = new ArrayList<>();
-        for (int c = 0; c < 2; c++)
+        for (int c = 0; c < 1; c++)
         {
             imgs.add(R.drawable.photographer);
             imgs.add(R.drawable.paint);
