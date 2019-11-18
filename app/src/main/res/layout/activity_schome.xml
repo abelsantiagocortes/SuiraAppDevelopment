@@ -43,7 +43,7 @@
         android:textColor="@color/clr_veryGrey"
         android:textSize="36sp" />
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tabLayoutSC"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="100dp"
@@ -53,7 +53,7 @@
         app:tabTextColor="@color/clr_kindaGrey" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/viewPagerSC"
         android:layout_width="match_parent"
         android:layout_height="637dp"
         android:layout_marginTop="150dp" />

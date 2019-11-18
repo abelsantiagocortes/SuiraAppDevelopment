@@ -22,6 +22,7 @@
         <activity android:name=".PopUps.InfoPopUp" />
         <activity android:name=".Activities.ProfileTest" />
         <activity android:name=".PopUps.PopUp" />
+        <activity android:name=".Activities.ClientService.SCHome" />
         <activity android:name=".Activities.Opportunities.CreateOpportunity2" />
         <activity android:name=".Activities.Authentication.Register2" />
         <activity android:name=".Activities.Authentication.LandingPage" />
