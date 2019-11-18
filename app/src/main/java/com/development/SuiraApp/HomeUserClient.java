@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.development.SuiraApp.Activities.AplicantesOportunidad;
 import com.development.SuiraApp.Activities.CreateOpportunity;
 import com.development.SuiraApp.Activities.Home_Tab;
 import com.development.SuiraApp.Activities.LandingPage;
@@ -93,8 +94,9 @@ public class HomeUserClient extends AppCompatActivity {
 
         TabViewPagerAdapter tabViewPagerAdapter= new TabViewPagerAdapter(getSupportFragmentManager());
         tabViewPagerAdapter.addFragment(new Oppor_tab(),"Opportunities");
-        tabViewPagerAdapter.addFragment(new Notifications(),"Home");
+        tabViewPagerAdapter.addFragment(new AplicantesOportunidad(),"Home");
         tabViewPagerAdapter.addFragment(new Profile_tab(),"Profile");
+        //tabViewPagerAdapter.addFragment(new AplicantesOportunidad(),"opoooo");
         viewPager.setAdapter(tabViewPagerAdapter);
     }
     /**
@@ -134,6 +136,7 @@ public class HomeUserClient extends AppCompatActivity {
                 Intent intent2 = new Intent( getApplicationContext(), LogIn.class );
                 startActivity(intent2);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

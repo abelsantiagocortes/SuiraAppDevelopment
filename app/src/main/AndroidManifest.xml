@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.development.SuiraApp">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/suira_logo"
@@ -9,7 +14,9 @@
         android:roundIcon="@mipmap/suira_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeUserClient"></activity>
+        <activity android:name=".Adapters.AplicantsAdapter"></activity>
+        <activity android:name=".Activities.AplicantesOportunidad" />
+        <activity android:name=".HomeUserClient" />
         <activity android:name=".Activities.RegisterTags" />
         <activity android:name=".Activities.PopUpContactInfo" />
         <activity android:name=".Activities.InfoPopUp" />
@@ -20,10 +27,9 @@
         <activity android:name=".Activities.LandingPage" />
         <activity android:name=".Activities.Register" />
         <activity android:name=".Activities.CreateOpportunity" />
-        <activity android:name=".Activities.Home_Tab"/>
+        <activity android:name=".Activities.Home_Tab" />
         <activity android:name=".Activities.Notifications" />
         <activity android:name=".Activities.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,10 +43,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
