@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.Register"
+    tools:context=".Activities.Authentication.Register"
     android:id="@+id/linearLayout2">
 
     <TextView

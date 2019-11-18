@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.development.SuiraApp.Adapters.RecommendedAdapter;
+import com.development.SuiraApp.Adapters.Opportunities.RecommendedAdapter;
 import com.development.SuiraApp.R;
 
 import java.util.ArrayList;

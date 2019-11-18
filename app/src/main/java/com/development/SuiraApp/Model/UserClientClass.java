@@ -32,8 +32,6 @@ public class UserClientClass implements Serializable {
         this.tag = new HashMap<>();
     }
 
-    public UserClientClass() {
-    }
 
     public String getName() {
         return name;
