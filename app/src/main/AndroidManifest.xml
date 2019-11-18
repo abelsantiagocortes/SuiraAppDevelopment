@@ -16,6 +16,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Adapters.AplicantsAdapter"></activity>
         <activity android:name=".Activities.Opportunities.HomeUserClient"></activity>
+        <activity android:name=".Activities.AplicantesOportunidad"></activity>
         <activity android:name=".Activities.Authentication.RegisterTags" />
         <activity android:name=".PopUps.PopUpContactInfo" />
         <activity android:name=".PopUps.InfoPopUp" />

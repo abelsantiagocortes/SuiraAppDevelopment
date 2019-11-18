@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.development.SuiraApp.Activities.AplicantesOportunidad;
 import com.development.SuiraApp.Activities.Opportunities.CreateOpportunity;
 import com.development.SuiraApp.Adapters.Opportunities.OpportunitiesAdapter;
 import com.development.SuiraApp.Model.OpportunityClass;

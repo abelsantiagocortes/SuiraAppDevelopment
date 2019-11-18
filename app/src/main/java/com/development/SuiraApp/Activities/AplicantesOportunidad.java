@@ -44,7 +44,7 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
     private Map<String , byte[]> fotos = new HashMap<>();
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     /******valor de la oportunidad quemado*****/
-    private String oppID = "-LtwdhFfxJZeKk82PaP3";
+    private String oppID = "-Ltx8BVUpBVZjqYKO8jU";
 
 
     @Override
