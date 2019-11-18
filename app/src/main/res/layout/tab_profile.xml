@@ -7,15 +7,80 @@
     android:background="@color/clr_justWhite">
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_locationProf">
+
+        <TextView
+            android:id="@+id/myNetworks"
+            style="@style/typ_kindaBig"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:paddingLeft="16dp"
+            android:text="My Professional Networks:"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonFacebook"
+                style="@style/icn_facebook"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonInstagram"
+                style="@style/icn_instagram"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="27dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonFacebook"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonYoutube"
+                style="@style/icn_youtube"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="27dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonInstagram"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonSpotify"
+                style="@style/icn_spotify"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="27dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.495" />
+        </LinearLayout>
+
+    </LinearLayout>
+
     <com.github.siyamed.shapeimageview.CircularImageView
         android:id="@+id/img_profile"
-        android:layout_width="115dp"
-        android:layout_height="74dp"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="10dp"
-
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="132dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/camera"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,12 +89,17 @@
 
     <TextView
         android:id="@+id/txt_nameProf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
-        android:text=""
-        android:textSize="30sp"
+        style="@style/typ_Big"
+        android:layout_width="192dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        android:text="Abel \n Cortes"
+        android:textAlignment="center"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/img_profile"
@@ -39,9 +109,9 @@
         android:id="@+id/horizontalScrollView2"
         android:layout_width="0dp"
         android:layout_height="42dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/txt_description"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,25 +135,23 @@
         </ScrollView>
     </HorizontalScrollView>
 
-    <View
-        android:id="@+id/view"
-        style="@style/icn_location"
-
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_description" />
-
     <TextView
         android:id="@+id/txt_description"
         style="@style/typ_reallySmall"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
         android:text="ASDASFDGFDGSDFGVFGDGDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDVFDVDFGVDGFVDGFVD"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txt_locationProf"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
 
@@ -93,13 +161,47 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="Javeriana"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/txt_description" />
 
+    <View
+        android:id="@+id/view"
+        style="@style/icn_location"
 
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_description" />
+
+    <TextView
+        android:id="@+id/myRecomended"
+        style="@style/typ_kindaBig"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingLeft="16dp"
+        android:text="Recommended by:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcyRecommended"
+        android:layout_width="0dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRecomended"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

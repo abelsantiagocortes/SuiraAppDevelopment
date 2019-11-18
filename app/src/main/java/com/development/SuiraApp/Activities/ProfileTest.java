@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.development.SuiraApp.Adapters.RecommendedAdapter;
+import com.development.SuiraApp.Adapters.Opportunities.RecommendedAdapter;
 import com.development.SuiraApp.R;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class ProfileTest extends AppCompatActivity {
 
         int x = R.drawable.photographer;
         List<Integer> imgs = new ArrayList<>();
-        for (int c = 0; c < 20; c++)
+        for (int c = 0; c < 1; c++)
         {
             imgs.add(R.drawable.photographer);
             imgs.add(R.drawable.paint);

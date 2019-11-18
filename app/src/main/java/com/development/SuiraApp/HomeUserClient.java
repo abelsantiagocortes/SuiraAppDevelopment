@@ -17,14 +17,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.development.SuiraApp.Activities.CreateOpportunity;
-import com.development.SuiraApp.Activities.Home_Tab;
-import com.development.SuiraApp.Activities.LandingPage;
-import com.development.SuiraApp.Activities.LogIn;
-import com.development.SuiraApp.Activities.Notifications;
-import com.development.SuiraApp.Activities.Oppor_tab;
-import com.development.SuiraApp.Activities.PopUpContactInfo;
-import com.development.SuiraApp.Activities.Profile_tab;
+import com.development.SuiraApp.Activities.Authentication.LandingPage;
+import com.development.SuiraApp.Activities.Authentication.LogIn;
+import com.development.SuiraApp.Activities.Opportunities.CreateOpportunity;
+import com.development.SuiraApp.Activities.Opportunities.Notifications;
+import com.development.SuiraApp.Adapters.TabViewPagerAdapter;
+import com.development.SuiraApp.Fragments.CurrentUser.Oppor_tab;
+import com.development.SuiraApp.Fragments.CurrentUser.Profile_tab;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -134,6 +133,7 @@ public class HomeUserClient extends AppCompatActivity {
                 Intent intent2 = new Intent( getApplicationContext(), LogIn.class );
                 startActivity(intent2);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

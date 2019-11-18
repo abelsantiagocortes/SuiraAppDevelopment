@@ -7,7 +7,7 @@
     android:background="@drawable/round_pop"
     android:backgroundTint="@color/clr_justWhite"
     android:elevation="4dp"
-    tools:context=".Activities.PopUp">
+    tools:context=".PopUps.PopUp">
 
     <ImageView
         android:id="@+id/imageView3"

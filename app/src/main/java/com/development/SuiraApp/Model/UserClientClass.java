@@ -14,6 +14,17 @@ public class UserClientClass implements Serializable {
     private String name;
     private String lastName;
     private Map<String , TagClass> tag;
+    private String location;
+    private String phone;
+    private String linkFacebook;
+    private String linkInstagram;
+    private String linkSpotify;
+    private String linkYoutube;
+    private String description;
+
+    public UserClientClass(){
+
+    }
 
     public UserClientClass( String name, String lastName) {
         this.name = name;
@@ -21,8 +32,6 @@ public class UserClientClass implements Serializable {
         this.tag = new HashMap<>();
     }
 
-    public UserClientClass() {
-    }
 
     public String getName() {
         return name;
@@ -50,6 +59,60 @@ public class UserClientClass implements Serializable {
     }
 
 
+    public String getLocation() {
+        return location;
+    }
 
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getLinkFacebook() {
+        return linkFacebook;
+    }
+
+    public String getLinkInstagram() {
+        return linkInstagram;
+    }
+
+    public String getLinkSpotify() {
+        return linkSpotify;
+    }
+
+    public String getLinkYoutube() {
+        return linkYoutube;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setLinkFacebook(String linkFacebook) {
+        this.linkFacebook = linkFacebook;
+    }
+
+    public void setLinkInstagram(String linkInstagram) {
+        this.linkInstagram = linkInstagram;
+    }
+
+    public void setLinkSpotify(String linkSpotify) {
+        this.linkSpotify = linkSpotify;
+    }
+
+    public void setLinkYoutube(String linkYoutube) {
+        this.linkYoutube = linkYoutube;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

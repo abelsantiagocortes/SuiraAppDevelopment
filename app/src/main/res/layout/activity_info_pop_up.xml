@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/round_pop"
     android:backgroundTint="@color/clr_justWhite"
-    tools:context=".Activities.InfoPopUp">
+    tools:context=".PopUps.InfoPopUp">
 
     <TextView
         android:id="@+id/contentPopUp"
