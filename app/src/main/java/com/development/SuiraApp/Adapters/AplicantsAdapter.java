@@ -100,6 +100,7 @@ public class AplicantsAdapter extends RecyclerView.Adapter<AplicantsAdapter.Apli
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
+    //abel es gay
 
     @Override
     public ApliViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
