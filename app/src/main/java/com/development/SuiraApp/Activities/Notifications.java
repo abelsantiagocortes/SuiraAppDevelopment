@@ -65,8 +65,8 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
         Toolbar toolbar = view.findViewById(R.id.toolbarMenu);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.rv);
         signOutAuth = FirebaseAuth.getInstance();
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv);
 
 
 

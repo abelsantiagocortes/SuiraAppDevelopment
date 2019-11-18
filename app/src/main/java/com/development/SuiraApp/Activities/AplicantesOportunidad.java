@@ -35,49 +35,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AplicantesOportunidad extends Fragment implements AplicantsAdapter.OnAcceptListener , AplicantsAdapter.OnGoListener {
+public class AplicantesOportunidad extends AppCompatActivity implements AplicantsAdapter.OnAcceptListener , AplicantsAdapter.OnGoListener {
 
     private RecyclerView recyclerView;
     public List<Aplication> apps;
-    private FirebaseAuth signOutAuth;
+    private FirebaseAuth signOutAuth = FirebaseAuth.getInstance();
     private AplicantsAdapter adapter;
     private Map<String , byte[]> fotos = new HashMap<>();
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     /******valor de la oportunidad quemado*****/
     private String oppID = "-LtwdhFfxJZeKk82PaP3";
 
-    private class WrapperApp{
-        public String aplicantName;
-        public String aplicantId;
-        public double porcentaje;
-
-    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_aplicantes_oportunidad, container, false);
+    public void onCreate(Bundle savedInstanceState) {
 
 
 
         super.onCreate(savedInstanceState);
 
-        Toolbar toolbar = view.findViewById(R.id.toolbarMenu);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-
-        recyclerView = (RecyclerView) view.findViewById(R.id.rv);
-        signOutAuth = FirebaseAuth.getInstance();
-
-
-        LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(llm);
-        recyclerView.setHasFixedSize(true);
-
-
-        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
-        recyclerView.addItemDecoration(itemDecorator);
-
-
+        setContentView(R.layout.activity_aplicantes_oportunidad);
+        recyclerView = findViewById(R.id.recyclerAplicant);
         apps = new ArrayList<>();
         FirebaseUser currentUser = signOutAuth.getCurrentUser();
         String userId = currentUser.getUid();
@@ -87,7 +65,6 @@ public class AplicantesOportunidad extends Fragment implements AplicantsAdapter.
         //apps.add(new Aplication("lCf0BCck04Mj1BGw3gDQ2P5dXKR2" , "-LtuuF3tD0fv0D8pLbIi"));
         initializeAdapter();
 
-        return  view;
     }
 
 
@@ -125,7 +102,10 @@ public class AplicantesOportunidad extends Fragment implements AplicantsAdapter.
         recyclerView.setAdapter(adapter);
     }
 
-
+    /**
+     * Creates and pushes a notification
+     * @param position the position of the application in the arraylist
+     */
     @Override
     public void OnAccept(int position) {
         FirebaseUser currentUser = signOutAuth.getCurrentUser();
@@ -144,7 +124,7 @@ public class AplicantesOportunidad extends Fragment implements AplicantsAdapter.
         DatabaseReference dbNot = dbSuira.getReference("notification");
         String key = dbNot.push().getKey();
         System.out.println("Voy a meter la notificacion");
-        Toast toast = Toast.makeText(getContext(), "You have accepted " + apps.get(position).getNombre() + "!", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "You have accepted " + apps.get(position).getNombre() + "!", Toast.LENGTH_SHORT);
         toast.setMargin(50, 50);
         toast.show();
         dbNot.child(key).setValue(noti);

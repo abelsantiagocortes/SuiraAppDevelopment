@@ -94,9 +94,8 @@ public class HomeUserClient extends AppCompatActivity {
 
         TabViewPagerAdapter tabViewPagerAdapter= new TabViewPagerAdapter(getSupportFragmentManager());
         tabViewPagerAdapter.addFragment(new Oppor_tab(),"Opportunities");
-        tabViewPagerAdapter.addFragment(new AplicantesOportunidad(),"Home");
+        tabViewPagerAdapter.addFragment(new Notifications(),"Home");
         tabViewPagerAdapter.addFragment(new Profile_tab(),"Profile");
-        //tabViewPagerAdapter.addFragment(new AplicantesOportunidad(),"opoooo");
         viewPager.setAdapter(tabViewPagerAdapter);
     }
     /**
