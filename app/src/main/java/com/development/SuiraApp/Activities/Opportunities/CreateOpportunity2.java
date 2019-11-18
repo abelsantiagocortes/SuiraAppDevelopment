@@ -1,4 +1,4 @@
-package com.development.SuiraApp.Activities;
+package com.development.SuiraApp.Activities.Opportunities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.development.SuiraApp.Activities.Authentication.LogIn;
 import com.development.SuiraApp.Model.OpportunityClass;
+import com.development.SuiraApp.PopUps.PopUp;
 import com.development.SuiraApp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -102,7 +104,7 @@ public class CreateOpportunity2 extends AppCompatActivity {
                     String key = dbOpps.push().getKey();
                     dbOpps.child(key).setValue(opp);
 
-                    Intent intentLog = new Intent(getApplicationContext(),LogIn.class);
+                    Intent intentLog = new Intent(getApplicationContext(), LogIn.class);
                     startActivity(intentLog);
                     finish();
                 }else {

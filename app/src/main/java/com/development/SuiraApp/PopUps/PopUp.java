@@ -20,6 +20,11 @@ public class PopUp extends AppCompatActivity {
 
     TextView contain;
     Button boton;
+
+    /**
+     * Initializes the GUI-Activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +65,10 @@ public class PopUp extends AppCompatActivity {
         });
     }
 
+    /**
+     * It receives a String with the name of the activity the button must initialize
+     * @param sendActivity the string containing the name of the activity to be initialized
+     */
     private void senderNew( String sendActivity )
     {
         System.out.println(sendActivity);

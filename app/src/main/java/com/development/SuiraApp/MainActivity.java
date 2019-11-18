@@ -1,4 +1,4 @@
-package com.development.SuiraApp.Activities.Authentication;
+package com.development.SuiraApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
