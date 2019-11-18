@@ -18,6 +18,9 @@ public class ApplicationClass {
         this.porcentaje = 0;
         this.opp = new OpportunityClass();
     }
+    public ApplicationClass(){
+
+    }
 
     public String getOpportunityId() {
         return opportunityId;

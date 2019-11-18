@@ -2,22 +2,18 @@ package com.development.SuiraApp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.development.SuiraApp.Adapters.AplicantsAdapter;
-import com.development.SuiraApp.Model.Aplication;
+import com.development.SuiraApp.Model.ApplicationClass;
 import com.development.SuiraApp.Model.NotificationClass;
+import com.development.SuiraApp.Model.OpportunityClass;
 import com.development.SuiraApp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,29 +34,42 @@ import java.util.Map;
 public class AplicantesOportunidad extends AppCompatActivity implements AplicantsAdapter.OnAcceptListener , AplicantsAdapter.OnGoListener {
 
     private RecyclerView recyclerView;
-    public List<Aplication> apps;
+    public List<ApplicationClass> apps;
+    public String ID;
     private FirebaseAuth signOutAuth = FirebaseAuth.getInstance();
     private AplicantsAdapter adapter;
     private Map<String , byte[]> fotos = new HashMap<>();
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-    /******valor de la oportunidad quemado*****/
-    private String oppID = "-Ltx8BVUpBVZjqYKO8jU";
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
 
-
+        /**/
         super.onCreate(savedInstanceState);
 
+        String userId = getIntent().getStringExtra("userId");
+
+
         setContentView(R.layout.activity_aplicantes_oportunidad);
-        recyclerView = findViewById(R.id.recyclerAplicant);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerAplicant);
+        signOutAuth = FirebaseAuth.getInstance();
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setHasFixedSize(true);
+
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
+        recyclerView.addItemDecoration(itemDecorator);
+         /***/
+
+
         apps = new ArrayList<>();
-        FirebaseUser currentUser = signOutAuth.getCurrentUser();
-        String userId = currentUser.getUid();
-        Query query = FirebaseDatabase.getInstance().getReference("applications").orderByChild("opportunityId").equalTo(oppID);
-        query.addListenerForSingleValueEvent(listener2);
+        Query query = FirebaseDatabase.getInstance().getReference("applications").orderByChild("opportunityId").equalTo(userId);
+        query.addValueEventListener(listener2);
 
         //apps.add(new Aplication("lCf0BCck04Mj1BGw3gDQ2P5dXKR2" , "-LtuuF3tD0fv0D8pLbIi"));
         initializeAdapter();
@@ -79,13 +88,49 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             if (dataSnapshot.exists()) {
+                System.out.println("si exiiiiiste");
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    System.out.println("usuario "+ snapshot.getValue(Aplication.class).getApplicantId());
-                    apps.add(snapshot.getValue(Aplication.class));
+                    System.out.println("usuario "+ snapshot.getValue(ApplicationClass.class).getApplicantId());
+                    apps.add(snapshot.getValue(ApplicationClass.class));
                 }
+                System.out.println("tam de la lista: "+ Integer.toString(apps.size()));
+                initializeAdapter();
+            }
+            else{
+                System.out.println("No exiiiiiiste");
             }
 
+
             initializeAdapter();
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    };
+
+    /**
+     * Listener to retrieve information from the database only once
+     */
+    ValueEventListener listener3 = new ValueEventListener() {
+        /**
+         * gets the notifications from the database the first time
+         * @param dataSnapshot wich the DB information
+         */
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            if (dataSnapshot.exists()) {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ID=snapshot.getKey();
+                }
+
+            }
+            else{
+
+            }
+
         }
 
         @Override
@@ -98,7 +143,11 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
      * initializes the  cards
      */
     private void initializeAdapter(){
+
         AplicantsAdapter adapter = new AplicantsAdapter(apps ,this , this , fotos);
+        for(int i = 0 ; i < apps.size() ; ++i) {
+            System.out.println(apps.get(i).getOpportunityId());
+        }
         recyclerView.setAdapter(adapter);
     }
 

@@ -16,6 +16,7 @@ public class OpportunityClass implements Serializable {
     List<String> reference;
     List<String> tags;
     double budget;
+    String key;
 
 
 
@@ -93,5 +94,13 @@ public class OpportunityClass implements Serializable {
 
     public void setBudget(double budget) {
         this.budget = budget;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
     }
 }
