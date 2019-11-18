@@ -9,30 +9,30 @@
         android:roundIcon="@mipmap/suira_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeUserClient"></activity>
-        <activity android:name=".Activities.RegisterTags" />
-        <activity android:name=".Activities.PopUpContactInfo" />
-        <activity android:name=".Activities.InfoPopUp" />
+        <activity android:name=".Activities.Opportunities.HomeUserClient"></activity>
+        <activity android:name=".Activities.Authentication.RegisterTags" />
+        <activity android:name=".PopUps.PopUpContactInfo" />
+        <activity android:name=".PopUps.InfoPopUp" />
         <activity android:name=".Activities.ProfileTest" />
-        <activity android:name=".Activities.PopUp" />
-        <activity android:name=".Activities.CreateOpportunity2" />
-        <activity android:name=".Activities.Register2" />
-        <activity android:name=".Activities.LandingPage" />
-        <activity android:name=".Activities.Register" />
+        <activity android:name=".PopUps.PopUp" />
+        <activity android:name=".Activities.Opportunities.CreateOpportunity2" />
+        <activity android:name=".Activities.Authentication.Register2" />
+        <activity android:name=".Activities.Authentication.LandingPage" />
+        <activity android:name=".Activities.Authentication.Register" />
+        <activity android:name=".Activities.Opportunities.CreateOpportunity" />
+        <activity android:name=".Fragments.Opportunities.Home_Tab"/>
+        <activity android:name=".Activities.Opportunities.Notifications" />
+        <activity android:name=".Activities.Authentication.AditionalInfo"/>
+        <activity android:name=".Activities.Authentication.MainActivity">
         <activity android:name=".Activities.OpportunityInfo"/>
-        <activity android:name=".Activities.CreateOpportunity" />
-        <activity android:name=".Activities.Home_Tab"/>
-        <activity android:name=".Activities.Notifications" />
-        <activity android:name=".Activities.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ForgotPassword" />
-        <activity android:name=".Activities.LogIn" />
+        <activity android:name=".Activities.Authentication.ForgotPassword" />
+        <activity android:name=".Activities.Authentication.LogIn" />
 
         <meta-data
             android:name="preloaded_fonts"

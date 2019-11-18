@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Register2">
+    tools:context=".Activities.Authentication.Register2">
 
     <View
         android:id="@+id/divider3"
@@ -82,7 +82,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginEnd="57dp"
         android:layout_marginBottom="32dp"
-        android:text="Registrarme"
+        android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
