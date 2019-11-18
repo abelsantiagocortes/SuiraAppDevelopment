@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.development.SuiraApp.Adapters.Opportunities.RecommendedAdapter;
 import com.development.SuiraApp.Model.UserClientClass;
 import com.development.SuiraApp.Adapters.MyViewPagerAdapter;
 import com.development.SuiraApp.R;
@@ -42,6 +46,10 @@ public class Profile_tab extends Fragment {
     GridLayout gridLayout;
     TextView txt_description;
     TextView txt_nameProf;
+    TextView txt_locationProf;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
     List<String> tagsFire/*= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"})*/;
@@ -55,10 +63,13 @@ public class Profile_tab extends Fragment {
         txt_description = (TextView) view.findViewById(R.id.txt_description);
         txt_nameProf = view.findViewById(R.id.txt_nameProf);
         img_profile = view.findViewById(R.id.img_profile);
+        txt_locationProf = view.findViewById(R.id.txt_locationProf);
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
         dbUsers = dbSuira.getReference("userClient");
         registerAuth = FirebaseAuth.getInstance();
         tagsFire = new ArrayList<String>();
+        txt_nameProf.setMovementMethod(new ScrollingMovementMethod());
+        txt_description.setMovementMethod(new ScrollingMovementMethod());
 
         // SACA EL ID
         String id = registerAuth.getCurrentUser().getUid();
@@ -70,12 +81,13 @@ public class Profile_tab extends Fragment {
                 //Aca sacas el objeto
                 UserClientClass post = dataSnapshot.getValue(UserClientClass.class);
                 txt_nameProf.setText(post.getName()+" "+post.getLastName());
+                txt_description.setText(post.getDescription());
+                txt_locationProf.setText(post.getLocation());
 
                 // Imprimimos el Map con un Iterador
                 Iterator it = post.getTag().keySet().iterator();
                 while(it.hasNext()){
                     String key = it.next().toString();
-                    System.out.println("Clave: " + key + " -> Valor: " + post.getTag().get(key));
                     tagsFire.add(key);
                 }
                 tagComponents();;
@@ -100,7 +112,29 @@ public class Profile_tab extends Fragment {
                 System.out.println("No se pudo sacar la foto");
             }
         });
+        recyclerView = (RecyclerView) view.findViewById(R.id.rcyRecommended);
 
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        int x = R.drawable.photographer;
+        List<Integer> imgs = new ArrayList<>();
+        for (int c = 0; c < 20; c++)
+        {
+            imgs.add(R.drawable.photographer);
+            imgs.add(R.drawable.paint);
+            imgs.add(R.drawable.fashion);
+            imgs.add(R.drawable.singer);
+        }
+
+        // specify an adapter (see also next example)
+        mAdapter = new RecommendedAdapter(imgs);
+        recyclerView.setAdapter(mAdapter);
 
         return  view;
     }
