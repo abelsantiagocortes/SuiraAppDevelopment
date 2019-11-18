@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.development.SuiraApp.Adapters.AplicantsAdapter;
 import com.development.SuiraApp.Model.ApplicationClass;
 import com.development.SuiraApp.Model.NotificationClass;
+import com.development.SuiraApp.Model.OpportunityClass;
 import com.development.SuiraApp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,12 +35,11 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
 
     private RecyclerView recyclerView;
     public List<ApplicationClass> apps;
+    public String ID;
     private FirebaseAuth signOutAuth = FirebaseAuth.getInstance();
     private AplicantsAdapter adapter;
     private Map<String , byte[]> fotos = new HashMap<>();
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-    /******valor de la oportunidad quemado*****/
-    private String oppID = "-LtxajI9Z4noMZ4KFR5W";
 
 
     @Override
@@ -48,6 +48,8 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
 
         /**/
         super.onCreate(savedInstanceState);
+
+        String userId = getIntent().getStringExtra("userId");
 
 
         setContentView(R.layout.activity_aplicantes_oportunidad);
@@ -66,7 +68,7 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
 
 
         apps = new ArrayList<>();
-        Query query = FirebaseDatabase.getInstance().getReference("applications").orderByChild("opportunityId").equalTo(oppID);
+        Query query = FirebaseDatabase.getInstance().getReference("applications").orderByChild("opportunityId").equalTo(userId);
         query.addValueEventListener(listener2);
 
         //apps.add(new Aplication("lCf0BCck04Mj1BGw3gDQ2P5dXKR2" , "-LtuuF3tD0fv0D8pLbIi"));
@@ -100,6 +102,35 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
 
 
             initializeAdapter();
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    };
+
+    /**
+     * Listener to retrieve information from the database only once
+     */
+    ValueEventListener listener3 = new ValueEventListener() {
+        /**
+         * gets the notifications from the database the first time
+         * @param dataSnapshot wich the DB information
+         */
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            if (dataSnapshot.exists()) {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ID=snapshot.getKey();
+                }
+
+            }
+            else{
+
+            }
+
         }
 
         @Override

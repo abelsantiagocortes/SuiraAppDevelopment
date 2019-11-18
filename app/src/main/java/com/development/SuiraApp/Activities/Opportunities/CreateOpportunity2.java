@@ -102,6 +102,7 @@ public class CreateOpportunity2 extends AppCompatActivity {
                     startActivity(intentP);
 
                     String key = dbOpps.push().getKey();
+                    opp.setKey(key);
                     dbOpps.child(key).setValue(opp);
 
                     Intent intentLog = new Intent(getApplicationContext(), LogIn.class);

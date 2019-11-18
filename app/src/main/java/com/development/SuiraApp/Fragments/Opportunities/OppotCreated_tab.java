@@ -67,7 +67,7 @@ public class OppotCreated_tab extends Fragment  {
         btnCreates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), AplicantesOportunidad.class);
+                Intent intent = new Intent(getContext(), CreateOpportunity.class);
                 startActivity(intent);
             }
         });
