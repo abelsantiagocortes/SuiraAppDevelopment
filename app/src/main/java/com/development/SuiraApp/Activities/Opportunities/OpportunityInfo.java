@@ -63,6 +63,7 @@ public class OpportunityInfo extends AppCompatActivity {
     Button apl;
     DatabaseReference databaseApplications;
     DatabaseReference creatApp;
+    ApplicationClass api;
 
     /**
      * Initializes the GUI-Activity
@@ -104,12 +105,15 @@ public class OpportunityInfo extends AppCompatActivity {
         tag4.setVisibility(View.INVISIBLE);
         tag5.setVisibility(View.INVISIBLE);
 
+        api = new ApplicationClass();
+
         Query query = FirebaseDatabase.getInstance().getReference("opportunities").child(oppId);
         //Query query = FirebaseDatabase.getInstance().getReference("opportunities").child("-LtwdhFfxJZeKk82PaP3");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 OpportunityClass oppor = dataSnapshot.getValue(OpportunityClass.class);
+                api.setOpp(oppor);
                 oppNameT.setText(oppor.getName());
                 description.setText(oppor.getDescription());
                 if( oppor.getTags().size() > 0 )
@@ -203,9 +207,11 @@ public class OpportunityInfo extends AppCompatActivity {
                         String myName = userAux.getName();
 
                         String appId = creatApp.push().getKey();
-                        ApplicationClass application = new ApplicationClass( oppId, userId, myName);
+                        api.setOpportunityId(oppId);
+                        api.setApplicantId(userId);
+                        api.setNombre(myName);
                         //ApplicationClass application = new ApplicationClass( "-LtwdhFfxJZeKk82PaP3", userId, myName);
-                        creatApp.child(appId).setValue(application);
+                        creatApp.child(appId).setValue(api);
                         Toast.makeText(getApplicationContext(), "¡Gracias por Aplicar!", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent( getApplicationContext(), HomeUserClient.class);
