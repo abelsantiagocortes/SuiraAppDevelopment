@@ -13,7 +13,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/opportunitiesLayout"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="242dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/notification_border">
 
 
@@ -35,11 +39,11 @@
 
         <TextView
             android:id="@+id/nameProfile"
-            style="@style/typ_small"
-            android:layout_width="83dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="88dp"
+            style="@style/typ_Big"
+            android:layout_width="92dp"
+            android:layout_height="77dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="56dp"
             android:text="Assia Laranson"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,10 +52,10 @@
         <TextView
             android:id="@+id/nameOppo"
             style="@style/typ_boldTitles"
-            android:layout_width="277dp"
-            android:layout_height="27dp"
+            android:layout_width="234dp"
+            android:layout_height="35dp"
             android:layout_marginStart="112dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="28dp"
             android:text="Nombre de la Oportunidad"
             android:textColor="@color/clr_veryGrey"
             android:textSize="20sp"
@@ -63,7 +67,7 @@
             style="@style/btn_highAction"
             android:layout_width="126dp"
             android:layout_height="25dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:foregroundGravity="center_vertical|center|center_horizontal"
             android:gravity="bottom|center|center_horizontal|center_vertical"
@@ -74,8 +78,8 @@
 
         <TextView
             android:id="@+id/descriptionOppo"
-            android:layout_width="278dp"
-            android:layout_height="71dp"
+            android:layout_width="245dp"
+            android:layout_height="69dp"
             android:layout_marginStart="112dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="13dp"
@@ -86,14 +90,15 @@
             android:textSize="12dp"
             app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameOppo" />
+            app:layout_constraintTop_toBottomOf="@+id/nameOppo"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="112dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/imageView9"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/location" />
@@ -102,7 +107,7 @@
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -122,7 +127,7 @@
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -134,10 +139,10 @@
             android:layout_height="28dp"
             android:layout_marginStart="45dp"
             android:layout_marginEnd="9dp"
-            android:layout_marginBottom="19dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/btnCancelar"
             app:layout_constraintEnd_toStartOf="@+id/textView23"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.911"
             app:layout_constraintStart_toEndOf="@+id/textView21"
             app:srcCompat="@drawable/money" />
 
@@ -145,8 +150,8 @@
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="28dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionOppo" />

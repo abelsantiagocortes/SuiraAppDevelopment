@@ -73,6 +73,7 @@ public class ApplicationAdapter  extends RecyclerView.Adapter<ApplicationAdapter
         x.moneyOppo.setText(String.valueOf(apis.get(position).getOpp().getBudget()));
         x.dateOppo.setText(apis.get(position).getOpp().getEndDate());
         x.nameProfile.setText(apis.get(position).getNombre());
+        x.locationOppo.setText(apis.get(position).getOpp().getLocation());
 
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         storageRef.child("images/userClient/" + apis.get(position).getOpp().getPublisherId()).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
