@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.development.SuiraApp.Model.Aplication;
+import com.development.SuiraApp.Model.ApplicationClass;
 import com.development.SuiraApp.R;
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,8 +31,7 @@ import java.util.Map;
 
 public class AplicantsAdapter extends RecyclerView.Adapter<AplicantsAdapter.ApliViewHolder> {
 
-
-    List<Aplication> apps;
+    List<ApplicationClass> apps;
     OnAcceptListener onAcceptListener;
     OnGoListener onGoListener;
     Map<String , byte[]> fotos;
@@ -59,7 +58,7 @@ public class AplicantsAdapter extends RecyclerView.Adapter<AplicantsAdapter.Apli
          */
         ApliViewHolder(View itemView , OnGoListener onGoListener, OnAcceptListener onAcceptListener) {
             super(itemView);
-            cv = (CardView)itemView.findViewById(R.id.cardi);
+            cv = (CardView)itemView.findViewById(R.id.cardsApplicant);
             userPhoto = (CircularImageView) itemView.findViewById(R.id.img_profile);
             acceptButton = (Button) itemView.findViewById(R.id.button3);
             aplicantName = itemView.findViewById(R.id.aplicantName);
@@ -88,14 +87,13 @@ public class AplicantsAdapter extends RecyclerView.Adapter<AplicantsAdapter.Apli
     }
 
 
-    public AplicantsAdapter(List<Aplication> apps, AplicantsAdapter.OnAcceptListener acceptListener, AplicantsAdapter.OnGoListener goListener, Map<String , byte[]> fotitos){
+    public AplicantsAdapter(List<ApplicationClass> apps, AplicantsAdapter.OnAcceptListener acceptListener, AplicantsAdapter.OnGoListener goListener, Map<String , byte[]> fotitos){
         this.apps = apps;
         this.fotos = fotitos;
         this.onAcceptListener = acceptListener;
         this.onGoListener = goListener;
 
     }
-
 
 
     @Override
@@ -123,10 +121,9 @@ public class AplicantsAdapter extends RecyclerView.Adapter<AplicantsAdapter.Apli
         final String applicant= apps.get(i).getApplicantId();
         System.out.println("*/---------------------------------------------------------/*");
         System.out.println("id: " + applicant);
-        notifViewHolder.porcentaje.setText("Match "+Double.toString(apps.get(i).getPorcentaje()) + "%");
+        notifViewHolder.porcentaje.setText(Double.toString(apps.get(i).getPorcentaje()) );
         notifViewHolder.aplicantName.setText(apps.get(i).getNombre());
         Query query = FirebaseDatabase.getInstance().getReference("userClient").orderByKey().equalTo(applicant);
-
 
         ValueEventListener listener = new ValueEventListener() {
 
@@ -171,12 +168,8 @@ public class AplicantsAdapter extends RecyclerView.Adapter<AplicantsAdapter.Apli
     }
 
 
-
-
-
         public interface  OnAcceptListener{
         void OnAccept(int position);
-
     }
 
     public interface  OnGoListener{

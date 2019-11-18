@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardi"
+    android:id="@+id/cardsApplicant"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/btn_low_action"
@@ -22,14 +22,13 @@
 
         <com.github.siyamed.shapeimageview.CircularImageView
             android:id="@+id/img_profile"
-            android:layout_width="match_parent"
+            android:layout_width="78dp"
             android:layout_height="78dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
 
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView3"
             app:layout_constraintHorizontal_bias="0.0"

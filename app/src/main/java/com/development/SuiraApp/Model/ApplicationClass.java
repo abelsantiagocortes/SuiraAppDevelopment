@@ -12,6 +12,9 @@ public class ApplicationClass {
         this.nombre = nombre;
         this.porcentaje = 0;
     }
+    public ApplicationClass(){
+
+    }
 
     public String getOpportunityId() {
         return opportunityId;

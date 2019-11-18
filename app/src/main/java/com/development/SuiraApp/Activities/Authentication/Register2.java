@@ -120,7 +120,7 @@ public class Register2 extends AppCompatActivity {
                // user.setTag(tagsUser);
 
 
-/******************************************************************/
+  /******************************************************************/
                 FirebaseUser currentUser = registerAuth.getCurrentUser();
                 final String userId = currentUser.getUid();
 
