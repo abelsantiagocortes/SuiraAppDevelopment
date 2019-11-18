@@ -15,7 +15,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.development.SuiraApp.Adapters.Opportunities.RecommendedAdapter;
 import com.development.SuiraApp.Model.UserClientClass;
 import com.development.SuiraApp.Adapters.MyViewPagerAdapter;
 import com.development.SuiraApp.R;
@@ -44,7 +47,9 @@ public class Profile_tab extends Fragment {
     TextView txt_description;
     TextView txt_nameProf;
     TextView txt_locationProf;
-
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
     List<String> tagsFire/*= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"})*/;
@@ -94,7 +99,7 @@ public class Profile_tab extends Fragment {
             }
         });
 
-       /* StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         storageRef.child("images/userClient/" + id).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
@@ -106,8 +111,30 @@ public class Profile_tab extends Fragment {
             public void onFailure(@NonNull Exception exception) {
                 System.out.println("No se pudo sacar la foto");
             }
-        });*/
+        });
+        recyclerView = (RecyclerView) view.findViewById(R.id.rcyRecommended);
 
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        int x = R.drawable.photographer;
+        List<Integer> imgs = new ArrayList<>();
+        for (int c = 0; c < 20; c++)
+        {
+            imgs.add(R.drawable.photographer);
+            imgs.add(R.drawable.paint);
+            imgs.add(R.drawable.fashion);
+            imgs.add(R.drawable.singer);
+        }
+
+        // specify an adapter (see also next example)
+        mAdapter = new RecommendedAdapter(imgs);
+        recyclerView.setAdapter(mAdapter);
 
         return  view;
     }
