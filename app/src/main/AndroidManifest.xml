@@ -19,6 +19,7 @@
         <activity android:name=".Activities.Register2" />
         <activity android:name=".Activities.LandingPage" />
         <activity android:name=".Activities.Register" />
+        <activity android:name=".Activities.OpportunityInfo"/>
         <activity android:name=".Activities.CreateOpportunity" />
         <activity android:name=".Activities.Home_Tab"/>
         <activity android:name=".Activities.Notifications" />
