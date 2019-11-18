@@ -22,11 +22,9 @@ public class SCHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schome);
-        Toolbar toolbar = findViewById(R.id.toolbarMenu);
-        setSupportActionBar(toolbar);
 
-        tabLayout=(TabLayout) findViewById(R.id.tabLayout);
-        viewPager=(ViewPager) findViewById(R.id.viewPager);
+        tabLayout=(TabLayout) findViewById(R.id.tabLayoutSC);
+        viewPager=(ViewPager) findViewById(R.id.viewPagerSC);
 
         tabLayout.setupWithViewPager(viewPager);
         setUpViewPager(viewPager);
@@ -39,7 +37,6 @@ public class SCHome extends AppCompatActivity {
         tabViewPagerAdapter.addFragment(new Suggestions_tab(),"Suggestions");
         tabViewPagerAdapter.addFragment(new Terms_tab(),"Terms & Conditions");
         viewPager.setAdapter(tabViewPagerAdapter);
-
     }
 
 }

@@ -157,15 +157,16 @@
 
     <TextView
         android:id="@+id/txt_locationProf"
-        style="@style/typ_small"
+        style="@style/typ_Big"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:text="Javeriana"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/txt_description" />
 
@@ -173,8 +174,10 @@
         android:id="@+id/view"
         style="@style/icn_location"
 
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="26dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_description" />
 
@@ -204,4 +207,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myRecomended"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_compartir"
+        style="@style/btn_highAction"
+
+        android:layout_width="148dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Compartir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcyRecommended" />
+
+    <Button
+        android:id="@+id/btn_servicio"
+        style="@style/btn_lowAction"
+
+        android:layout_width="198dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Servicio al Cliente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcyRecommended" />
 </androidx.constraintlayout.widget.ConstraintLayout>

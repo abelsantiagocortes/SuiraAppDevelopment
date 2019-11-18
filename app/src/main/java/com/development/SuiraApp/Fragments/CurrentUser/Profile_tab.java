@@ -2,6 +2,7 @@ package com.development.SuiraApp.Fragments.CurrentUser;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -12,12 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.development.SuiraApp.Activities.ClientService.SCHome;
 import com.development.SuiraApp.Adapters.Opportunities.RecommendedAdapter;
 import com.development.SuiraApp.Model.UserClientClass;
 import com.development.SuiraApp.Adapters.MyViewPagerAdapter;
@@ -50,6 +53,9 @@ public class Profile_tab extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    Button btn_compartir;
+    Button btn_servicio;
+
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
     List<String> tagsFire/*= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"})*/;
@@ -64,6 +70,8 @@ public class Profile_tab extends Fragment {
         txt_nameProf = view.findViewById(R.id.txt_nameProf);
         img_profile = view.findViewById(R.id.img_profile);
         txt_locationProf = view.findViewById(R.id.txt_locationProf);
+        btn_compartir = view.findViewById(R.id.btn_compartir);
+        btn_servicio = view.findViewById(R.id.btn_servicio);
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
         dbUsers = dbSuira.getReference("userClient");
         registerAuth = FirebaseAuth.getInstance();
@@ -71,6 +79,21 @@ public class Profile_tab extends Fragment {
         txt_nameProf.setMovementMethod(new ScrollingMovementMethod());
         txt_description.setMovementMethod(new ScrollingMovementMethod());
 
+        //Botones
+        btn_servicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getContext(), SCHome.class);
+                startActivity(in);
+            }
+        });
+
+        btn_compartir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Se ha copiado el link de su perfil ",Toast.LENGTH_SHORT).show();
+            }
+        });
         // SACA EL ID
         String id = registerAuth.getCurrentUser().getUid();
 
