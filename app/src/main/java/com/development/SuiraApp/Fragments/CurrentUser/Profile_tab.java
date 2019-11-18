@@ -42,6 +42,8 @@ public class Profile_tab extends Fragment {
     GridLayout gridLayout;
     TextView txt_description;
     TextView txt_nameProf;
+    TextView txt_locationProf;
+
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
     List<String> tagsFire/*= Arrays.asList(new String[]{"holidasdasdasdasdassds", "como", "vas","holi","bb"})*/;
@@ -55,6 +57,7 @@ public class Profile_tab extends Fragment {
         txt_description = (TextView) view.findViewById(R.id.txt_description);
         txt_nameProf = view.findViewById(R.id.txt_nameProf);
         img_profile = view.findViewById(R.id.img_profile);
+        txt_locationProf = view.findViewById(R.id.txt_locationProf);
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
         dbUsers = dbSuira.getReference("userClient");
         registerAuth = FirebaseAuth.getInstance();
@@ -70,6 +73,8 @@ public class Profile_tab extends Fragment {
                 //Aca sacas el objeto
                 UserClientClass post = dataSnapshot.getValue(UserClientClass.class);
                 txt_nameProf.setText(post.getName()+" "+post.getLastName());
+                txt_description.setText(post.getDescription());
+                txt_locationProf.setText(post.getLocation());
 
                 // Imprimimos el Map con un Iterador
                 Iterator it = post.getTag().keySet().iterator();
