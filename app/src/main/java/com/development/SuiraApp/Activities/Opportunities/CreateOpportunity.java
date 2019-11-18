@@ -37,7 +37,6 @@ public class CreateOpportunity extends AppCompatActivity {
     GridLayout gridLayout2;
     TextView txt_showselected2;
     DatabaseReference dbTags;
-    DatabaseReference dbOpps;
     FirebaseAuth userAuth;
     EditText name;
     EditText description;
@@ -60,8 +59,6 @@ public class CreateOpportunity extends AppCompatActivity {
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
         userAuth = FirebaseAuth.getInstance();
         dbTags =  dbSuira.getReference("tag");
-        dbOpps = dbSuira.getReference("opportunities");
-
 
         tagsFire = new ArrayList<String>();
 
@@ -99,15 +96,14 @@ public class CreateOpportunity extends AppCompatActivity {
 
                     Bundle bund = new Bundle();
 
-                    String msn = new String("Thanks for Creating Your Opportunity \n \n \n Suira is Working To Find What You Need");
-                    String btnMsn = new String("Create");
+                    String msn = new String("Little to Create Your Opportunity \n \n \n There are some information extra");
+                    String btnMsn = new String("Ok");
                     String activityName = new String("Notifications");
 
                     Intent intent= new Intent(getApplicationContext(), PopUp.class);
 
                     bund.putString("mensaje", msn);
                     bund.putString("contenidoBoton", btnMsn);
-                    bund.putString("sender", activityName );
                     intent.putExtras(bund);
 
                     startActivity(intent);
@@ -238,8 +234,12 @@ public class CreateOpportunity extends AppCompatActivity {
         String userId= user.getUid();
         System.out.println(userId);
         OpportunityClass opp= new OpportunityClass(name_opp,description_opp,tags,userId);
-        String key = dbOpps.push().getKey();
-        dbOpps.child(key).setValue(opp);
+
+        Intent intent= new Intent(getApplicationContext(), CreateOpportunity2.class);
+        intent.putExtra("oppObject",  opp );
+        startActivity(intent);
+        //String key = dbOpps.push().getKey();
+        //dbOpps.child(key).setValue(opp);
 
 
 

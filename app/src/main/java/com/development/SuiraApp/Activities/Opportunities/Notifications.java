@@ -240,10 +240,15 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
         updateSeen(wrapperList.get(position).getKey());
 
         if(notifications.get(position).getType().equals("Match")){
+            Bundle temp = new Bundle();
+            String opportunityId = notifications.get(position).getOpportunityId();
             Toast toast=Toast.makeText(getContext(), "Soy un match",Toast.LENGTH_SHORT);
             toast.setMargin(50,50);
             toast.show();
-            //TODO: intent to opportunity detatils activity (p21)
+            Intent intent = new Intent(getContext(), OpportunityInfo.class);
+            temp.putString("OppId", opportunityId);
+            intent.putExtras(temp);
+            startActivity(intent);
         }
         else if(notifications.get(position).getType().equals("Recommendation")){
             //TODO: intent to profile public activity (p16)

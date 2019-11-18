@@ -22,8 +22,9 @@
         <activity android:name=".Activities.Opportunities.CreateOpportunity" />
         <activity android:name=".Fragments.Opportunities.Home_Tab"/>
         <activity android:name=".Activities.Opportunities.Notifications" />
+        <activity android:name=".Activities.Opportunities.OpportunityInfo"/>
         <activity android:name=".Activities.Authentication.AditionalInfo"/>
-        <activity android:name=".Activities.Authentication.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

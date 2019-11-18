@@ -393,6 +393,16 @@
         <item name="android:background">@drawable/btn_tag</item>
         <item name="android:textAppearance">@style/typ_small</item>
 
+        <!-- Color Attributes-->
+        <item name= "android:textColor">@color/clr_justWhite</item>
+
+    </style>
+
+    <style name="btn_tag2">
+        <item name="android:background">@drawable/btn_tag</item>
+        <item name="android:colorBackground">@color/clr_suiraPurple</item>
+        <item name="android:textAppearance">@style/typ_small</item>
+
 
         <!-- Color Attributes-->
         <item name= "android:textColor">@color/clr_justWhite</item>
@@ -404,7 +414,6 @@
         <item name= "android:thumbTint">@color/clr_suiraPurple</item>
         <item name= "android:backgroundTint">@color/clr_justWhite</item>
         <item name= "android:scrollbarTrackHorizontal">@color/clr_justWhite</item>
-        <item name= "android:trackTint">@color/clr_justWhite</item>
 
     </style>
 
@@ -429,6 +438,17 @@
         <item name="android:textSize">18dp</item>
         <item name="android:fontFamily">@font/source_sans_pro_light</item>
     </style>
+
+    <style name="main_TextInfo">
+        <item name="android:textColor">@color/clr_suiraPurple</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="main_Name_OppInfo">
+        <item name="android:textColor">@color/clr_suiraPurple</item>
+        <item name="android:textSize">30dp</item>
+    </style>
+
 
 
 

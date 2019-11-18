@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Opportunities.OpportunityInfo">
+
+    <include
+        android:id="@+id/profileToolBar"
+        layout="@layout/toolbar_menu" />
+
+    <EditText
+        android:id="@+id/mainStaticText"
+        style="@style/main_TextInfo"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="12dp"
+        android:enabled="false"
+        android:text="@string/infoOpp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileToolBar" />
+
+    <TextView
+        android:id="@+id/oppName"
+        style="@style/main_Name_OppInfo"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:textColor="@color/clr_veryGrey"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainStaticText" />
+
+    <TextView
+        android:id="@+id/createdBy"
+        style="@style/main_TextInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="248dp"
+        android:text="Publicado por:"
+        android:textColor="@color/clr_quiteGrey"
+        app:layout_constraintBottom_toTopOf="@+id/profileOppA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/oppName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:id="@+id/profileOppA"
+        android:layout_width="114dp"
+        android:layout_height="115dp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="10dp"
+
+        android:layout_marginBottom="264dp"
+        android:src="@drawable/camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nameOppCreator"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.344"
+        app:siBorderColor="@color/clr_quiteGrey"
+        app:siBorderWidth="2dp" />
+
+    <TextView
+        android:id="@+id/nameOppCreator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/clr_quiteGrey"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.674"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createdBy" />
+
+    <Button
+        android:id="@+id/seeProfile"
+        style="@style/btn_highAction"
+        android:layout_width="81dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="93dp"
+        android:text="Ver Perfíl"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/description_Static"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profileOppA"
+        app:layout_constraintTop_toBottomOf="@+id/nameOppCreator" />
+
+    <TextView
+        android:id="@+id/description_Static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="302dp"
+        android:layout_marginBottom="444dp"
+        android:text="Descripción:"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileOppA"
+        app:layout_constraintVertical_bias="0.404" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginBottom="395dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_Static" />
+
+    <Button
+        android:id="@+id/tagSubOpp1"
+        style="@style/btn_tag2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="21dp"
+        android:backgroundTint="@color/clr_suiraPurple"
+        android:textSize="25dp"
+        android:clickable="false"
+        app:layout_constraintBottom_toTopOf="@+id/tagSubOpp4"
+        app:layout_constraintEnd_toStartOf="@+id/tagSubOpp3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <Button
+        android:id="@+id/tagSubOpp2"
+        style="@style/btn_tag2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:backgroundTint="@color/clr_suiraPurple"
+        android:textSize="25dp"
+        android:clickable="false"
+        app:layout_constraintBottom_toTopOf="@+id/tagSubOpp5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tagSubOpp3"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <Button
+        android:id="@+id/tagSubOpp3"
+        style="@style/btn_tag2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/clr_suiraPurple"
+        android:textSize="25dp"
+        android:clickable="false"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/tagSubOpp4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <Button
+        android:id="@+id/tagSubOpp4"
+        style="@style/btn_tag2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="79dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="212dp"
+        android:backgroundTint="@color/clr_suiraPurple"
+        android:textSize="25dp"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tagSubOpp5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/tagSubOpp5"
+        style="@style/btn_tag2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="212dp"
+        android:backgroundTint="@color/clr_suiraPurple"
+        android:textSize="25dp"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tagSubOpp4" />
+
+    <TextView
+        android:id="@+id/location"
+        style="@style/icn_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="148dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calendar"
+        app:layout_constraintTop_toBottomOf="@+id/tagSubOpp4"
+        app:layout_constraintVertical_bias="0.916" />
+
+    <TextView
+        android:id="@+id/calendar"
+        style="@style/icn_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="148dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tagSubOpp4"
+        app:layout_constraintVertical_bias="0.916" />
+
+    <TextView
+        android:id="@+id/precio"
+        style="@style/icn_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/calendar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tagSubOpp4"
+        app:layout_constraintVertical_bias="0.176" />
+
+    <TextView
+        android:id="@+id/locationInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/calendarInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/precio"
+        app:layout_constraintVertical_bias="0.265" />
+
+    <TextView
+        android:id="@+id/calendarInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintVertical_bias="0.265" />
+
+    <TextView
+        android:id="@+id/priceInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toEndOf="@+id/calendarInfo"
+        app:layout_constraintTop_toBottomOf="@+id/location"
+        app:layout_constraintVertical_bias="0.265" />
+
+    <Button
+        android:id="@+id/aplicarStatic"
+        style="@style/btn_highAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Aplicar "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarInfo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

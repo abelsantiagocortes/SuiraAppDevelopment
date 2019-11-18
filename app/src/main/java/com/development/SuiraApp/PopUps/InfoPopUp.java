@@ -13,6 +13,10 @@ import com.development.SuiraApp.R;
 
 public class InfoPopUp extends AppCompatActivity {
 
+    /**
+     * Initializes the GUI-Activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
