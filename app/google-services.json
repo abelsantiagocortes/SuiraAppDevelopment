@@ -1,82 +1,34 @@
 {
   "project_info": {
-    "project_number": "1017570883872",
-    "firebase_url": "https://suiraapp.firebaseio.com",
-    "project_id": "suiraapp",
-    "storage_bucket": "suiraapp.appspot.com"
+    "project_number": "639039943715",
+    "firebase_url": "https://suiradev.firebaseio.com",
+    "project_id": "suiradev",
+    "storage_bucket": "suiradev.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1017570883872:android:3054b4b4d8af3d9854ff45",
+        "mobilesdk_app_id": "1:639039943715:android:b28a36b59656e860722d96",
         "android_client_info": {
           "package_name": "com.development.SuiraApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1017570883872-soq15dvv27k2r1ei7ore22v87g90au31.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.development.SuiraApp",
-            "certificate_hash": "8bda25c6fe53856b72c5f6c489621355463d4273"
-          }
-        },
-        {
-          "client_id": "1017570883872-rt716b2ai3hmaguq7fm2gom24b3k23g4.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.development.SuiraApp",
-            "certificate_hash": "59de091328fe23031b6c8f5cd7fdc2671f306614"
-          }
-        },
-        {
-          "client_id": "1017570883872-n2oo42v1s8smqr6kqqm4i2fvs49pste2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.development.SuiraApp",
-            "certificate_hash": "022544b8109e6de960e7e14da35f7266e140dba5"
-          }
-        },
-        {
-          "client_id": "1017570883872-44khonteun69pm3g37l6oi14q8knqcb5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.development.SuiraApp",
-            "certificate_hash": "79ad8e528900afce7596758946d8dccb5077a770"
-          }
-        },
-        {
-          "client_id": "1017570883872-4uuie5ki1i8r4hp9367kll6ija7mir3t.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.development.SuiraApp",
-            "certificate_hash": "3518a2d09090351895604d3141a6bade951a4bed"
-          }
-        },
-        {
-          "client_id": "1017570883872-bh1141jfb2mfsdvdt15j48p8h1198rb7.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.development.SuiraApp",
-            "certificate_hash": "c03dd4a0fc6cee55df01334a76fbb31f79c3f6f3"
-          }
-        },
-        {
-          "client_id": "1017570883872-iejkacobltkbk116ad27lv0cnsaldj9p.apps.googleusercontent.com",
+          "client_id": "639039943715-vomjd1o28r2mdmd9jdl7ekdafvlkkvn7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBbcgL4x8GeS-v7qiDenN68qRm6kJMXx2Y"
+          "current_key": "AIzaSyAYhvPF6fmrf7sQn-rb0Nya9ynMgxY2KPA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1017570883872-iejkacobltkbk116ad27lv0cnsaldj9p.apps.googleusercontent.com",
+              "client_id": "639039943715-vomjd1o28r2mdmd9jdl7ekdafvlkkvn7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
