@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView26"
+            style="@style/typ_kindaBig"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:layout_marginTop="2.5dp"
+            />
+
+        <EditText
+            android:id="@+id/elocation"
+            style="@style/frm_thin"
+            android:drawableLeft="@drawable/location"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="textPostalAddress"
+            android:layout_marginTop="1dp"
+            />
+
+        <TextView
+            android:id="@+id/textView27"
+            style="@style/typ_kindaBig"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:layout_marginTop="2.5dp"
+            />
+
+        <EditText
+            android:id="@+id/ephone"
+            style="@style/frm_thin"
+            android:drawableLeft="@drawable/phone"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="textPhonetic"
+            android:layout_marginTop="1dp"
+            />
+
+        <TextView
+            android:id="@+id/textView29"
+            style="@style/typ_kindaBig"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:layout_marginTop="2.5dp"
+            />
+
+        <EditText
+            android:id="@+id/edescription"
+            style="@style/frm_fatty"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView28"
+            style="@style/typ_kindaBig"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Social Networks"
+            android:layout_marginTop="2.5dp"
+            />
+
+        <EditText
+            android:id="@+id/eFacebook"
+            style="@style/frm_thin"
+            android:drawableLeft="@drawable/facebook"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="textUri"
+            android:layout_marginTop="1dp"
+            />
+
+        <EditText
+            android:id="@+id/eInstagram"
+            style="@style/frm_thin"
+            android:drawableLeft="@drawable/instagram"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="textUri"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:id="@+id/eSpotify"
+            style="@style/frm_thin"
+            android:drawableLeft="@drawable/spotify"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="textUri"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:id="@+id/eYoutube"
+            style="@style/frm_thin"
+            android:drawableLeft="@drawable/youtube"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="textUri"
+            android:layout_marginTop="10dp"
+            />
+
+        <Button
+            android:id="@+id/registerA"
+            style="@style/btn_highAction"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Register" />
+
+        <Button
+            android:id="@+id/skip"
+            style="@style/btn_lowAction"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Skip" />
+    </LinearLayout>
+</ScrollView>

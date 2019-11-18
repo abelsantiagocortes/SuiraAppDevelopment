@@ -129,21 +129,22 @@ public class Register2 extends AppCompatActivity {
 /******************************************************************/
                 FirebaseUser currentUser = registerAuth.getCurrentUser();
                 final String userId = currentUser.getUid();
-                //dbUsers.child(userId).setValue(user);
 
 
-                storageUserClients.child(userId).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        storageUserClients.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
+                if(imageUri!=null) {
+                    storageUserClients.child(userId).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            storageUserClients.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
 
-                                System.out.println("Tengo foto");
-                            }
-                        });
-                    }
-                });
+                                    System.out.println("Tengo foto");
+                                }
+                            });
+                        }
+                    });
+                }
 
                 Intent intent= new Intent(getApplicationContext(), RegisterTags.class);
                 intent.putExtra("userObject",  user );
