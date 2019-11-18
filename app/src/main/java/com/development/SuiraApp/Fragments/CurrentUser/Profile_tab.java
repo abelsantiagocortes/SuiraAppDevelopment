@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,8 @@ public class Profile_tab extends Fragment {
         dbUsers = dbSuira.getReference("userClient");
         registerAuth = FirebaseAuth.getInstance();
         tagsFire = new ArrayList<String>();
+        txt_nameProf.setMovementMethod(new ScrollingMovementMethod());
+        txt_description.setMovementMethod(new ScrollingMovementMethod());
 
         // SACA EL ID
         String id = registerAuth.getCurrentUser().getUid();
@@ -80,7 +83,6 @@ public class Profile_tab extends Fragment {
                 Iterator it = post.getTag().keySet().iterator();
                 while(it.hasNext()){
                     String key = it.next().toString();
-                    System.out.println("Clave: " + key + " -> Valor: " + post.getTag().get(key));
                     tagsFire.add(key);
                 }
                 tagComponents();;
@@ -92,7 +94,7 @@ public class Profile_tab extends Fragment {
             }
         });
 
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+       /* StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         storageRef.child("images/userClient/" + id).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
@@ -104,7 +106,7 @@ public class Profile_tab extends Fragment {
             public void onFailure(@NonNull Exception exception) {
                 System.out.println("No se pudo sacar la foto");
             }
-        });
+        });*/
 
 
         return  view;
