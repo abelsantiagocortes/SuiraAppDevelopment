@@ -60,7 +60,7 @@ public class OpportunitiesAdapter extends RecyclerView.Adapter<OpportunitiesAdap
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), AplicantesOportunidad.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("nombre",opps.get(position).getKey());
+                intent.putExtra("userId",opps.get(position).getKey());
                 view.getContext().startActivity(intent);
             }
         });

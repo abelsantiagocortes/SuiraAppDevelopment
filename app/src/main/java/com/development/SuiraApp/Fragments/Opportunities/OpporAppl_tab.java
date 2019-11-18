@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.development.SuiraApp.Adapters.MyViewPagerAdapter;
 import com.development.SuiraApp.Adapters.Opportunities.ApplicationAdapter;
 import com.development.SuiraApp.Adapters.Opportunities.OpportunitiesAdapter;
-import com.development.SuiraApp.Model.Aplication;
 import com.development.SuiraApp.Model.ApplicationClass;
 import com.development.SuiraApp.Model.OpportunityClass;
 import com.development.SuiraApp.R;

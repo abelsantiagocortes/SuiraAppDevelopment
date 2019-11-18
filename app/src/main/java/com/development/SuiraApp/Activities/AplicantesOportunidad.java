@@ -64,7 +64,7 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
         DividerItemDecoration itemDecorator = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
         recyclerView.addItemDecoration(itemDecorator);
-         /***/
+
 
 
         apps = new ArrayList<>();
@@ -110,34 +110,6 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
         }
     };
 
-    /**
-     * Listener to retrieve information from the database only once
-     */
-    ValueEventListener listener3 = new ValueEventListener() {
-        /**
-         * gets the notifications from the database the first time
-         * @param dataSnapshot wich the DB information
-         */
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            if (dataSnapshot.exists()) {
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    ID=snapshot.getKey();
-                }
-
-            }
-            else{
-
-            }
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    };
 
     /**
      * initializes the  cards
