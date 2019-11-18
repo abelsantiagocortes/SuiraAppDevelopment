@@ -31,8 +31,8 @@ public class NotificationClass implements Comparable<NotificationClass> {
         System.out.println("Seen: "+this.seen);
         System.out.println("publisherName: "+this.publisherName);
         System.out.println("Publisher Id: "+this.publisherId);
-
     }
+
     public String getName() {
         return name;
     }
