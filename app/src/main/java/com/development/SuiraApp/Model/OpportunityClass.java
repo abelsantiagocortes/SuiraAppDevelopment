@@ -1,21 +1,22 @@
 package com.development.SuiraApp.Model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OpportunityClass {
+public class OpportunityClass implements Serializable {
 
     String name;
     String publisherId;
     String description;
-
-    Date startDate;
-    Date endDate;
+    String endDate;
     String location;
     List<String> reference;
     List<String> tags;
+    double budget;
+
 
 
     public void setPublisherId(String publisherId) {
@@ -61,19 +62,11 @@ public class OpportunityClass {
         this.description = description;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -92,5 +85,13 @@ public class OpportunityClass {
 
     public void setReference(List<String> reference) {
         this.reference = reference;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
     }
 }

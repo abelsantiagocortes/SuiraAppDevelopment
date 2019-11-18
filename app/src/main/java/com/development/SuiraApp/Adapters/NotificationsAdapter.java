@@ -22,6 +22,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
+import java.util.Map;
 
 public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.NotifViewHolder> {
 
@@ -30,6 +31,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     String suiraPurple = "#4B2C70";
     OnSeeListener onSeeListener;
     OnDismissListener onDismissListener;
+    Map<String , byte[]> fotos;
 
 
     public static class NotifViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -83,10 +85,11 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     }
 
 
-    public NotificationsAdapter(List<NotificationClass> notifs, OnSeeListener onSeeListener , OnDismissListener onDismissListener){
+    public NotificationsAdapter(List<NotificationClass> notifs, OnSeeListener onSeeListener , OnDismissListener onDismissListener , Map<String , byte[]> fotitos){
         this.notifs = notifs;
         this.onSeeListener = onSeeListener;
         this.onDismissListener = onDismissListener;
+        this.fotos = fotitos;
     }
 
 
@@ -113,19 +116,16 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     @Override
     public void onBindViewHolder(final NotifViewHolder notifViewHolder, int i) {
 
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-        storageRef.child("images/userClient/" + notifs.get(i).getPublisherId()).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                notifViewHolder.userPhoto.setImageBitmap(bMap);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                System.out.println("No se pudo sacar la foto");
-            }
-        });
+        String publi = notifs.get(i).getPublisherId();
+
+        System.out.println("id: " + publi);
+        byte[] bytes = fotos.get(publi);
+        if(bytes != null){
+            Bitmap bMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            notifViewHolder.userPhoto.setImageBitmap(bMap);
+        }
+
+
         if(notifs.get(i).getType().equals("Match")) {
             notifViewHolder.oppoTitle.setText( notifs.get(i).getName());
             notifViewHolder.oppoDescription.setText( notifs.get(i).getPublisherName());

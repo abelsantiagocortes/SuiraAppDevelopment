@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,18 +25,25 @@ import com.development.SuiraApp.Model.NotificationClass;
 import com.development.SuiraApp.Adapters.NotificationsAdapter;
 import com.development.SuiraApp.R;
 import com.development.SuiraApp.Model.WrapperNotification;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Notifications extends Fragment implements NotificationsAdapter.OnSeeListener , NotificationsAdapter.OnDismissListener {
 
@@ -43,6 +52,9 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
     public ArrayList<WrapperNotification> wrapperList;
     private FirebaseAuth signOutAuth;
     private NotificationsAdapter adapter;
+    private Map<String , byte[]> fotos = new HashMap<>();
+    private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,58 +81,132 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
 
 
         wrapperList = new ArrayList<>();
+        notifications = new ArrayList<>();
         FirebaseUser currentUser = signOutAuth.getCurrentUser();
         String userId = currentUser.getUid();
         Query query = FirebaseDatabase.getInstance().getReference("notification").orderByChild("userId").equalTo(userId);
+       // query.addListenerForSingleValueEvent(listener2);
+        query.addChildEventListener(listenerChanges);
 
-        query.addValueEventListener(valueEventListener);
 
         return  view;
-
-
     }
 
 
-
-    ValueEventListener valueEventListener = new ValueEventListener() {
+    /**
+     * Listener to retrieve information from the database only once
+     */
+    ValueEventListener listener2 = new ValueEventListener() {
         /**
-         * gets the notifications from the database
+         * gets the notifications from the database the first time
          * @param dataSnapshot wich the DB information
          */
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
 
-            if (dataSnapshot.exists())
-            {
+            if (dataSnapshot.exists()) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    NotificationClass noti = snapshot.getValue(NotificationClass.class);
+                    final NotificationClass noti = snapshot.getValue(NotificationClass.class);
                     noti.print();
                     String k = snapshot.getKey();
-                    WrapperNotification wn = new WrapperNotification(noti , k);
+                    WrapperNotification wn = new WrapperNotification(noti, k);
                     wrapperList.add(wn);
+
+                    storageRef.child("images/userClient/" + noti.getPublisherId()).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                        @Override
+                        public void onSuccess(byte[] bytes) {
+                            System.out.println("Estoy pusheando a " + noti.getPublisherId());
+                            fotos.put(noti.getPublisherId() , bytes);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            System.out.println("No se pudo sacar la foto");
+                        }
+                    });
+
+
+
                 }
             }
 
             Collections.sort(wrapperList);
 
             notifications = generateNotificationsList(wrapperList);
-            initializeAdapter(notifications);
+            initializeAdapter();
+            System.out.println("Este es listener 2");
 
         }
 
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
+            @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
 
         }
     };
 
     /**
-     * initializes the notification cards
-     * @param listi list of notifications
+     * Listener for when the data changes
      */
-    private void initializeAdapter(List<NotificationClass> listi){
-        NotificationsAdapter adapter = new NotificationsAdapter(listi ,  this , this);
+    ChildEventListener listenerChanges =  new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                final NotificationClass noti = dataSnapshot.getValue(NotificationClass.class);
+               System.out.println("Agregaron la notificacion " + dataSnapshot.getKey());
+               //agrego la notificacion al arrayList y vuelvo a iniciar el recycler view
+                storageRef.child("images/userClient/" + noti.getPublisherId()).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        fotos.put(noti.getPublisherId() , bytes);
+                        initializeAdapter();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        System.out.println("No se pudo sacar la foto");
+                    }
+                });
+
+                WrapperNotification wn = new WrapperNotification(noti, dataSnapshot.getKey());
+                wrapperList.add(0,wn);
+                notifications.add(0 , dataSnapshot.getValue(NotificationClass.class));
+                initializeAdapter();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
+                System.out.println("Cambiaronla notificacion " + dataSnapshot.getKey());
+                NotificationClass noti = dataSnapshot.getValue(NotificationClass.class);
+
+                for(int i = 0 ; i< wrapperList.size() ; ++i) {
+                    if (wrapperList.get(i).key.equals(dataSnapshot.getKey())) {
+                        wrapperList.get(i).not = noti;
+                        notifications.set(i, noti);
+                    }
+                }
+                initializeAdapter();
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                System.out.println("quitaron  la notificacion " + dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
+                System.out.println("Movieron  la notificacion " + dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+
+    /**
+     * initializes the notification cards
+     */
+    private void initializeAdapter(){
+        NotificationsAdapter adapter = new NotificationsAdapter(notifications ,  this , this , fotos);
         recyclerView.setAdapter(adapter);
     }
 
@@ -135,7 +221,7 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
         toast.show();
         notifications.remove(position);
         wrapperList.remove(position);
-        initializeAdapter(notifications);
+        initializeAdapter();
 
 
     }
@@ -186,7 +272,6 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
     private void updateSeen( String notifID ){
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-
         mDatabase.child("notification").child(notifID).child("seen").setValue(true);
 
 
