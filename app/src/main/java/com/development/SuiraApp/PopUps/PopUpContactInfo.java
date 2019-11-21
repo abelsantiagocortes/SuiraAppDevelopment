@@ -1,5 +1,7 @@
 package com.development.SuiraApp.PopUps;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.development.SuiraApp.R;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PopUpContactInfo extends AppCompatActivity {
 
@@ -25,19 +32,37 @@ public class PopUpContactInfo extends AppCompatActivity {
     Button boton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setTheme( R.style.pop_up);
         setContentView(R.layout.activity_pop_up_contact_info);
+
+        Bundle contenidos;
+        contenidos = getIntent().getExtras();
+        String dir = contenidos.getString("direccion");
+        if(dir.equals("")){
+            dir = "Not availible";
+        }
+        String tel = contenidos.getString("tel");
+        if(tel == null){
+            tel = "Not availible";
+        }
+        String correo= contenidos.getString("tel");
+        if(correo == null){
+            correo= "Not availible";
+        }
 
         address = (TextView) findViewById( R.id.popContentAddress );
         mail = (TextView) findViewById( R.id.popContentEmail );
         phone = (TextView) findViewById( R.id.popContentPhone );
         boton = ( Button ) findViewById( R.id.popButton );
 
-        //TODO: Info quedama, extraer del usuario que acepto
-        address.setText(  "Cr 58 #125b - 57"  );
-        mail.setText( "example@example.com" ) ;
-        phone.setText( "+571 3177963053" ) ;
+
+        address.setText(  dir );
+        mail.setText( correo ) ;
+        phone.setText( tel) ;
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);

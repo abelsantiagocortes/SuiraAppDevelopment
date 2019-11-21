@@ -1,6 +1,7 @@
 package com.development.SuiraApp.Activities.Opportunities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.development.SuiraApp.Model.UserClientClass;
 import com.development.SuiraApp.PopUps.PopUpContactInfo;
 import com.development.SuiraApp.Model.NotificationClass;
 import com.development.SuiraApp.Adapters.Opportunities.NotificationsAdapter;
@@ -242,9 +244,6 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
         if(notifications.get(position).getType().equals("Match")){
             Bundle temp = new Bundle();
             String opportunityId = notifications.get(position).getOpportunityId();
-            Toast toast=Toast.makeText(getContext(), "Soy un match",Toast.LENGTH_SHORT);
-            toast.setMargin(50,50);
-            toast.show();
             Intent intent = new Intent(getContext(), OpportunityInfo.class);
             temp.putString("OppId", opportunityId);
             intent.putExtras(temp);
@@ -257,12 +256,53 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
             toast.show();
         }
         else if(notifications.get(position).getType().equals("Accepted")) {
-            //TODO: intent to pop up with publisher contact info
-            Intent intent = new Intent(getContext(), PopUpContactInfo.class);
-            Toast toast = Toast.makeText(getContext(), "soy un accepted", Toast.LENGTH_SHORT);
-            toast.setMargin(50, 50);
-            toast.show();
-            startActivity(intent);
+            final Toast toast=Toast.makeText(getContext(), "Error",Toast.LENGTH_SHORT);
+            toast.setMargin(50,50);
+
+            //sacar la informacion del usuario para mandarla al intent
+            String userId = notifications.get(position).getPublisherId();
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference ref = database.getReference("userClient");
+            ref.orderByKey().equalTo(userId).addChildEventListener(new ChildEventListener() {
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    toast.show();
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                    toast.show();
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    toast.show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    toast.show();
+                }
+
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                    UserClientClass usuario= dataSnapshot.getValue(UserClientClass.class);
+
+                    Intent intent = new Intent(getContext(), PopUpContactInfo.class);
+                    Bundle temp = new Bundle();
+                    temp.putString("direccion",  usuario.getLocation());
+                    temp.putString("telefono",  usuario.getPhone());
+
+                    intent.putExtras(temp);
+                    startActivity(intent);
+                }
+
+            });
+
+
+
+
         }
     }
 

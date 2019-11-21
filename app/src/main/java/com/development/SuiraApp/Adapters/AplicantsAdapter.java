@@ -100,12 +100,10 @@ public class AplicantsAdapter extends RecyclerView.Adapter<AplicantsAdapter.Apli
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
-    //abel es gay
 
     @Override
     public ApliViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_aplicant, viewGroup, false);
-
 
         ApliViewHolder pvh = new ApliViewHolder(v , onGoListener , onAcceptListener);
         return pvh;

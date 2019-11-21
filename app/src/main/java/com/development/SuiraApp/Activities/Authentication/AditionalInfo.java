@@ -70,7 +70,6 @@ public class AditionalInfo extends AppCompatActivity {
                          user.setLocation(location.getText().toString());
                          user.setPhone(phone.getText().toString());
                         dbUsers.child(userId).setValue(user);
-
                     }else{
                         Bundle bund = new Bundle();
 
