@@ -56,7 +56,7 @@
                 app:siBorderWidth="2dp" />
 
             <com.github.siyamed.shapeimageview.CircularImageView
-                android:id="@+id/foto"
+                android:id="@+id/img_profile"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
@@ -195,6 +195,7 @@
                 android:layout_width="176dp"
                 android:layout_height="27dp"
                 android:layout_marginBottom="16dp"
+                android:clickable="true"
                 android:text="suira.org@gmail.com"
                 android:textColor="@color/clr_justWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
