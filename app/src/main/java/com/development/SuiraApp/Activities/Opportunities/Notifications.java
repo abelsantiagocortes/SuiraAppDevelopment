@@ -172,6 +172,8 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
                 initializeAdapter();
             }
 
+
+            //this can be optimized by creating a class containing the map with the photos and queriing for the photos in the adapter
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
                 System.out.println("Cambiaronla notificacion " + dataSnapshot.getKey());
@@ -183,6 +185,8 @@ public class Notifications extends Fragment implements NotificationsAdapter.OnSe
                         notifications.set(i, noti);
                     }
                 }
+
+
                 initializeAdapter();
             }
 
