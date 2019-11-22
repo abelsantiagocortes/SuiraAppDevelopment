@@ -120,7 +120,10 @@ public class AplicantsAdapter extends RecyclerView.Adapter<AplicantsAdapter.Apli
         final String applicant= apps.get(i).getApplicantId();
         System.out.println("*/---------------------------------------------------------/*");
         System.out.println("id: " + applicant);
-        notifViewHolder.porcentaje.setText(Double.toString(apps.get(i).getPorcentaje()) );
+
+        Double P = apps.get(i).getPorcentaje();
+        int x = (int) Math.round(P);
+        notifViewHolder.porcentaje.setText(x + " %" );
         notifViewHolder.aplicantName.setText(apps.get(i).getNombre());
         Query query = FirebaseDatabase.getInstance().getReference("userClient").orderByKey().equalTo(applicant);
 

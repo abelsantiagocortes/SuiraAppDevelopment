@@ -90,7 +90,6 @@ public class AplicantesOportunidad extends AppCompatActivity implements Aplicant
             if (dataSnapshot.exists()) {
                 System.out.println("si exiiiiiste");
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    System.out.println("usuario "+ snapshot.getValue(ApplicationClass.class).getApplicantId());
                     apps.add(snapshot.getValue(ApplicationClass.class));
                 }
                 System.out.println("tam de la lista: "+ Integer.toString(apps.size()));
