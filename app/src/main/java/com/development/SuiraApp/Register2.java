@@ -15,6 +15,8 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +36,7 @@ public class Register2 extends AppCompatActivity {
     DatabaseReference dbUsers;
     DatabaseReference dbTags;
     List<String> tagsFire;
+    FirebaseAuth registerAuth;
     int canttags =0;
 
     @Override
@@ -49,6 +52,7 @@ public class Register2 extends AppCompatActivity {
         FirebaseDatabase dbSuira = FirebaseDatabase.getInstance();
         dbUsers = dbSuira.getReference("userClient");
         dbTags =  dbSuira.getReference("tag");
+        registerAuth = FirebaseAuth.getInstance();
 
         tagsFire = new ArrayList<String>();
 
@@ -80,18 +84,19 @@ public class Register2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String idUser = getIntent().getStringExtra("userId");
+                UserClientClass user = (UserClientClass) getIntent().getSerializableExtra("userObject");
                 List<String> tagsUser = getSelectedTags();
+                user.setTag(tagsUser);
 
-                for(int i = 0; i < tagsUser.size(); i++) {
-                    dbUsers.child(idUser).child("tag").setValue(tagsUser.get(i));
-                }
+                FirebaseUser currentUser = registerAuth.getCurrentUser();
+                String userId = currentUser.getUid();
+                dbUsers.child(userId).setValue(user);
 
                 Bundle bund = new Bundle();
 
                 String msn = new String("Thanks for Using Suira\n \n \n Suira is Working To Find What You Need");
-                String btnMsn = new String("Notifications");
-                String activityName = new String("Notifications");
+                String btnMsn = new String("Log In");
+                String activityName = "LogIn";
 
                 Intent intent= new Intent(getApplicationContext(), PopUp.class);
 

@@ -79,10 +79,23 @@ public class LogIn extends AppCompatActivity {
         logInUser(currentUser);
     }
 
+    public void onBackPressed() {
+    }
+
+
     private void logInUser(FirebaseUser currentUser){
+        Intent intent;
         if(currentUser!=null){
-            Intent intent = new Intent(getBaseContext(), Notifications.class);
-            intent.putExtra("user", currentUser.getEmail());
+            String x= getIntent().getStringExtra("landing");
+            if(x.equals("yes"))
+            {
+                intent = new Intent(getBaseContext(), CreateOpportunity.class);
+            }
+            else
+            {
+                intent = new Intent(getBaseContext(), Notifications.class);
+            }
+
             startActivity(intent);
         } else {
             frm_email.setText("");

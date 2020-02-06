@@ -15,6 +15,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +30,14 @@ import static java.security.AccessController.getContext;
 public class Notifications extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private List<NotificationClass> persons;
+    public List<NotificationClass> notifications;
     private FirebaseAuth signOutAuth;
+    private NotificationsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         setContentView(R.layout.activity_notifications);
 
@@ -45,43 +53,51 @@ public class Notifications extends AppCompatActivity {
         recyclerView.setLayoutManager(llm);
         recyclerView.setHasFixedSize(true);
 
+
         DividerItemDecoration itemDecorator = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
         recyclerView.addItemDecoration(itemDecorator);
 
 
-        initializeData();
-        initializeAdapter();
+        notifications = new ArrayList<>();
+        FirebaseUser currentUser = signOutAuth.getCurrentUser();
+        String userId = currentUser.getUid();
+        Query query = FirebaseDatabase.getInstance().getReference("notification").orderByChild("userId").equalTo(userId);
+
+        query.addListenerForSingleValueEvent(valueEventListener);
+
 ;
     }
 
-    private void initializeData() {
-        persons = new ArrayList<>();
-        persons.add(new NotificationClass("Abelardo C. ", "Diseñador de Horarios", R.drawable.designer));
-        persons.add(new NotificationClass("Seposorio G.", "Toque en Santo de Angel", R.drawable.camera));
-        persons.add(new NotificationClass("Kamilin S.", "Organizador de Escritorio", R.drawable.fashion));
-        persons.add(new NotificationClass("Dani M.", "Director de VideoP", R.drawable.paint));
-        persons.add(new NotificationClass("Deivid S", "Profesor de Vocabulario", R.drawable.wtri));
-        persons.add(new NotificationClass("Julieto M.", "Doctor 24/7", R.drawable.record));
-        persons.add(new NotificationClass("Abelardo C. ", "Diseñador de Horarios", R.drawable.designer));
-        persons.add(new NotificationClass("Seposorio G.", "Toque en Santo de Angel", R.drawable.camera));
-        persons.add(new NotificationClass("Kamilin S.", "Organizador de Escritorio", R.drawable.fashion));
-        persons.add(new NotificationClass("Dani M.", "Director de VideoP", R.drawable.paint));
-        persons.add(new NotificationClass("Deivid S", "Profesor de Vocabulario", R.drawable.wtri));
-        persons.add(new NotificationClass("Julieto M.", "Doctor 24/7", R.drawable.record));
-        persons.add(new NotificationClass("Abelardo C. ", "Diseñador de Horarios", R.drawable.designer));
-        persons.add(new NotificationClass("Seposorio G.", "Toque en Santo de Angel", R.drawable.camera));
-        persons.add(new NotificationClass("Kamilin S.", "Organizador de Escritorio", R.drawable.fashion));
-        persons.add(new NotificationClass("Dani M.", "Director de VideoP", R.drawable.paint));
-        persons.add(new NotificationClass("Deivid S", "Profesor de Vocabulario", R.drawable.wtri));
-        persons.add(new NotificationClass("Julieto M.", "Doctor 24/7", R.drawable.record));
 
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
 
+            if (dataSnapshot.exists())
+            {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    NotificationClass noti = snapshot.getValue(NotificationClass.class);
+                    notifications.add(noti);
+                }
+            }
 
-    }
+            for(int i =0;i<notifications.size();i++)
+            {
+                System.out.println(notifications.get(i).getName());
+            }
+            initializeAdapter(notifications);
 
-    private void initializeAdapter(){
-        NotificationsAdapter adapter = new NotificationsAdapter(persons);
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+
+    private void initializeAdapter(List<NotificationClass> listi){
+        NotificationsAdapter adapter = new NotificationsAdapter(listi);
         recyclerView.setAdapter(adapter);
     }
 
@@ -90,6 +106,10 @@ public class Notifications extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate( R.menu.hamburger_menu, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
     @Override

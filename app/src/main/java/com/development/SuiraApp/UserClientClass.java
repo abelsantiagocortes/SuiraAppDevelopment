@@ -1,38 +1,26 @@
 package com.development.SuiraApp;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserClientClass {
+public class UserClientClass implements Serializable {
 
-    private int userId;
     private String name;
     private String lastName;
-    private String email;
-    private String password;
     private List<String> tag;
     private Timestamp signUpDate;
 
-    public UserClientClass( String name, String lastName, String email, String password, Timestamp signUpDate) {
-        this.userId = 0;
+    public UserClientClass( String name, String lastName, Timestamp signUpDate) {
         this.name = name;
         this.lastName = lastName;
-        this.email = email;
-        this.password = password;
         this.tag = new ArrayList<>();
         this.signUpDate = signUpDate;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public String getName() {
         return name;
@@ -50,21 +38,6 @@ public class UserClientClass {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public List<String> getTag() {
         return tag;

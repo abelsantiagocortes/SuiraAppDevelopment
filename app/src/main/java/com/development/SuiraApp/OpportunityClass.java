@@ -8,21 +8,32 @@ import java.util.List;
 public class OpportunityClass {
 
     String name;
+    String publisherId;
     String description;
     Timestamp date;
     Date startDate;
     Date endDate;
     String location;
-    double budget;
     List<String> reference;
     List<String> tags;
-    String userId;
 
-    public OpportunityClass(String name, String description, Timestamp date ) {
+
+    public void setPublisherId(String publisherId) {
+        this.publisherId = publisherId;
+    }
+
+    public OpportunityClass(String name, String description, Timestamp date, List<String> listTags , String id ) {
+        this.publisherId = id;
         this.name = name;
         this.description = description;
         this.date = date;
-        this.tags =  new ArrayList<>();
+        this.tags =  listTags;
+
+
+    }
+
+    public String getPublisherId() {
+        return publisherId;
     }
 
     public List<String> getTags() {
@@ -32,15 +43,6 @@ public class OpportunityClass {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
 
     public String getName() {
         return name;
@@ -90,13 +92,6 @@ public class OpportunityClass {
         this.location = location;
     }
 
-    public double getBudget() {
-        return budget;
-    }
-
-    public void setBudget(double budget) {
-        this.budget = budget;
-    }
 
     public List<String> getReference() {
         return reference;

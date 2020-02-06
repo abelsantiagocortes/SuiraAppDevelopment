@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class LandingPage extends AppCompatActivity {
 
@@ -39,11 +40,14 @@ public class LandingPage extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
+
+
         btn_logIn=(Button)findViewById(R.id.btn_1_3);
         btn_logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(getApplicationContext(), LogIn.class);
+                intent.putExtra("landing","no");
                 startActivity(intent);
             }
         });
@@ -52,7 +56,8 @@ public class LandingPage extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(getApplicationContext(), CreateOpportunity.class);
+                Intent intent= new Intent(getApplicationContext(), LogIn.class);
+                intent.putExtra("landing","yes");
                 startActivity(intent);
             }
         });
@@ -70,10 +75,14 @@ public class LandingPage extends AppCompatActivity {
         btn_buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(getApplicationContext(), Notifications.class);
-                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Upcoming Feature",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+    @Override
+    public void onBackPressed() {
+    }
+
 }

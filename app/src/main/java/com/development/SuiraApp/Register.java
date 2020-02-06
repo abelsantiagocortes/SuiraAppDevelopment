@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -106,7 +108,7 @@ public class Register extends AppCompatActivity {
     private void registerUser(FirebaseUser currentUser){
         if(currentUser!=null){
             Intent intent= new Intent(getApplicationContext(), Register2.class);
-            intent.putExtra("userId", registerUserDB());
+            intent.putExtra("userObject", (Serializable) registerUserDB());
             startActivity(intent);
         } else {
             email.setText("");
@@ -165,22 +167,16 @@ public class Register extends AppCompatActivity {
         }
         return valid;
     }
-    private String registerUserDB(){
+    private UserClientClass registerUserDB(){
         String name_value = name.getText().toString() ;
         String lastname_value= lastName.getText().toString();
-        String email_value=email.getText().toString();
-        String password_value=password.getText().toString();
 
         Date date = new Date();
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);
 
-        UserClientClass user= new UserClientClass(name_value,lastname_value,email_value,password_value,ts);
-        String id = dbUsers.push().getKey();
-
-        dbUsers.child(id).setValue(user);
-
-        return(id);
+        UserClientClass user= new UserClientClass(name_value,lastname_value,ts);
+        return user;
 
     }
     private boolean isEmailValid(String email) {
